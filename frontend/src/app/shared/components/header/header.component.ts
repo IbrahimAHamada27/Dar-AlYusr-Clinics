@@ -186,11 +186,11 @@ import { LanguageService } from '../../../core/services/language.service';
         </div>
       </div>
 
-      <!-- 100% Solid Fullscreen Mobile Drawer -->
+      <!-- 100% Solid Fullscreen Mobile & Tablet Drawer -->
       <div
         *ngIf="mobileMenuOpen"
         [dir]="lang.isRtl() ? 'rtl' : 'ltr'"
-        style="position: fixed; inset: 0; background-color: #FFFFFF; z-index: 999999; display: flex; flex-direction: column; overflow-y: auto;"
+        class="mobile-drawer-overlay"
       >
         <!-- Mobile Drawer Header -->
         <div
