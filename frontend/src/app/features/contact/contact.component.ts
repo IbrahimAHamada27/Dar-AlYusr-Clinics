@@ -13,8 +13,8 @@ import { ApiService } from '../../core/services/api.service';
     <div>
       <!-- Hero Header -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'تواصل معنا' : 'Get in Touch' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'تواصل معنا' : 'Get in Touch' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'التواصل المباشر والاستفسارات' : 'Contact Dr. Ibrahim El Sherqawy' }}
           </h1>
@@ -27,8 +27,8 @@ import { ApiService } from '../../core/services/api.service';
       </section>
 
       <!-- Main Contact Section -->
-      <section className="section">
-        <div className="container">
+      <section class="section">
+        <div class="container">
           <div style="display: flex; gap: 3.5rem; flex-wrap: wrap;">
             <!-- Left Info Column -->
             <div style="flex: 1 1 400px;">
@@ -78,7 +78,7 @@ import { ApiService } from '../../core/services/api.service';
                   <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">
                     {{ lang.getText(clinic.address) }}
                   </div>
-                  <button (click)="nav('appointments')" className="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">
+                  <button (click)="nav('appointments')" class="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">
                     {{ lang.ui().bookAppointment }}
                   </button>
                 </div>
@@ -87,7 +87,7 @@ import { ApiService } from '../../core/services/api.service';
 
             <!-- Right Contact Form -->
             <div style="flex: 1 1 450px;">
-              <div className="card" style="background-color: #ffffff; padding: 2.25rem;">
+              <div class="card" style="background-color: #ffffff; padding: 2.25rem;">
                 <h2 style="font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
                   {{ lang.isRtl() ? 'إرسال رسالة مباشرة' : 'Send a Direct Message' }}
                 </h2>
@@ -100,7 +100,7 @@ import { ApiService } from '../../core/services/api.service';
                   <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
                     {{ lang.isRtl() ? 'سيقوم فريق العيادة بالرد على استفسارك في أقرب وقت.' : 'Our clinic reception will review your message and reply promptly.' }}
                   </p>
-                  <button (click)="submitted = false" className="btn btn-outline btn-sm">
+                  <button (click)="submitted = false" class="btn btn-outline btn-sm">
                     {{ lang.isRtl() ? 'إرسال رسالة أخرى' : 'Send Another Message' }}
                   </button>
                 </div>
@@ -110,22 +110,22 @@ import { ApiService } from '../../core/services/api.service';
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'الاسم الكامل *' : 'Full Name *' }}
                     </label>
-                    <input type="text" required [(ngModel)]="fullName" name="fullName" className="input-field" [placeholder]="lang.isRtl() ? 'أدخل اسمك' : 'Your full name'" />
+                    <input type="text" required [(ngModel)]="fullName" name="fullName" class="input-field" [placeholder]="lang.isRtl() ? 'أدخل اسمك' : 'Your full name'" />
                   </div>
 
-                  <div className="grid-2" style="gap: 1rem;">
+                  <div class="grid-2" style="gap: 1rem;">
                     <div>
                       <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                         {{ lang.isRtl() ? 'البريد الإلكتروني *' : 'Email *' }}
                       </label>
-                      <input type="email" required [(ngModel)]="email" name="email" className="input-field" placeholder="email@example.com" />
+                      <input type="email" required [(ngModel)]="email" name="email" class="input-field" placeholder="email@example.com" />
                     </div>
 
                     <div>
                       <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                         {{ lang.isRtl() ? 'رقم الهاتف' : 'Phone Number' }}
                       </label>
-                      <input type="tel" [(ngModel)]="phone" name="phone" className="input-field" placeholder="01000000000" />
+                      <input type="tel" [(ngModel)]="phone" name="phone" class="input-field" placeholder="01000000000" />
                     </div>
                   </div>
 
@@ -133,17 +133,17 @@ import { ApiService } from '../../core/services/api.service';
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'الموضوع' : 'Subject' }}
                     </label>
-                    <input type="text" [(ngModel)]="subject" name="subject" className="input-field" [placeholder]="lang.isRtl() ? 'موضوع الرسالة...' : 'Inquiry subject'" />
+                    <input type="text" [(ngModel)]="subject" name="subject" class="input-field" [placeholder]="lang.isRtl() ? 'موضوع الرسالة...' : 'Inquiry subject'" />
                   </div>
 
                   <div>
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'الرسالة *' : 'Message *' }}
                     </label>
-                    <textarea rows="4" required [(ngModel)]="message" name="message" className="input-field" [placeholder]="lang.isRtl() ? 'اكتب نص استفسارك هنا...' : 'Write your message details...'"></textarea>
+                    <textarea rows="4" required [(ngModel)]="message" name="message" class="input-field" [placeholder]="lang.isRtl() ? 'اكتب نص استفسارك هنا...' : 'Write your message details...'"></textarea>
                   </div>
 
-                  <button type="submit" className="btn btn-primary" style="justify-content: center;">
+                  <button type="submit" class="btn btn-primary" style="justify-content: center;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     <span>{{ lang.ui().sendMessage }}</span>
                   </button>

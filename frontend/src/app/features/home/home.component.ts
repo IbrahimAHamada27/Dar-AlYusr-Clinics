@@ -11,11 +11,11 @@ import { DataService } from '../../core/services/data.service';
     <div>
       <!-- 1. HERO SECTION -->
       <section style="background-color: var(--primary-light); padding: 5rem 0 4rem 0; position: relative; overflow: hidden;">
-        <div className="container">
+        <div class="container">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 3.5rem; flex-wrap: wrap;">
             <!-- Hero Left Content -->
             <div style="flex: 1 1 500px; max-width: 640px;">
-              <div className="badge badge-teal" style="margin-bottom: 1.25rem;">
+              <div class="badge badge-teal" style="margin-bottom: 1.25rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
                 <span>{{ lang.getText(profile.title) }}</span>
               </div>
@@ -33,12 +33,12 @@ import { DataService } from '../../core/services/data.service';
               </p>
 
               <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <button (click)="nav('appointments')" className="btn btn-primary btn-lg">
+                <button (click)="nav('appointments')" class="btn btn-primary btn-lg">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                   <span>{{ lang.ui().bookAppointment }}</span>
                 </button>
 
-                <button (click)="nav('about')" className="btn btn-outline btn-lg">
+                <button (click)="nav('about')" class="btn btn-outline btn-lg">
                   <span>{{ lang.isRtl() ? 'استكشف الملف الشخصي' : 'Explore Profile' }}</span>
                   <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                   <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
@@ -87,8 +87,8 @@ import { DataService } from '../../core/services/data.service';
 
       <!-- 2. QUICK STATISTICS COUNTER -->
       <section style="background-color: var(--primary-dark); color: #ffffff; padding: 3rem 0;">
-        <div className="container">
-          <div className="grid-4" style="text-align: center;">
+        <div class="container">
+          <div class="grid-4" style="text-align: center;">
             <div style="padding: 1rem;">
               <div style="font-size: 2.75rem; font-weight: 800; color: var(--gold-accent); margin-bottom: 0.25rem;">
                 {{ profile.experienceYears }}+
@@ -129,23 +129,23 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 3. ABOUT PREVIEW -->
-      <section className="section">
-        <div className="container">
+      <section class="section">
+        <div class="container">
           <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
             <div style="flex: 1 1 450px;">
-              <span className="section-subtitle">{{ lang.isRtl() ? 'نبذة عن الطبيب' : 'About the Physician' }}</span>
+              <span class="section-subtitle">{{ lang.isRtl() ? 'نبذة عن الطبيب' : 'About the Physician' }}</span>
               <h2 style="margin-bottom: 1.5rem;">{{ lang.isRtl() ? 'الالتزام والخبرة الجراحية' : 'Surgical Excellence & Care' }}</h2>
               <p style="font-size: 1.08rem; line-height: 1.8; margin-bottom: 2rem;">
                 {{ lang.getText(profile.bioIntro) }}
               </p>
-              <button (click)="nav('about')" className="btn btn-navy">
+              <button (click)="nav('about')" class="btn btn-navy">
                 <span>{{ lang.isRtl() ? 'قراءة الملف الكامل' : 'Read Full Profile' }}</span>
                 <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
               </button>
             </div>
             <div style="flex: 1 1 450px;">
-              <div className="card" style="background-color: var(--bg-alt); border-left: 4px solid var(--accent-teal);">
+              <div class="card" style="background-color: var(--bg-alt); border-left: 4px solid var(--accent-teal);">
                 <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">
                   {{ lang.isRtl() ? 'الرؤية والنهج العلاجي' : 'Clinical Philosophy' }}
                 </h3>
@@ -159,15 +159,15 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 4. AREAS OF EXPERTISE -->
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'المجالات الطبية' : 'Medical Specialties' }}</span>
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'المجالات الطبية' : 'Medical Specialties' }}</span>
             <h2>{{ lang.isRtl() ? 'التخصصات والخدمات المتقدمة' : 'Areas of Expertise' }}</h2>
           </div>
 
-          <div className="grid-4">
-            <div *ngFor="let exp of data.expertise()" className="card card-hover">
+          <div class="grid-4">
+            <div *ngFor="let exp of data.expertise()" class="card card-hover">
               <div style="margin-bottom: 1.25rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
               </div>
@@ -183,24 +183,24 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 5. CLINICS PREVIEW -->
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'المواقع والمواعيد' : 'Locations & Hours' }}</span>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'المواقع والمواعيد' : 'Locations & Hours' }}</span>
             <h2>{{ lang.isRtl() ? 'عيادات الفروع المتاحة' : 'Clinic Locations' }}</h2>
             <p style="margin-top: 0.5rem;">
               {{ lang.isRtl() ? 'اختر العيادة الأقرب لك واطلع على مواعيد الاستشارات المتاحة.' : 'Choose the location that works best for you and book your appointment.' }}
             </p>
           </div>
 
-          <div className="grid-3">
-            <div *ngFor="let clinic of data.getClinics()" className="card card-hover" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="grid-3">
+            <div *ngFor="let clinic of data.getClinics()" class="card card-hover" style="display: flex; flex-direction: column; justify-content: space-between;">
               <div>
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
                   <h3 style="color: var(--primary-dark); font-size: 1.35rem;">
                     {{ lang.getText(clinic.name) }}
                   </h3>
-                  <span className="badge badge-navy">
+                  <span class="badge badge-navy">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     {{ lang.getText(clinic.city) }}
                   </span>
@@ -222,11 +222,11 @@ import { DataService } from '../../core/services/data.service';
               </div>
 
               <div style="display: flex; gap: 0.75rem;">
-                <button (click)="nav('appointments')" className="btn btn-primary btn-sm" style="flex: 1;">
+                <button (click)="nav('appointments')" class="btn btn-primary btn-sm" style="flex: 1;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                   <span>{{ lang.ui().bookAppointment }}</span>
                 </button>
-                <button (click)="nav('clinics')" className="btn btn-outline btn-sm">
+                <button (click)="nav('clinics')" class="btn btn-outline btn-sm">
                   <span>{{ lang.isRtl() ? 'التفاصيل' : 'View Details' }}</span>
                 </button>
               </div>
@@ -236,17 +236,17 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 6. LATEST PUBLICATIONS -->
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'الإنتاج العلمي' : 'Research Output' }}</span>
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'الإنتاج العلمي' : 'Research Output' }}</span>
             <h2>{{ lang.isRtl() ? 'أحدث المنشورات والأبحاث' : 'Latest Publications' }}</h2>
           </div>
 
-          <div className="grid-3">
-            <div *ngFor="let pub of getLatestPublications()" className="card card-hover" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div class="grid-3">
+            <div *ngFor="let pub of getLatestPublications()" class="card card-hover" style="display: flex; flex-direction: column; justify-content: space-between;">
               <div>
-                <div className="badge badge-teal" style="margin-bottom: 0.85rem; font-size: 0.75rem;">
+                <div class="badge badge-teal" style="margin-bottom: 0.85rem; font-size: 0.75rem;">
                   {{ pub.type }} • {{ pub.year }}
                 </div>
                 <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; line-height: 1.4;">
@@ -260,7 +260,7 @@ import { DataService } from '../../core/services/data.service';
                 </p>
               </div>
 
-              <button (click)="nav('publications')" className="btn btn-outline btn-sm" style="width: 100%; justify-content: center;">
+              <button (click)="nav('publications')" class="btn btn-outline btn-sm" style="width: 100%; justify-content: center;">
                 <span>{{ lang.isRtl() ? 'عرض البحث' : 'View Publication' }}</span>
                 <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
@@ -269,7 +269,7 @@ import { DataService } from '../../core/services/data.service';
           </div>
 
           <div style="text-align: center; margin-top: 2.5rem;">
-            <button (click)="nav('publications')" className="btn btn-navy">
+            <button (click)="nav('publications')" class="btn btn-navy">
               <span>{{ lang.isRtl() ? 'تصفح كافة المنشورات' : 'Explore All Publications' }}</span>
               <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
@@ -279,12 +279,12 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 7. FEATURED ARTICLE & UPCOMING CONFERENCE -->
-      <section className="section">
-        <div className="container">
-          <div className="grid-2">
+      <section class="section">
+        <div class="container">
+          <div class="grid-2">
             <!-- Featured Article Card -->
-            <div *ngIf="getFeaturedArticle()" className="card" style="border-top: 4px solid var(--accent-teal);">
-              <span className="section-subtitle">{{ lang.isRtl() ? 'مقالة مميزة' : 'Featured Article' }}</span>
+            <div *ngIf="getFeaturedArticle()" class="card" style="border-top: 4px solid var(--accent-teal);">
+              <span class="section-subtitle">{{ lang.isRtl() ? 'مقالة مميزة' : 'Featured Article' }}</span>
               <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; margin-top: 0.25rem;">
                 {{ lang.getText(getFeaturedArticle()!.title) }}
               </h3>
@@ -294,7 +294,7 @@ import { DataService } from '../../core/services/data.service';
               <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
                 {{ lang.getText(getFeaturedArticle()!.summary) }}
               </p>
-              <button (click)="nav('articles')" className="btn btn-primary btn-sm">
+              <button (click)="nav('articles')" class="btn btn-primary btn-sm">
                 <span>{{ lang.isRtl() ? 'قراءة المقال' : 'Read Article' }}</span>
                 <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
@@ -302,8 +302,8 @@ import { DataService } from '../../core/services/data.service';
             </div>
 
             <!-- Upcoming Conference Banner -->
-            <div *ngIf="getUpcomingConference()" className="card" style="background-color: var(--primary-dark); color: #ffffff;">
-              <span className="badge badge-gold" style="margin-bottom: 0.85rem;">
+            <div *ngIf="getUpcomingConference()" class="card" style="background-color: var(--primary-dark); color: #ffffff;">
+              <span class="badge badge-gold" style="margin-bottom: 0.85rem;">
                 {{ lang.isRtl() ? 'مؤتمر قادم' : 'Upcoming Conference' }}
               </span>
               <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 0.75rem;">
@@ -316,7 +316,7 @@ import { DataService } from '../../core/services/data.service';
                 <strong>{{ lang.isRtl() ? 'الدور:' : 'Role:' }}</strong> {{ lang.getText(getUpcomingConference()!.role) }} <br />
                 <strong>{{ lang.isRtl() ? 'الموضوع:' : 'Topic:' }}</strong> "{{ lang.getText(getUpcomingConference()!.topic) }}"
               </div>
-              <button (click)="nav('conferences')" className="btn btn-outline btn-sm" style="color: #ffffff; border-color: #475569;">
+              <button (click)="nav('conferences')" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: #475569;">
                 <span>{{ lang.isRtl() ? 'عرض التفاصيل' : 'View Details' }}</span>
               </button>
             </div>
@@ -326,7 +326,7 @@ import { DataService } from '../../core/services/data.service';
 
       <!-- 8. FINAL CTA -->
       <section style="background-color: var(--primary-light); padding: 4.5rem 0; text-align: center;">
-        <div className="container" style="max-width: 800px;">
+        <div class="container" style="max-width: 800px;">
           <h2 style="margin-bottom: 1rem; color: var(--primary-dark);">
             {{ lang.isRtl() ? 'احجز موعد كشف واستشارة جراحة الأطفال' : 'Schedule Your Surgical Consultation' }}
           </h2>
@@ -334,11 +334,11 @@ import { DataService } from '../../core/services/data.service';
             {{ lang.isRtl() ? 'اختر الفرع المناسب و الموعد المفضل لطلب استشارة أو متابعة حالة طفلك.' : 'Select your preferred clinic branch and time slot for specialized care.' }}
           </p>
           <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <button (click)="nav('appointments')" className="btn btn-primary btn-lg">
+            <button (click)="nav('appointments')" class="btn btn-primary btn-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
               <span>{{ lang.ui().bookAppointment }}</span>
             </button>
-            <button (click)="nav('contact')" className="btn btn-outline btn-lg">
+            <button (click)="nav('contact')" class="btn btn-outline btn-lg">
               <span>{{ lang.isRtl() ? 'تواصل مع العيادة' : 'Contact Clinic' }}</span>
             </button>
           </div>

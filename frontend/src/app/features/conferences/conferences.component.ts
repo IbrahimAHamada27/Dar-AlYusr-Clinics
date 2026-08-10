@@ -11,8 +11,8 @@ import { DataService } from '../../core/services/data.service';
     <div>
       <!-- Hero Header -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'المشاركات والتحدث' : 'Speaking & Congresses' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'المشاركات والتحدث' : 'Speaking & Congresses' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'المؤتمرات والندوات الطبية' : 'Conferences & Symposia' }}
           </h1>
@@ -25,19 +25,19 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Upcoming Conferences -->
-      <section *ngIf="getUpcomingConferences().length > 0" className="section">
-        <div className="container">
-          <div className="section-header" [style.text-align]="lang.isRtl() ? 'right' : 'left'" style="margin: 0 0 2rem 0;">
-            <span className="badge badge-gold" style="margin-bottom: 0.5rem;">
+      <section *ngIf="getUpcomingConferences().length > 0" class="section">
+        <div class="container">
+          <div class="section-header" [style.text-align]="lang.isRtl() ? 'right' : 'left'" style="margin: 0 0 2rem 0;">
+            <span class="badge badge-gold" style="margin-bottom: 0.5rem;">
               {{ lang.isRtl() ? 'مؤتمرات قادمة' : 'Upcoming Speaking Engagements' }}
             </span>
             <h2>{{ lang.isRtl() ? 'المؤتمرات القادمة' : 'Upcoming Conferences' }}</h2>
           </div>
 
-          <div className="grid-2">
-            <div *ngFor="let conf of getUpcomingConferences()" className="card" style="border-top: 4px solid var(--gold-accent); background-color: var(--primary-dark); color: #ffffff;">
+          <div class="grid-2">
+            <div *ngFor="let conf of getUpcomingConferences()" class="card" style="border-top: 4px solid var(--gold-accent); background-color: var(--primary-dark); color: #ffffff;">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                <span className="badge badge-gold">{{ lang.getText(conf.role) }}</span>
+                <span class="badge badge-gold">{{ lang.getText(conf.role) }}</span>
                 <span style="font-size: 0.85rem; color: var(--gold-accent); font-weight: 600; display: flex; align-items: center; gap: 0.3rem;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                   {{ conf.date }}
@@ -66,7 +66,7 @@ import { DataService } from '../../core/services/data.service';
                 {{ lang.getText(conf.description) }}
               </p>
 
-              <a *ngIf="conf.externalLink" [href]="conf.externalLink" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm" style="width: 100%; justify-content: center;">
+              <a *ngIf="conf.externalLink" [href]="conf.externalLink" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width: 100%; justify-content: center;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
                 <span>{{ lang.isRtl() ? 'موقع المؤتمر الرسمي' : 'Official Event Website' }}</span>
               </a>
@@ -76,17 +76,17 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Previous Conferences -->
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'أرشيف المشاركات' : 'Past Participation' }}</span>
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'أرشيف المشاركات' : 'Past Participation' }}</span>
             <h2>{{ lang.isRtl() ? 'المؤتمرات والمشاركات السابقة' : 'Previous Conferences' }}</h2>
           </div>
 
-          <div className="grid-2">
-            <div *ngFor="let conf of getPreviousConferences()" className="card card-hover" style="background-color: #ffffff;">
+          <div class="grid-2">
+            <div *ngFor="let conf of getPreviousConferences()" class="card card-hover" style="background-color: #ffffff;">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                <span className="badge badge-teal">{{ lang.getText(conf.role) }}</span>
+                <span class="badge badge-teal">{{ lang.getText(conf.role) }}</span>
                 <span style="font-size: 0.85rem; color: var(--text-light); font-weight: 600;">
                   {{ conf.date }}
                 </span>

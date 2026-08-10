@@ -11,8 +11,8 @@ import { DataService } from '../../core/services/data.service';
     <div>
       <!-- Hero Header -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'التواصل الأكاديمي والمهني' : 'Digital Network' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'التواصل الأكاديمي والمهني' : 'Digital Network' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'الملفات المهنية والأكاديمية' : 'Professional & Academic Profiles' }}
           </h1>
@@ -25,20 +25,20 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 1. Academic Profiles Grid -->
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'قواعد البيانات البحثية' : 'Research Databases' }}</span>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'قواعد البيانات البحثية' : 'Research Databases' }}</span>
             <h2>{{ lang.isRtl() ? 'الملفات الأكاديمية والبحثية' : 'Academic & Citation Profiles' }}</h2>
           </div>
 
-          <div className="grid-3">
+          <div class="grid-3">
             <a
               *ngFor="let profile of getAcademicLinks()"
               [href]="profile.url"
               target="_blank"
               rel="noopener noreferrer"
-              className="card card-hover"
+              class="card card-hover"
               style="display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid var(--accent-teal);"
             >
               <div>
@@ -48,7 +48,7 @@ import { DataService } from '../../core/services/data.service';
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                   </div>
-                  <span className="badge badge-teal">
+                  <span class="badge badge-teal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg> Indexed
                   </span>
                 </div>
@@ -72,20 +72,20 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- 2. Social Media Grid -->
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'التواصل الاجتماعي' : 'Social Channels' }}</span>
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'التواصل الاجتماعي' : 'Social Channels' }}</span>
             <h2>{{ lang.isRtl() ? 'حسابات التواصل الاجتماعي' : 'Official Social Media' }}</h2>
           </div>
 
-          <div className="grid-3">
+          <div class="grid-3">
             <a
               *ngFor="let social of getSocialLinks()"
               [href]="social.url"
               target="_blank"
               rel="noopener noreferrer"
-              className="card card-hover"
+              class="card card-hover"
               style="display: flex; flex-direction: column; justify-content: space-between; background-color: #ffffff;"
             >
               <div>

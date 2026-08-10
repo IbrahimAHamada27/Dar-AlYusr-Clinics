@@ -12,8 +12,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     <div>
       <!-- Hero Header -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'مواقع العيادات والرعاية' : 'Practices & Locations' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'مواقع العيادات والرعاية' : 'Practices & Locations' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'عناوين ومواعيد العيادات' : 'Clinic Locations & Schedules' }}
           </h1>
@@ -26,19 +26,19 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
       </section>
 
       <!-- Clinics Detail Section -->
-      <section className="section">
-        <div className="container">
+      <section class="section">
+        <div class="container">
           <div style="display: flex; flex-direction: column; gap: 3rem;">
-            <div *ngFor="let clinic of data.getClinics()" className="card" style="padding: 2.5rem; background-color: #ffffff;">
+            <div *ngFor="let clinic of data.getClinics()" class="card" style="padding: 2.5rem; background-color: #ffffff;">
               <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
                 <!-- Left Clinic Info -->
                 <div style="flex: 1 1 450px;">
                   <div style="display: flex; items-center: center; gap: 0.75rem; margin-bottom: 1rem;">
-                    <span className="badge badge-navy">
+                    <span class="badge badge-navy">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                       {{ lang.getText(clinic.city) }}
                     </span>
-                    <span className="badge badge-teal">
+                    <span class="badge badge-teal">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
                       {{ lang.isRtl() ? 'عيادة معتمدة' : 'Verified Clinic' }}
                     </span>
@@ -86,12 +86,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
                   <!-- Action Buttons -->
                   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <button (click)="bookClinic(clinic.id)" className="btn btn-primary">
+                    <button (click)="bookClinic(clinic.id)" class="btn btn-primary">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                       <span>{{ lang.ui().bookAppointment }}</span>
                     </button>
 
-                    <a *ngIf="clinic.mapLocationUrl" [href]="clinic.mapLocationUrl" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                    <a *ngIf="clinic.mapLocationUrl" [href]="clinic.mapLocationUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
                       <span>{{ lang.ui().getDirections }}</span>
                     </a>

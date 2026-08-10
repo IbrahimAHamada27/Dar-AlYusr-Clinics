@@ -7,11 +7,11 @@ import { LanguageService } from '../../../core/services/language.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <header style="position: sticky; top: 0; z-index: 900;" className="glass-header">
+    <header style="position: sticky; top: 0; z-index: 900;" class="glass-header">
       <!-- Top Demo Disclaimer Alert Bar -->
-      <div className="demo-banner">
+      <div class="demo-banner">
         <div style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; width: 100%;">
-          <span className="demo-banner-tag">
+          <span class="demo-banner-tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-top: -2px;"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
             {{ lang.ui().demoContentNotice }}
           </span>
@@ -19,7 +19,7 @@ import { LanguageService } from '../../../core/services/language.service';
         </div>
       </div>
 
-      <div className="container" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.25rem;">
+      <div class="container" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.25rem;">
         <!-- Brand Logo & Name -->
         <div
           (click)="nav('home')"
@@ -41,11 +41,11 @@ import { LanguageService } from '../../../core/services/language.service';
         </div>
 
         <!-- Desktop Navigation Links -->
-        <nav style="display: flex; align-items: center; gap: 0.75rem;" className="desktop-nav">
+        <nav style="display: flex; align-items: center; gap: 0.75rem;" class="desktop-nav">
           <button
             (click)="nav('home')"
             [class.active]="activeTab === 'home'"
-            className="nav-link-btn"
+            class="nav-link-btn"
           >
             {{ lang.ui().home }}
           </button>
@@ -53,7 +53,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <button
             (click)="nav('about')"
             [class.active]="activeTab === 'about'"
-            className="nav-link-btn"
+            class="nav-link-btn"
           >
             {{ lang.ui().about }}
           </button>
@@ -63,7 +63,7 @@ import { LanguageService } from '../../../core/services/language.service';
             <button
               (click)="academicOpen = !academicOpen; researchOpen = false;"
               [class.active]="['education', 'certificates'].includes(activeTab)"
-              className="nav-link-btn"
+              class="nav-link-btn"
             >
               {{ lang.ui().academic }}
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
@@ -89,7 +89,7 @@ import { LanguageService } from '../../../core/services/language.service';
             <button
               (click)="researchOpen = !researchOpen; academicOpen = false;"
               [class.active]="['research', 'publications', 'conferences', 'articles'].includes(activeTab)"
-              className="nav-link-btn"
+              class="nav-link-btn"
             >
               {{ lang.ui().research }}
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
@@ -119,7 +119,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <button
             (click)="nav('clinics')"
             [class.active]="activeTab === 'clinics'"
-            className="nav-link-btn"
+            class="nav-link-btn"
           >
             {{ lang.ui().clinics }}
           </button>
@@ -127,7 +127,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <button
             (click)="nav('socialMedia')"
             [class.active]="activeTab === 'socialMedia'"
-            className="nav-link-btn"
+            class="nav-link-btn"
           >
             {{ lang.ui().socialMedia }}
           </button>
@@ -135,7 +135,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <button
             (click)="nav('contact')"
             [class.active]="activeTab === 'contact'"
-            className="nav-link-btn"
+            class="nav-link-btn"
           >
             {{ lang.ui().contact }}
           </button>
@@ -146,7 +146,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <!-- Language Toggle Pill Button -->
           <button
             (click)="lang.toggleLanguage()"
-            className="btn btn-outline btn-pill btn-sm"
+            class="btn btn-outline btn-pill btn-sm"
             style="padding: 0.42rem 0.75rem; gap: 0.35rem; font-size: 0.825rem; font-weight: 700;"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -166,7 +166,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <!-- Book Appointment CTA Button (Desktop Only) -->
           <button
             (click)="nav('appointments')"
-            className="btn btn-primary btn-sm desktop-cta"
+            class="btn btn-primary btn-sm desktop-cta"
             style="gap: 0.4rem; padding: 0.48rem 1.05rem; font-weight: 700;"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
@@ -176,7 +176,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <!-- Mobile Hamburger Button -->
           <button
             (click)="mobileMenuOpen = !mobileMenuOpen"
-            className="mobile-hamburger"
+            class="mobile-hamburger"
             style="width: 40px; height: 40px; border-radius: 10px; background-color: var(--bg-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"
             aria-label="Toggle Navigation Menu"
           >
@@ -248,7 +248,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <div style="margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;">
             <button
               (click)="lang.toggleLanguage(); mobileMenuOpen = false;"
-              className="btn btn-outline"
+              class="btn btn-outline"
               style="width: 100%; justify-content: center;"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -257,7 +257,7 @@ import { LanguageService } from '../../../core/services/language.service';
 
             <button
               (click)="nav('appointments')"
-              className="btn btn-primary btn-lg"
+              class="btn btn-primary btn-lg"
               style="width: 100%; justify-content: center;"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>

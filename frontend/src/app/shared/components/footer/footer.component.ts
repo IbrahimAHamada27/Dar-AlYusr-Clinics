@@ -9,7 +9,7 @@ import { DataService } from '../../../core/services/data.service';
   imports: [CommonModule],
   template: `
     <footer style="background-color: var(--primary-dark); color: #ffffff; padding: 4.5rem 0 2rem 0; border-top: 4px solid var(--accent-teal);">
-      <div className="container">
+      <div class="container">
         <!-- Emergency Medical Alert Disclaimer Box -->
         <div
           style="background-color: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 3.5rem; display: flex; align-items: flex-start; gap: 1rem;"
@@ -26,7 +26,7 @@ import { DataService } from '../../../core/services/data.service';
         </div>
 
         <!-- Footer Main Grid -->
-        <div className="grid-4" style="margin-bottom: 3.5rem; gap: 2.5rem;">
+        <div class="grid-4" style="margin-bottom: 3.5rem; gap: 2.5rem;">
           <!-- Column 1: Brand & Bio -->
           <div>
             <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">

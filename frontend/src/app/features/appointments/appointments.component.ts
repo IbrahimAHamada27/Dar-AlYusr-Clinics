@@ -14,8 +14,8 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
     <div>
       <!-- Hero Header -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'حجز العيادات والمواعيد' : 'Online Scheduling' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'حجز العيادات والمواعيد' : 'Online Scheduling' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'حجز موعد كشف واستشارة' : 'Book a Consultation Appointment' }}
           </h1>
@@ -28,8 +28,8 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
       </section>
 
       <!-- Wizard Main Container -->
-      <section className="section">
-        <div className="container" style="max-width: 900px;">
+      <section class="section">
+        <div class="container" style="max-width: 900px;">
           <!-- Stepper Progress Header -->
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; position: relative;">
             <div *ngFor="let s of [1, 2, 3, 4, 5]" style="display: flex; flex-direction: column; align-items: center; gap: 0.35rem; z-index: 2;">
@@ -41,13 +41,13 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
               >
                 {{ s }}
               </div>
-              <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);" className="desktop-only-btn">
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);" class="desktop-only-btn">
                 {{ getStepLabel(s) }}
               </span>
             </div>
           </div>
 
-          <div className="card" style="padding: 2.5rem; background-color: #ffffff;">
+          <div class="card" style="padding: 2.5rem; background-color: #ffffff;">
             <!-- STEP 1: SELECT CLINIC -->
             <div *ngIf="step === 1">
               <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary-dark);">
@@ -57,16 +57,16 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
                 {{ lang.isRtl() ? 'حدد العيادة التي ترغب بالحجز فيها:' : 'Choose the location for your visit:' }}
               </p>
 
-              <div className="grid-3" style="margin-bottom: 2rem;">
+              <div class="grid-3" style="margin-bottom: 2rem;">
                 <div
                   *ngFor="let clinic of data.getClinics()"
                   (click)="selectedClinic = clinic; selectedService = null"
                   [style.border-color]="selectedClinic?.id === clinic.id ? 'var(--accent-teal)' : 'var(--border-light)'"
                   [style.background-color]="selectedClinic?.id === clinic.id ? 'var(--accent-teal-light)' : '#ffffff'"
-                  className="card card-hover"
+                  class="card card-hover"
                   style="cursor: pointer; border-width: 2px;"
                 >
-                  <span className="badge badge-navy" style="margin-bottom: 0.75rem;">
+                  <span class="badge badge-navy" style="margin-bottom: 0.75rem;">
                     {{ lang.getText(clinic.city) }}
                   </span>
                   <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--primary-dark);">
@@ -79,7 +79,7 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
               </div>
 
               <div style="display: flex; justify-content: flex-end;">
-                <button (click)="handleNextStep()" [disabled]="!selectedClinic" className="btn btn-primary">
+                <button (click)="handleNextStep()" [disabled]="!selectedClinic" class="btn btn-primary">
                   <span>{{ lang.isRtl() ? 'المتابعة للخدمات' : 'Continue to Services' }}</span>
                 </button>
               </div>
@@ -94,13 +94,13 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
                 {{ lang.isRtl() ? 'الخدمات المتاحة في فرع ' + lang.getText(selectedClinic.name) + ':' : 'Available services at ' + lang.getText(selectedClinic.name) + ':' }}
               </p>
 
-              <div className="grid-2" style="margin-bottom: 2rem;">
+              <div class="grid-2" style="margin-bottom: 2rem;">
                 <div
                   *ngFor="let srv of selectedClinic.services"
                   (click)="selectedService = srv"
                   [style.border-color]="selectedService?.id === srv.id ? 'var(--accent-teal)' : 'var(--border-light)'"
                   [style.background-color]="selectedService?.id === srv.id ? 'var(--accent-teal-light)' : '#ffffff'"
-                  className="card card-hover"
+                  class="card card-hover"
                   style="cursor: pointer; border-width: 2px;"
                 >
                   <h3 style="font-size: 1.15rem; margin-bottom: 0.35rem; color: var(--primary-dark);">
@@ -113,10 +113,10 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
               </div>
 
               <div style="display: flex; justify-content: space-between;">
-                <button (click)="handlePrevStep()" className="btn btn-outline">
+                <button (click)="handlePrevStep()" class="btn btn-outline">
                   {{ lang.isRtl() ? 'السابق' : 'Back' }}
                 </button>
-                <button (click)="handleNextStep()" [disabled]="!selectedService" className="btn btn-primary">
+                <button (click)="handleNextStep()" [disabled]="!selectedService" class="btn btn-primary">
                   <span>{{ lang.isRtl() ? 'المتابعة لتاريخ الموعد' : 'Continue to Date' }}</span>
                 </button>
               </div>
@@ -136,16 +136,16 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
                   type="date"
                   [(ngModel)]="selectedDate"
                   [min]="minDate"
-                  className="input-field"
+                  class="input-field"
                   style="font-size: 1.1rem; padding: 0.85rem;"
                 />
               </div>
 
               <div style="display: flex; justify-content: space-between;">
-                <button (click)="handlePrevStep()" className="btn btn-outline">
+                <button (click)="handlePrevStep()" class="btn btn-outline">
                   {{ lang.isRtl() ? 'السابق' : 'Back' }}
                 </button>
-                <button (click)="handleNextStep()" [disabled]="!selectedDate" className="btn btn-primary">
+                <button (click)="handleNextStep()" [disabled]="!selectedDate" class="btn btn-primary">
                   <span>{{ lang.isRtl() ? 'المتابعة لاختيار الوقت' : 'Continue to Time Slot' }}</span>
                 </button>
               </div>
@@ -172,10 +172,10 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
               </div>
 
               <div style="display: flex; justify-content: space-between;">
-                <button (click)="handlePrevStep()" className="btn btn-outline">
+                <button (click)="handlePrevStep()" class="btn btn-outline">
                   {{ lang.isRtl() ? 'السابق' : 'Back' }}
                 </button>
-                <button (click)="handleNextStep()" [disabled]="!selectedTimeSlot" className="btn btn-primary">
+                <button (click)="handleNextStep()" [disabled]="!selectedTimeSlot" class="btn btn-primary">
                   <span>{{ lang.isRtl() ? 'المتابعة لبيانات المريض' : 'Continue to Patient Info' }}</span>
                 </button>
               </div>
@@ -191,35 +191,35 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
               </p>
 
               <form (ngSubmit)="handleFinalSubmit()" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <div className="grid-2">
+                <div class="grid-2">
                   <div>
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'اسم المريض بالكامل *' : 'Patient Full Name *' }}
                     </label>
-                    <input type="text" required [(ngModel)]="patientName" name="patientName" className="input-field" placeholder="اسم الطفل / المريض" />
+                    <input type="text" required [(ngModel)]="patientName" name="patientName" class="input-field" placeholder="اسم الطفل / المريض" />
                   </div>
 
                   <div>
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'رقم الهاتف / الواتساب *' : 'Phone / WhatsApp *' }}
                     </label>
-                    <input type="tel" required [(ngModel)]="patientPhone" name="patientPhone" className="input-field" placeholder="01000000000" />
+                    <input type="tel" required [(ngModel)]="patientPhone" name="patientPhone" class="input-field" placeholder="01000000000" />
                   </div>
                 </div>
 
-                <div className="grid-2">
+                <div class="grid-2">
                   <div>
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'البريد الإلكتروني' : 'Email Address' }}
                     </label>
-                    <input type="email" [(ngModel)]="patientEmail" name="patientEmail" className="input-field" placeholder="patient@example.com" />
+                    <input type="email" [(ngModel)]="patientEmail" name="patientEmail" class="input-field" placeholder="patient@example.com" />
                   </div>
 
                   <div>
                     <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                       {{ lang.isRtl() ? 'نوع الزيارة' : 'Appointment Type' }}
                     </label>
-                    <select [(ngModel)]="appointmentType" name="appointmentType" className="input-field">
+                    <select [(ngModel)]="appointmentType" name="appointmentType" class="input-field">
                       <option value="New Consultation">{{ lang.isRtl() ? 'كشف جديد (New Consultation)' : 'New Consultation' }}</option>
                       <option value="Follow-up">{{ lang.isRtl() ? 'متابعة دورية (Follow-up)' : 'Follow-up' }}</option>
                       <option value="Online Consultation">{{ lang.isRtl() ? 'استشارة أونلاين (Online Consultation)' : 'Online Consultation' }}</option>
@@ -231,14 +231,14 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
                   <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
                     {{ lang.isRtl() ? 'ملاحظات إضافية (اختياري)' : 'Optional Message / Notes' }}
                   </label>
-                  <textarea rows="3" [(ngModel)]="notes" name="notes" className="input-field" [placeholder]="lang.isRtl() ? 'أي تفاصيل عن الحالة الطبية...' : 'Brief notes about your condition...'"></textarea>
+                  <textarea rows="3" [(ngModel)]="notes" name="notes" class="input-field" [placeholder]="lang.isRtl() ? 'أي تفاصيل عن الحالة الطبية...' : 'Brief notes about your condition...'"></textarea>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-                  <button type="button" (click)="handlePrevStep()" className="btn btn-outline">
+                  <button type="button" (click)="handlePrevStep()" class="btn btn-outline">
                     {{ lang.isRtl() ? 'السابق' : 'Back' }}
                   </button>
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     <span>{{ lang.ui().confirmBooking }}</span>
                   </button>
@@ -289,13 +289,13 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
                   [href]="'https://wa.me/201000577622?text=Hello%20Doctor,%20I%20have%20booked%20an%20appointment%20ref:%20' + confirmedBooking.bookingRef"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-primary"
+                  class="btn btn-primary"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                   <span>{{ lang.isRtl() ? 'إرسال تأكيد عبر الواتساب' : 'Send WhatsApp Confirmation' }}</span>
                 </a>
 
-                <button (click)="printReceipt()" className="btn btn-outline">
+                <button (click)="printReceipt()" class="btn btn-outline">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
                   <span>{{ lang.isRtl() ? 'طباعة تذكرة الحجز' : 'Print Booking Receipt' }}</span>
                 </button>

@@ -11,8 +11,8 @@ import { DataService } from '../../core/services/data.service';
     <div>
       <!-- Hero Section -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'السيرة المهنية والسريرية' : 'Doctor Profile & Background' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'السيرة المهنية والسريرية' : 'Doctor Profile & Background' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'عن د. إبراهيم الشرقاوي' : 'About Dr. Ibrahim El Sherqawy' }}
           </h1>
@@ -23,8 +23,8 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Main Biography Section -->
-      <section className="section">
-        <div className="container">
+      <section class="section">
+        <div class="container">
           <div style="display: flex; gap: 3.5rem; flex-wrap: wrap; align-items: center;">
             <div style="flex: 1 1 350px; max-width: 420px;">
               <div
@@ -56,10 +56,10 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Career Timeline -->
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'المسار الميداني' : 'Career Progression' }}</span>
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'المسار الميداني' : 'Career Progression' }}</span>
             <h2>{{ lang.isRtl() ? 'الخبرات والمسيرة المهنية' : 'Professional Experience' }}</h2>
           </div>
 
@@ -70,14 +70,14 @@ import { DataService } from '../../core/services/data.service';
             >
               <!-- Timeline Year Pill -->
               <div style="flex: 0 0 140px;" [style.text-align]="lang.isRtl() ? 'left' : 'right'">
-                <span className="badge badge-navy" style="font-size: 0.85rem;">
+                <span class="badge badge-navy" style="font-size: 0.85rem;">
                   {{ item.period }}
                 </span>
               </div>
 
               <!-- Timeline Content Card -->
               <div
-                className="card"
+                class="card"
                 style="flex: 1; background-color: #ffffff; border-left: 4px solid var(--accent-teal);"
               >
                 <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem; color: var(--primary-dark);">
@@ -96,17 +96,17 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Current Professional Interests -->
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'الاهتمامات التخصصية' : 'Focus Areas' }}</span>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'الاهتمامات التخصصية' : 'Focus Areas' }}</span>
             <h2>{{ lang.isRtl() ? 'الاهتمامات المهنية والحالية' : 'Current Professional Interests' }}</h2>
           </div>
 
-          <div className="grid-3">
+          <div class="grid-3">
             <div
               *ngFor="let interest of interests"
-              className="card card-hover"
+              class="card card-hover"
               style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem;"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>

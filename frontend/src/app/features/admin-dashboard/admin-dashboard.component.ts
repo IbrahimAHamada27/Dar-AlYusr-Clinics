@@ -12,17 +12,17 @@ import { DataService } from '../../core/services/data.service';
     <div>
       <!-- Header Banner -->
       <section style="background-color: var(--primary-dark); color: #ffffff; padding: 2.5rem 0;">
-        <div className="container">
+        <div class="container">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
             <div>
-              <span className="badge badge-gold" style="margin-bottom: 0.5rem;">
+              <span class="badge badge-gold" style="margin-bottom: 0.5rem;">
                 {{ lang.isRtl() ? 'لوحة التحكم والمحتوى' : 'CMS Admin Dashboard' }}
               </span>
               <h1 style="color: #ffffff; font-size: 2rem; margin: 0;">
                 {{ lang.isRtl() ? 'إدارة موقع د. إبراهيم الشرقاوي' : 'Dr. Ibrahim CMS Dashboard' }}
               </h1>
             </div>
-            <div className="badge badge-teal" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+            <div class="badge badge-teal" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
               {{ lang.isRtl() ? 'مستوى الوصول: مدير النظام' : 'Access Level: Administrator' }}
             </div>
           </div>
@@ -30,11 +30,11 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Dashboard Layout -->
-      <section className="section">
-        <div className="container">
+      <section class="section">
+        <div class="container">
           <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
             <!-- Left Sidebar Navigation -->
-            <div style="flex: 0 0 260px;" className="card">
+            <div style="flex: 0 0 260px;" class="card">
               <div style="display: flex; flex-direction: column; gap: 0.35rem;">
                 <button
                   (click)="activeSection = 'overview'"
@@ -102,29 +102,29 @@ import { DataService } from '../../core/services/data.service';
             <div style="flex: 1 1 600px;">
               <!-- OVERVIEW -->
               <div *ngIf="activeSection === 'overview'">
-                <div className="grid-4" style="margin-bottom: 2rem;">
-                  <div className="card" style="text-align: center;">
+                <div class="grid-4" style="margin-bottom: 2rem;">
+                  <div class="card" style="text-align: center;">
                     <div style="font-size: 2.25rem; font-weight: 800; color: var(--accent-teal);">
                       {{ appointments.length }}
                     </div>
                     <div style="fontSize: 0.9rem; color: var(--text-muted);">Total Bookings</div>
                   </div>
 
-                  <div className="card" style="text-align: center;">
+                  <div class="card" style="text-align: center;">
                     <div style="font-size: 2.25rem; font-weight: 800; color: var(--primary-navy);">
                       {{ publications.length }}
                     </div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Publications</div>
                   </div>
 
-                  <div className="card" style="text-align: center;">
+                  <div class="card" style="text-align: center;">
                     <div style="font-size: 2.25rem; font-weight: 800; color: var(--accent-teal);">
                       {{ articles.length }}
                     </div>
                     <div style="font-size: 0.9rem; color: var(--text-muted);">Blog Articles</div>
                   </div>
 
-                  <div className="card" style="text-align: center;">
+                  <div class="card" style="text-align: center;">
                     <div style="font-size: 2.25rem; font-weight: 800; color: var(--gold-accent);">
                       {{ messages.length }}
                     </div>
@@ -132,7 +132,7 @@ import { DataService } from '../../core/services/data.service';
                   </div>
                 </div>
 
-                <div className="card" style="background-color: #ffffff;">
+                <div class="card" style="background-color: #ffffff;">
                   <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">
                     {{ lang.isRtl() ? 'أحدث حجوزات المواعيد' : 'Recent Appointments' }}
                   </h3>
@@ -151,7 +151,7 @@ import { DataService } from '../../core/services/data.service';
                           <td style="padding: 0.75rem; font-weight: 700;">{{ app.bookingRef }}</td>
                           <td style="padding: 0.75rem;">{{ app.patientName }} ({{ app.patientPhone }})</td>
                           <td style="padding: 0.75rem;">{{ app.date }} at {{ app.timeSlot }}</td>
-                          <td style="padding: 0.75rem;"><span className="badge badge-teal">{{ app.status }}</span></td>
+                          <td style="padding: 0.75rem;"><span class="badge badge-teal">{{ app.status }}</span></td>
                         </tr>
                       </tbody>
                     </table>
@@ -160,7 +160,7 @@ import { DataService } from '../../core/services/data.service';
               </div>
 
               <!-- APPOINTMENTS CMS -->
-              <div *ngIf="activeSection === 'appointments'" className="card" style="background-color: #ffffff;">
+              <div *ngIf="activeSection === 'appointments'" class="card" style="background-color: #ffffff;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
                   {{ lang.isRtl() ? 'جدول وإدارة حجوزات المواعيد' : 'Manage Patient Appointments' }}
                 </h3>
@@ -205,7 +205,7 @@ import { DataService } from '../../core/services/data.service';
               </div>
 
               <!-- PUBLICATIONS CMS -->
-              <div *ngIf="activeSection === 'publications'" className="card" style="background-color: #ffffff;">
+              <div *ngIf="activeSection === 'publications'" class="card" style="background-color: #ffffff;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
                   {{ lang.isRtl() ? 'الأبحاث والمنشورات العلمية' : 'Manage Publications' }}
                 </h3>
@@ -219,13 +219,13 @@ import { DataService } from '../../core/services/data.service';
                         {{ pub.journal }} ({{ pub.year }}) • DOI: {{ pub.doi }}
                       </div>
                     </div>
-                    <span className="badge badge-teal">{{ pub.type }}</span>
+                    <span class="badge badge-teal">{{ pub.type }}</span>
                   </div>
                 </div>
               </div>
 
               <!-- ARTICLES CMS -->
-              <div *ngIf="activeSection === 'articles'" className="card" style="background-color: #ffffff;">
+              <div *ngIf="activeSection === 'articles'" class="card" style="background-color: #ffffff;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
                   {{ lang.isRtl() ? 'إدارة المقالات والتوعية الطبية' : 'Manage Blog Articles' }}
                 </h3>
@@ -247,7 +247,7 @@ import { DataService } from '../../core/services/data.service';
               </div>
 
               <!-- CLINICS CMS -->
-              <div *ngIf="activeSection === 'clinics'" className="card" style="background-color: #ffffff;">
+              <div *ngIf="activeSection === 'clinics'" class="card" style="background-color: #ffffff;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
                   {{ lang.isRtl() ? 'إدارة العيادات ومواعيد العمل' : 'Manage Clinic Locations' }}
                 </h3>

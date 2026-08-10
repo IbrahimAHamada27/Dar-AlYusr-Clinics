@@ -11,8 +11,8 @@ import { DataService } from '../../core/services/data.service';
     <div>
       <!-- Hero Header -->
       <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div className="container" style="text-align: center; max-width: 800px;">
-          <span className="section-subtitle">{{ lang.isRtl() ? 'المؤهلات والأكاديميا' : 'Academic Credentials' }}</span>
+        <div class="container" style="text-align: center; max-width: 800px;">
+          <span class="section-subtitle">{{ lang.isRtl() ? 'المؤهلات والأكاديميا' : 'Academic Credentials' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
             {{ lang.isRtl() ? 'التعليم والدرجات الأكاديمية' : 'Academic Education' }}
           </h1>
@@ -23,10 +23,10 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Degrees Section -->
-      <section className="section">
-        <div className="container" style="max-width: 900px;">
+      <section class="section">
+        <div class="container" style="max-width: 900px;">
           <div style="display: flex; flex-direction: column; gap: 2rem;">
-            <div *ngFor="let item of data.education()" className="card card-hover" style="border-left: 5px solid var(--accent-teal);">
+            <div *ngFor="let item of data.education()" class="card card-hover" style="border-left: 5px solid var(--accent-teal);">
               <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
                 <div>
                   <h3 style="font-size: 1.35rem; color: var(--primary-dark); margin-bottom: 0.25rem;">
@@ -36,7 +36,7 @@ import { DataService } from '../../core/services/data.service';
                     {{ lang.getText(item.institution) }}
                   </div>
                 </div>
-                <span className="badge badge-navy" style="font-size: 0.9rem;">
+                <span class="badge badge-navy" style="font-size: 0.9rem;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                   {{ item.year }}
                 </span>
@@ -51,15 +51,15 @@ import { DataService } from '../../core/services/data.service';
       </section>
 
       <!-- Academic Development -->
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-subtitle">{{ lang.isRtl() ? 'التطوير الأكاديمي' : 'Professional Growth' }}</span>
+      <section class="section section-alt">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">{{ lang.isRtl() ? 'التطوير الأكاديمي' : 'Professional Growth' }}</span>
             <h2>{{ lang.isRtl() ? 'التطوير الطبي والأكاديمي' : 'Academic Development' }}</h2>
           </div>
 
-          <div className="grid-2">
-            <div *ngFor="let area of devAreas" className="card" style="background-color: #ffffff;">
+          <div class="grid-2">
+            <div *ngFor="let area of devAreas" class="card" style="background-color: #ffffff;">
               <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
                 <h3 style="font-size: 1.15rem; color: var(--primary-dark);">
