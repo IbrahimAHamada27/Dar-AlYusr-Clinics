@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "ng serve --port 5173",
+    "build": "ng build",
+    "preview": "ng serve --port 5173"
   },
   "dependencies": {
     "@angular/common": "^21.2.19",
@@ -19,11 +19,10 @@
     "zone.js": "^0.16.2"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^2.6.4",
     "@angular/build": "^21.2.20",
+    "@angular/cli": "^21.2.20",
     "@angular/compiler-cli": "^21.2.19",
     "@types/node": "^24.13.3",
-    "typescript": "~6.0.2",
-    "vite": "^8.2.0"
+    "typescript": "~6.0.2"
   }
 }

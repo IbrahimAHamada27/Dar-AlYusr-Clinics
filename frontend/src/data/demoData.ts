@@ -14,7 +14,7 @@ import type {
   SiteSettings,
   AppointmentBooking,
   ContactMessage
-} from '../types';
+} from '../app/core/models';
 
 export const initialDoctorProfile: DoctorProfile = {
   name: {
