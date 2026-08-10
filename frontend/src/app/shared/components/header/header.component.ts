@@ -8,51 +8,52 @@ import { LanguageService } from '../../../core/services/language.service';
   imports: [CommonModule],
   template: `
     <header style="position: sticky; top: 0; z-index: 900;" className="glass-header">
-      <!-- Top Notice Bar -->
+      <!-- Top Demo Disclaimer Alert Bar -->
       <div className="demo-banner">
         <div style="display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; width: 100%;">
-          <span className="demo-banner-tag">{{ lang.ui().demoContentNotice }}</span>
-          <span style="font-size: 0.8rem; line-height: 1.3;">{{ lang.ui().demoNoticeDesc }}</span>
+          <span className="demo-banner-tag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: inline-block; vertical-align: middle; margin-top: -2px;"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+            {{ lang.ui().demoContentNotice }}
+          </span>
+          <span style="font-size: 0.85rem; font-weight: 500;">{{ lang.ui().demoNoticeDesc }}</span>
         </div>
       </div>
 
-      <div className="container" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem;">
+      <div className="container" style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.25rem;">
         <!-- Brand Logo & Name -->
         <div
           (click)="nav('home')"
           style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; flex-shrink: 0;"
         >
           <div
-            style="width: 42px; height: 42px; border-radius: 10px; background-color: var(--primary-navy); color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); flex-shrink: 0;"
+            style="width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #1E3E62 0%, #0B192C 100%); color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(14, 25, 44, 0.15); flex-shrink: 0;"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
           </div>
           <div>
-            <div style="font-weight: 800; font-size: 1.1rem; color: var(--primary-dark); line-height: 1.1;">
+            <div style="font-weight: 800; font-size: 1.15rem; color: var(--primary-dark); line-height: 1.1; letter-spacing: -0.01em;">
               {{ lang.isRtl() ? 'د. إبراهيم الشرقاوي' : 'Dr. Ibrahim El Sherqawy' }}
             </div>
-            <div style="font-size: 0.75rem; color: var(--accent-teal); font-weight: 600;">
-              {{ lang.isRtl() ? 'استشاري جراحة الأطفال وحيثي الولادة' : 'Consultant Pediatric Surgeon' }}
+            <div style="font-size: 0.78rem; color: var(--accent-teal); font-weight: 700; margin-top: 2px;">
+              {{ lang.isRtl() ? 'استشاري جراحة الأطفال وحديثي الولادة' : 'Consultant Pediatric Surgeon' }}
             </div>
           </div>
         </div>
 
         <!-- Desktop Navigation Links -->
-        <nav style="display: flex; align-items: center; gap: 1.15rem;" className="desktop-nav">
+        <nav style="display: flex; align-items: center; gap: 0.75rem;" className="desktop-nav">
           <button
             (click)="nav('home')"
-            [style.font-weight]="activeTab === 'home' ? '700' : '500'"
-            [style.color]="activeTab === 'home' ? 'var(--accent-teal)' : 'var(--text-main)'"
-            style="background: none; border: none; cursor: pointer; font-size: 0.92rem;"
+            [class.active]="activeTab === 'home'"
+            className="nav-link-btn"
           >
             {{ lang.ui().home }}
           </button>
 
           <button
             (click)="nav('about')"
-            [style.font-weight]="activeTab === 'about' ? '700' : '500'"
-            [style.color]="activeTab === 'about' ? 'var(--accent-teal)' : 'var(--text-main)'"
-            style="background: none; border: none; cursor: pointer; font-size: 0.92rem;"
+            [class.active]="activeTab === 'about'"
+            className="nav-link-btn"
           >
             {{ lang.ui().about }}
           </button>
@@ -61,12 +62,11 @@ import { LanguageService } from '../../../core/services/language.service';
           <div style="position: relative;">
             <button
               (click)="academicOpen = !academicOpen; researchOpen = false;"
-              [style.font-weight]="['education', 'certificates'].includes(activeTab) ? '700' : '500'"
-              [style.color]="['education', 'certificates'].includes(activeTab) ? 'var(--accent-teal)' : 'var(--text-main)'"
-              style="background: none; border: none; cursor: pointer; font-size: 0.92rem; display: flex; align-items: center; gap: 0.25rem;"
+              [class.active]="['education', 'certificates'].includes(activeTab)"
+              className="nav-link-btn"
             >
               {{ lang.ui().academic }}
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
             </button>
 
             <div
@@ -75,10 +75,10 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.right]="lang.isRtl() ? '0' : 'auto'"
               [style.left]="lang.isRtl() ? 'auto' : '0'"
             >
-              <button (click)="nav('education')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
+              <button (click)="nav('education')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
                 {{ lang.ui().education }}
               </button>
-              <button (click)="nav('certificates')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
+              <button (click)="nav('certificates')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
                 {{ lang.ui().certificates }}
               </button>
             </div>
@@ -88,12 +88,11 @@ import { LanguageService } from '../../../core/services/language.service';
           <div style="position: relative;">
             <button
               (click)="researchOpen = !researchOpen; academicOpen = false;"
-              [style.font-weight]="['research', 'publications', 'conferences', 'articles'].includes(activeTab) ? '700' : '500'"
-              [style.color]="['research', 'publications', 'conferences', 'articles'].includes(activeTab) ? 'var(--accent-teal)' : 'var(--text-main)'"
-              style="background: none; border: none; cursor: pointer; font-size: 0.92rem; display: flex; align-items: center; gap: 0.25rem;"
+              [class.active]="['research', 'publications', 'conferences', 'articles'].includes(activeTab)"
+              className="nav-link-btn"
             >
               {{ lang.ui().research }}
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
             </button>
 
             <div
@@ -102,16 +101,16 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.right]="lang.isRtl() ? '0' : 'auto'"
               [style.left]="lang.isRtl() ? 'auto' : '0'"
             >
-              <button (click)="nav('research')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
+              <button (click)="nav('research')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
                 {{ lang.ui().researchAreas }}
               </button>
-              <button (click)="nav('publications')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
+              <button (click)="nav('publications')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
                 {{ lang.ui().publications }}
               </button>
-              <button (click)="nav('conferences')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
+              <button (click)="nav('conferences')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
                 {{ lang.ui().conferences }}
               </button>
-              <button (click)="nav('articles')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
+              <button (click)="nav('articles')" style="display: block; width: 100%; padding: 0.5rem 1rem; border: none; background: none; cursor: pointer; font-size: 0.88rem; font-weight: 600;" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
                 {{ lang.ui().articles }}
               </button>
             </div>
@@ -119,61 +118,58 @@ import { LanguageService } from '../../../core/services/language.service';
 
           <button
             (click)="nav('clinics')"
-            [style.font-weight]="activeTab === 'clinics' ? '700' : '500'"
-            [style.color]="activeTab === 'clinics' ? 'var(--accent-teal)' : 'var(--text-main)'"
-            style="background: none; border: none; cursor: pointer; font-size: 0.92rem;"
+            [class.active]="activeTab === 'clinics'"
+            className="nav-link-btn"
           >
             {{ lang.ui().clinics }}
           </button>
 
           <button
             (click)="nav('socialMedia')"
-            [style.font-weight]="activeTab === 'socialMedia' ? '700' : '500'"
-            [style.color]="activeTab === 'socialMedia' ? 'var(--accent-teal)' : 'var(--text-main)'"
-            style="background: none; border: none; cursor: pointer; font-size: 0.92rem;"
+            [class.active]="activeTab === 'socialMedia'"
+            className="nav-link-btn"
           >
             {{ lang.ui().socialMedia }}
           </button>
 
           <button
             (click)="nav('contact')"
-            [style.font-weight]="activeTab === 'contact' ? '700' : '500'"
-            [style.color]="activeTab === 'contact' ? 'var(--accent-teal)' : 'var(--text-main)'"
-            style="background: none; border: none; cursor: pointer; font-size: 0.92rem;"
+            [class.active]="activeTab === 'contact'"
+            className="nav-link-btn"
           >
             {{ lang.ui().contact }}
           </button>
         </nav>
 
-        <!-- Right Header Control Actions -->
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <!-- Language Toggle Button -->
+        <!-- Right Header Control Action Buttons -->
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <!-- Language Toggle Pill Button -->
           <button
             (click)="lang.toggleLanguage()"
-            className="btn btn-outline btn-sm"
-            style="padding: 0.4rem 0.65rem; gap: 0.35rem; font-size: 0.825rem;"
+            className="btn btn-outline btn-pill btn-sm"
+            style="padding: 0.42rem 0.75rem; gap: 0.35rem; font-size: 0.825rem; font-weight: 700;"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            <span>{{ lang.language() === 'en' ? 'عربي' : 'EN' }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>{{ lang.language() === 'en' ? 'عربي' : 'English' }}</span>
           </button>
 
           <!-- Admin Toggle Button (Desktop Only) -->
           <button
             (click)="toggleAdmin()"
-            [class]="isAdmin ? 'btn btn-navy btn-sm desktop-only-btn' : 'btn btn-outline btn-sm desktop-only-btn'"
-            style="padding: 0.4rem 0.65rem; gap: 0.35rem; font-size: 0.825rem;"
+            [class]="isAdmin ? 'btn btn-navy btn-pill btn-sm desktop-only-btn' : 'btn btn-outline btn-pill btn-sm desktop-only-btn'"
+            style="padding: 0.42rem 0.8rem; gap: 0.35rem; font-size: 0.825rem; font-weight: 700;"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
             <span>{{ isAdmin ? (lang.isRtl() ? 'الموقع العام' : 'Public Site') : (lang.isRtl() ? 'التحكم CMS' : 'Admin CMS') }}</span>
           </button>
 
-          <!-- Book Appointment CTA (Desktop Only) -->
+          <!-- Book Appointment CTA Button (Desktop Only) -->
           <button
             (click)="nav('appointments')"
             className="btn btn-primary btn-sm desktop-cta"
-            style="gap: 0.35rem; padding: 0.45rem 0.9rem;"
+            style="gap: 0.4rem; padding: 0.48rem 1.05rem; font-weight: 700;"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
             <span>{{ lang.ui().bookAppointment }}</span>
           </button>
 
@@ -181,7 +177,7 @@ import { LanguageService } from '../../../core/services/language.service';
           <button
             (click)="mobileMenuOpen = !mobileMenuOpen"
             className="mobile-hamburger"
-            style="width: 38px; height: 38px; border-radius: 8px; background-color: var(--bg-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"
+            style="width: 40px; height: 40px; border-radius: 10px; background-color: var(--bg-alt); border: 1px solid var(--border-light); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;"
             aria-label="Toggle Navigation Menu"
           >
             <svg *ngIf="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary-dark)" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
@@ -202,9 +198,9 @@ import { LanguageService } from '../../../core/services/language.service';
         >
           <div style="display: flex; align-items: center; gap: 0.75rem;">
             <div
-              style="width: 38px; height: 38px; border-radius: 10px; background-color: var(--primary-navy); color: #ffffff; display: flex; align-items: center; justify-content: center;"
+              style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #1E3E62 0%, #0B192C 100%); color: #ffffff; display: flex; align-items: center; justify-content: center;"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="2.2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
             </div>
             <div>
               <div style="font-weight: 800; font-size: 1.05rem; color: var(--primary-dark);">
