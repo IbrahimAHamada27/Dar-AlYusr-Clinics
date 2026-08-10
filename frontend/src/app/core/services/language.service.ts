@@ -1,144 +1,82 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { Language, MultilingualText } from '../models';
-
-export interface UiTranslations {
-  home: string;
-  about: string;
-  education: string;
-  certificates: string;
-  research: string;
-  publications: string;
-  conferences: string;
-  articles: string;
-  clinics: string;
-  appointments: string;
-  socialMedia: string;
-  contact: string;
-  bookAppointment: string;
-  academic: string;
-  academicLinks: string;
-  quickLinks: string;
-  researchAreas: string;
-  ongoingProjects: string;
-  demoContentNotice: string;
-  demoNoticeDesc: string;
-  medicalDisclaimer: string;
-  allRightsReserved: string;
-  privacyPolicy: string;
-  termsOfUse: string;
-  yearsExperience: string;
-  publishedResearch: string;
-  speakingConferences: string;
-  verifiedCertificates: string;
-  readMore: string;
-  viewAll: string;
-  bookNow: string;
-}
-
-const EN_UI: UiTranslations = {
-  home: 'Home',
-  about: 'About Doctor',
-  education: 'Education',
-  certificates: 'Certificates',
-  research: 'Research',
-  publications: 'Publications',
-  conferences: 'Conferences',
-  articles: 'Medical Articles',
-  clinics: 'Clinics & Hours',
-  appointments: 'Book Appointment',
-  socialMedia: 'Profiles & Social',
-  contact: 'Contact Us',
-  bookAppointment: 'Book Appointment',
-  academic: 'Academic & Qualifications',
-  academicLinks: 'Academic Profiles',
-  quickLinks: 'Quick Links',
-  researchAreas: 'Research Focus',
-  ongoingProjects: 'Research Projects',
-  demoContentNotice: 'DEMO CONTENT NOTICE',
-  demoNoticeDesc: 'All academic credentials, certificates, clinic addresses, and schedules shown are editable demo content.',
-  medicalDisclaimer: 'Medical Disclaimer',
-  allRightsReserved: 'All rights reserved.',
-  privacyPolicy: 'Privacy Policy',
-  termsOfUse: 'Terms of Use',
-  yearsExperience: 'Years Clinical Experience',
-  publishedResearch: 'Published Research Papers',
-  speakingConferences: 'Conference Presentations',
-  verifiedCertificates: 'Board Certifications',
-  readMore: 'Read Full Article',
-  viewAll: 'View All',
-  bookNow: 'Book Now'
-};
-
-const AR_UI: UiTranslations = {
-  home: 'الرئيسية',
-  about: 'عن الطبيب',
-  education: 'التعليم والمؤهلات',
-  certificates: 'الشهادات والاعتمادات',
-  research: 'البحث العلمي',
-  publications: 'الأبحاث والمنشورات',
-  conferences: 'المؤتمرات العلمية',
-  articles: 'المقالات الطبية',
-  clinics: 'العيادات والمواعيد',
-  appointments: 'حجز موعد',
-  socialMedia: 'الملفات والتواصل',
-  contact: 'تواصل معنا',
-  bookAppointment: 'حجز موعد بالعيادة',
-  academic: 'المؤهلات والأكاديميا',
-  academicLinks: 'المنصات والأكاديميا',
-  quickLinks: 'روابط السريعة',
-  researchAreas: 'مجالات البحث',
-  ongoingProjects: 'المشاريع البحثية',
-  demoContentNotice: 'محتوى تجريبي للتوضيح',
-  demoNoticeDesc: 'جميع الشهادات والأبحاث ومواعيد العيادات المعروضة هي بيانات تجريبية يمكن تعديلها بالكامل من لوحة التحكم.',
-  medicalDisclaimer: 'إخلاء مسؤولية طبي',
-  allRightsReserved: 'جميع الحقوق محفوظة.',
-  privacyPolicy: 'سياسة الخصوصية',
-  termsOfUse: 'شروط الاستخدام',
-  yearsExperience: 'سنوات من الخبرة السريرية',
-  publishedResearch: 'أبحاث علمية منشورة',
-  speakingConferences: 'مشاركة في مؤتمرات دولية',
-  verifiedCertificates: 'شهادات واعتمادات موثقة',
-  readMore: 'قراءة المقال كاملاً',
-  viewAll: 'عرض الكل',
-  bookNow: 'احجز الآن'
-};
+import { Language, LocalizedString, UiTranslations } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
-  // Language signal defaults to 'ar'
   readonly language = signal<Language>('ar');
 
   readonly isRtl = computed(() => this.language() === 'ar');
 
-  readonly ui = computed<UiTranslations>(() =>
-    this.language() === 'ar' ? AR_UI : EN_UI
-  );
-
-  constructor() {
-    this.applyDirection();
-  }
-
-  toggleLanguage(): void {
-    const nextLang: Language = this.language() === 'en' ? 'ar' : 'en';
-    this.language.set(nextLang);
-    this.applyDirection();
-  }
+  readonly ui = computed<UiTranslations>(() => {
+    const isArabic = this.isRtl();
+    return {
+      home: isArabic ? 'الرئيسية' : 'Home',
+      about: isArabic ? 'عن الطبيب' : 'About',
+      academic: isArabic ? 'الأكاديميا' : 'Academic',
+      education: isArabic ? 'التعليم والشهادات' : 'Education',
+      certificates: isArabic ? 'الاعتمادات الدولية' : 'Certificates',
+      research: isArabic ? 'البحث العلمي' : 'Research',
+      researchAreas: isArabic ? 'المجالات البحثية' : 'Research Areas',
+      publications: isArabic ? 'الأبحاث والمنشورات' : 'Publications',
+      conferences: isArabic ? 'المؤتمرات والندوات' : 'Conferences',
+      articles: isArabic ? 'المقالات والتوعية' : 'Articles',
+      clinics: isArabic ? 'العيادات والفروع' : 'Clinics',
+      socialMedia: isArabic ? 'التواصل الاجتماعي' : 'Social Media',
+      contact: isArabic ? 'تواصل معنا' : 'Contact',
+      bookAppointment: isArabic ? 'احجز موعد كشف' : 'Book Appointment',
+      confirmBooking: isArabic ? 'تأكيد الحجز النهائي' : 'Confirm Booking',
+      getDirections: isArabic ? 'الاتجاهات على الخريطة' : 'Get Directions',
+      clinicLocations: isArabic ? 'عناوين ومواقع العيادات' : 'Clinic Locations',
+      sendMessage: isArabic ? 'إرسال الرسالة' : 'Send Message',
+      exploreProfile: isArabic ? 'استكشف السيرة الذاتية' : 'Explore Profile',
+      commitmentTitle: isArabic ? 'الالتزام والخبرة الجراحية' : 'Surgical Excellence & Care',
+      readFullProfile: isArabic ? 'قراءة الملف الكامل' : 'Read Full Profile',
+      areasOfExpertise: isArabic ? 'التخصصات والخدمات المتقدمة' : 'Areas of Expertise',
+      viewDetails: isArabic ? 'التفاصيل' : 'View Details',
+      latestPublications: isArabic ? 'أحدث المنشورات والأبحاث' : 'Latest Publications',
+      viewPublication: isArabic ? 'عرض البحث' : 'View Publication',
+      featuredArticle: isArabic ? 'مقالة مميزة' : 'Featured Article',
+      readArticle: isArabic ? 'قراءة المقال' : 'Read Article',
+      finalCtaTitle: isArabic ? 'احجز موعد كشف واستشارة جراحة الأطفال' : 'Schedule Your Surgical Consultation',
+      finalCtaText: isArabic ? 'اختر الفرع المناسب و الموعد المفضل لطلب استشارة أو متابعة حالة طفلك.' : 'Select your preferred clinic branch and time slot for specialized care.',
+      contactClinic: isArabic ? 'تواصل مع العيادة' : 'Contact Clinic',
+      yearsExperience: isArabic ? 'خبرة سريرية جراحية' : 'Years Clinical Experience',
+      publishedResearch: isArabic ? 'بحث علمي منشور' : 'Published Research Papers',
+      speakingConferences: isArabic ? 'مؤتمر دولي ومحلي' : 'Conferences & Symposia',
+      verifiedCertificates: isArabic ? 'شهادة واعتماد تخصصي' : 'Verified Certifications',
+      scientificPublications: isArabic ? 'بحث علمي منشور' : 'Scientific Publications',
+      scientificConferences: isArabic ? 'مؤتمر دولي ومحلي' : 'Scientific Conferences',
+      certifications: isArabic ? 'شهادة واعتماد تخصصي' : 'Certifications',
+      demoContentNotice: isArabic ? 'موقع د. إبراهيم الشرقاوي' : 'Dr. Ibrahim El Sherqawy Website',
+      demoNoticeDesc: isArabic ? 'استشاري جراحة الأطفال وحديثي الولادة والمبتسرين' : 'Consultant Pediatric & Neonatal Surgeon',
+      quickLinks: isArabic ? 'روابط سريعة' : 'Quick Links',
+      academicLinks: isArabic ? 'الشبكات الأكاديمية' : 'Academic Hub',
+      allRightsReserved: isArabic ? 'جميع الحقوق محفوظة' : 'All Rights Reserved',
+      privacyPolicy: isArabic ? 'سياسة الخصوصية' : 'Privacy Policy',
+      termsOfUse: isArabic ? 'شروط الاستخدام' : 'Terms of Use',
+      medicalDisclaimer: isArabic ? 'إخلاء مسؤولية طبية' : 'Medical Disclaimer',
+      close: isArabic ? 'إغلاق' : 'Close',
+      filterByYear: isArabic ? 'جميع السنوات' : 'All Years',
+      allTypes: isArabic ? 'جميع الأنواع' : 'All Types',
+      clearFilters: isArabic ? 'مسح الفلاتر' : 'Clear Filters'
+    };
+  });
 
   setLanguage(lang: Language): void {
     this.language.set(lang);
-    this.applyDirection();
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
   }
 
-  getText(textObj: MultilingualText | undefined | null): string {
-    if (!textObj) return '';
-    return textObj[this.language()] || textObj.ar || textObj.en || '';
+  toggleLanguage(): void {
+    const nextLang: Language = this.language() === 'ar' ? 'en' : 'ar';
+    this.setLanguage(nextLang);
   }
 
-  private applyDirection(): void {
-    const isArabic = this.language() === 'ar';
-    document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
-    document.documentElement.lang = isArabic ? 'ar' : 'en';
+  getText(field: LocalizedString | undefined): string {
+    if (!field) return '';
+    return this.isRtl() ? field.ar : field.en;
   }
 }

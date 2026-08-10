@@ -8,11 +8,11 @@ import { DataService } from '../../../core/services/data.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <footer style="background-color: var(--primary-dark); color: #ffffff; padding-top: 4rem; padding-bottom: 2.5rem;">
+    <footer style="background-color: var(--primary-dark); color: #ffffff; padding: 4.5rem 0 2rem 0; border-top: 4px solid var(--accent-teal);">
       <div className="container">
-        <!-- Emergency Medical Warning Banner -->
+        <!-- Emergency Medical Alert Disclaimer Box -->
         <div
-          style="background-color: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 3.5rem; display: flex; align-items: flex-start; gap: 1rem;"
+          style="background-color: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 3.5rem; display: flex; align-items: flex-start; gap: 1rem;"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
           <div>
@@ -49,14 +49,14 @@ import { DataService } from '../../../core/services/data.service';
 
           <!-- Column 2: Quick Links -->
           <div>
-            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem;">
+            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem; position: relative;">
               {{ lang.ui().quickLinks }}
             </h4>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; padding: 0;">
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem;">
               <li *ngFor="let link of quickLinks">
-                <button (click)="handleNav(link.id)" style="background: none; border: none; color: #94A3B8; font-size: 0.9rem; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 0.4rem;">
-                  <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                <button (click)="nav(link.id)" style="background: none; border: none; color: #94A3B8; font-size: 0.9rem; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 0.4rem;">
                   <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                  <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
                   <span>{{ link.label }}</span>
                 </button>
               </li>
@@ -68,10 +68,10 @@ import { DataService } from '../../../core/services/data.service';
             <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem;">
               {{ lang.ui().academicLinks }}
             </h4>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; padding: 0;">
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
               <li>
                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
                   <span>LinkedIn Profile</span>
                 </a>
               </li>
@@ -89,14 +89,8 @@ import { DataService } from '../../../core/services/data.service';
               </li>
               <li>
                 <a href="https://orcid.org" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
                   <span>ORCID Identifier</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
-                  <span>YouTube Channel</span>
                 </a>
               </li>
             </ul>
@@ -118,13 +112,13 @@ import { DataService } from '../../../core/services/data.service';
               </div>
               <div style="display: flex; align-items: center; gap: 0.65rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>{{ lang.isRtl() ? 'العبور، جسر السويس والمنيب' : 'Obour, Gesr El-Suez & Moneeb' }}</span>
+                <span>{{ lang.isRtl() ? 'القاهرة والعبور ومصر القديمة، مصر' : 'Cairo, Obour & Moneeb, Egypt' }}</span>
               </div>
 
               <div style="margin-top: 1rem;">
                 <button
-                  (click)="handleNav('appointments')"
-                  class="btn btn-primary btn-sm"
+                  (click)="nav('appointments')"
+                  className="btn btn-primary btn-sm"
                   style="width: 100%; justify-content: center;"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
@@ -137,7 +131,7 @@ import { DataService } from '../../../core/services/data.service';
 
         <!-- Footer Bottom Bar & General Disclaimer -->
         <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1.75rem; font-size: 0.85rem; color: #64748B;">
-          <div style="margin-bottom: 1.25rem; line-height: 1.6; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <div style="margin-bottom: 1.25rem; line-height: 1.6; text-align: center; max-width: 900px; margin: 0 auto 1.25rem auto;">
             <strong style="color: #94A3B8;">{{ lang.ui().medicalDisclaimer }}:</strong> {{ lang.getText(settings.disclaimerNotice) }}
           </div>
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
@@ -162,20 +156,23 @@ export class FooterComponent {
   @Output() tabChange = new EventEmitter<string>();
 
   profile = this.data.getProfile();
-  settings = this.data.getSettings();
+  settings = this.data.settings();
 
-  quickLinks = [
-    { id: 'home', label: this.lang.ui().home },
-    { id: 'about', label: this.lang.ui().about },
-    { id: 'education', label: this.lang.ui().education },
-    { id: 'certificates', label: this.lang.ui().certificates },
-    { id: 'publications', label: this.lang.ui().publications },
-    { id: 'articles', label: this.lang.ui().articles },
-    { id: 'clinics', label: this.lang.ui().clinics },
-    { id: 'contact', label: this.lang.ui().contact }
-  ];
+  get quickLinks() {
+    const ui = this.lang.ui();
+    return [
+      { id: 'home', label: ui.home },
+      { id: 'about', label: ui.about },
+      { id: 'education', label: ui.education },
+      { id: 'certificates', label: ui.certificates },
+      { id: 'publications', label: ui.publications },
+      { id: 'articles', label: ui.articles },
+      { id: 'clinics', label: ui.clinics },
+      { id: 'contact', label: ui.contact }
+    ];
+  }
 
-  handleNav(tab: string): void {
+  nav(tab: string): void {
     this.tabChange.emit(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

@@ -1,184 +1,236 @@
 export type Language = 'en' | 'ar';
 
-export interface MultilingualText {
+export interface LocalizedString {
   en: string;
   ar: string;
 }
 
 export interface DoctorProfile {
-  name: MultilingualText;
-  title: MultilingualText;
-  specialty: MultilingualText;
-  subSpecialties: MultilingualText[];
-  brandTagline: MultilingualText;
-  bioIntro: MultilingualText;
-  fullBio: MultilingualText;
+  id?: string;
+  name: LocalizedString;
+  title: LocalizedString;
+  specialty?: LocalizedString;
+  subSpecialties: LocalizedString[];
+  brandTagline: LocalizedString;
+  bioIntro: LocalizedString;
+  fullBio: LocalizedString;
   experienceYears: number;
   publicationCount: number;
   conferenceCount: number;
   certificationCount: number;
-  heroImage: string;
   doctorPortrait: string;
+  heroImage?: string;
+  heroBackground?: string;
 }
 
 export interface ExpertiseArea {
   id: string;
-  title: MultilingualText;
-  description: MultilingualText;
+  title: LocalizedString;
+  description: LocalizedString;
   iconName: string;
 }
 
 export interface EducationItem {
   id: string;
-  degree: MultilingualText;
-  institution: MultilingualText;
-  year: string;
-  description?: MultilingualText;
+  degree: LocalizedString;
+  institution: LocalizedString;
+  year: number | string;
+  description?: LocalizedString;
 }
 
 export interface CareerTimelineItem {
   id: string;
   period: string;
-  role: MultilingualText;
-  institution: MultilingualText;
-  location?: MultilingualText;
-  description?: MultilingualText;
+  role: LocalizedString;
+  institution: LocalizedString;
+  location?: LocalizedString;
+  description?: LocalizedString;
 }
 
 export interface CertificateItem {
   id: string;
-  title: MultilingualText;
-  issuingOrganization: MultilingualText;
-  year: string;
+  title: LocalizedString;
+  issuingOrganization: LocalizedString;
+  year: number | string;
   credentialId: string;
   verificationUrl?: string;
-  imageUrl?: string;
-  pdfUrl?: string;
+  badgeImage?: string;
 }
 
 export interface ResearchAreaItem {
   id: string;
-  title: MultilingualText;
-  description: MultilingualText;
+  title: LocalizedString;
+  description: LocalizedString;
 }
 
 export interface ResearchProjectItem {
   id: string;
-  title: MultilingualText;
-  status: 'Completed' | 'Ongoing';
-  institution: MultilingualText;
-  year: string;
-  description: MultilingualText;
+  title: LocalizedString;
+  institution: LocalizedString;
+  status: 'Completed' | 'Ongoing' | 'Planned' | string;
+  year: number | string;
+  description: LocalizedString;
 }
 
 export interface PublicationItem {
   id: string;
-  title: MultilingualText;
+  title: LocalizedString;
   authors: string;
   journal: string;
   year: number;
-  type: 'Original Research' | 'Review Article' | 'Clinical Study' | 'Case Report';
+  type: string;
   doi: string;
-  abstract: MultilingualText;
+  abstract: LocalizedString;
   keywords: string[];
   pdfUrl?: string;
   externalUrl?: string;
-  isFeatured?: boolean;
 }
 
 export interface ConferenceItem {
   id: string;
-  eventName: MultilingualText;
+  eventName: LocalizedString;
+  role: LocalizedString;
+  location: LocalizedString;
   date: string;
-  location: MultilingualText;
-  role: MultilingualText;
-  topic: MultilingualText;
   isUpcoming: boolean;
-  description?: MultilingualText;
-  presentationPdfUrl?: string;
+  topic: LocalizedString;
+  description?: LocalizedString;
   externalLink?: string;
 }
 
 export interface ArticleItem {
   id: string;
   slug: string;
-  title: MultilingualText;
-  category: MultilingualText;
-  readingTime: string;
-  author: MultilingualText;
+  title: LocalizedString;
+  summary: LocalizedString;
+  content: LocalizedString;
+  category: LocalizedString;
+  author: LocalizedString;
   date: string;
+  readingTime: string;
   coverImage: string;
-  summary: MultilingualText;
-  content: MultilingualText;
+  isFeatured?: boolean;
+  isPublished?: boolean;
   references?: string[];
   keywords?: string[];
-  isFeatured?: boolean;
-  isPublished: boolean;
-  seoTitle?: MultilingualText;
-  seoDescription?: MultilingualText;
 }
 
 export interface ClinicService {
   id: string;
-  name: MultilingualText;
-  durationMinutes: number;
+  name: LocalizedString;
+  description?: LocalizedString;
+  durationMinutes?: number;
 }
+
+export type MedicalService = ClinicService;
 
 export interface ClinicLocation {
   id: string;
-  name: MultilingualText;
-  city: MultilingualText;
-  address: MultilingualText;
+  name: LocalizedString;
+  city: LocalizedString;
+  address: LocalizedString;
   phone: string;
-  workingHours: MultilingualText[];
-  mapLocationUrl?: string;
+  workingHours: LocalizedString[];
   googleMapsEmbedUrl?: string;
+  mapLocationUrl?: string;
+  isActive?: boolean;
   services: ClinicService[];
-  isActive: boolean;
+}
+
+export interface SocialLink {
+  id: string;
+  platform: string;
+  category: 'social' | 'academic' | 'Social' | 'Academic';
+  url: string;
+  iconName: string;
+  description?: LocalizedString;
+}
+
+export interface SiteSettings {
+  contactPhone: string;
+  contactEmail: string;
+  whatsappNumber?: string;
+  emergencyNotice: LocalizedString;
+  disclaimerNotice: LocalizedString;
 }
 
 export interface AppointmentBooking {
   id: string;
   bookingRef: string;
   clinicId: string;
-  clinicName: MultilingualText;
+  clinicName: LocalizedString;
   serviceId: string;
-  serviceName: MultilingualText;
-  date: string;
-  timeSlot: string;
+  serviceName: LocalizedString;
   patientName: string;
   patientPhone: string;
-  patientEmail: string;
-  appointmentType: 'New Consultation' | 'Follow-up' | 'Online Consultation';
+  patientEmail?: string;
+  appointmentType: 'New Consultation' | 'Follow-up' | 'Online Consultation' | string;
+  date: string;
+  timeSlot: string;
+  status: 'Confirmed' | 'Completed' | 'Cancelled' | 'Pending' | string;
   notes?: string;
-  status: 'Pending' | 'Confirmed' | 'Completed' | 'Cancelled';
   createdAt: string;
-}
-
-export interface SocialLink {
-  id: string;
-  platform: string;
-  url: string;
-  description?: MultilingualText;
-  iconName: string;
-  category: 'social' | 'academic';
 }
 
 export interface ContactMessage {
   id: string;
   fullName: string;
   email: string;
-  phone: string;
-  subject: string;
+  phone?: string;
+  subject?: string;
   message: string;
-  createdAt: string;
   isRead: boolean;
+  createdAt: string;
 }
 
-export interface SiteSettings {
-  contactEmail: string;
-  contactPhone: string;
-  whatsappNumber: string;
-  emergencyNotice: MultilingualText;
-  disclaimerNotice: MultilingualText;
+export interface UiTranslations {
+  home: string;
+  about: string;
+  academic: string;
+  education: string;
+  certificates: string;
+  research: string;
+  researchAreas: string;
+  publications: string;
+  conferences: string;
+  articles: string;
+  clinics: string;
+  socialMedia: string;
+  contact: string;
+  bookAppointment: string;
+  confirmBooking: string;
+  getDirections: string;
+  clinicLocations: string;
+  sendMessage: string;
+  exploreProfile: string;
+  commitmentTitle: string;
+  readFullProfile: string;
+  areasOfExpertise: string;
+  viewDetails: string;
+  latestPublications: string;
+  viewPublication: string;
+  featuredArticle: string;
+  readArticle: string;
+  finalCtaTitle: string;
+  finalCtaText: string;
+  contactClinic: string;
+  yearsExperience: string;
+  publishedResearch: string;
+  speakingConferences: string;
+  verifiedCertificates: string;
+  scientificPublications: string;
+  scientificConferences: string;
+  certifications: string;
+  demoContentNotice: string;
+  demoNoticeDesc: string;
+  quickLinks: string;
+  academicLinks: string;
+  allRightsReserved: string;
+  privacyPolicy: string;
+  termsOfUse: string;
+  medicalDisclaimer: string;
+  close: string;
+  filterByYear: string;
+  allTypes: string;
+  clearFilters: string;
 }

@@ -59,61 +59,63 @@ export class DataService {
     return this.profile();
   }
 
-  getSettings(): SiteSettings {
-    return this.settings();
+  getExpertiseAreas(): ExpertiseArea[] {
+    return this.expertise();
   }
 
-  getClinics(): ClinicLocation[] {
-    return this.clinics();
+  getEducation(): EducationItem[] {
+    return this.education();
   }
 
-  getArticles(): ArticleItem[] {
-    return this.articles();
+  getTimeline(): CareerTimelineItem[] {
+    return this.timeline();
+  }
+
+  getCertificates(): CertificateItem[] {
+    return this.certificates();
+  }
+
+  getResearchAreas(): ResearchAreaItem[] {
+    return this.researchAreas();
+  }
+
+  getResearchProjects(): ResearchProjectItem[] {
+    return this.researchProjects();
   }
 
   getPublications(): PublicationItem[] {
     return this.publications();
   }
 
-  addAppointment(booking: Omit<AppointmentBooking, 'id' | 'bookingRef' | 'createdAt' | 'status'>): AppointmentBooking {
-    const randomNum = Math.floor(100000 + Math.random() * 900000);
-    const newBooking: AppointmentBooking = {
-      ...booking,
-      id: `appt-${Date.now()}`,
-      bookingRef: `DR-2026-${randomNum}`,
-      status: 'Pending',
-      createdAt: new Date().toISOString()
-    };
-
-    this.appointments.update(list => [newBooking, ...list]);
-    return newBooking;
+  getConferences(): ConferenceItem[] {
+    return this.conferences();
   }
 
-  addMessage(msg: { fullName: string; email: string; phone: string; subject: string; message: string; }): void {
-    const newMsg: ContactMessage = {
-      id: `msg-${Date.now()}`,
-      ...msg,
-      createdAt: new Date().toISOString(),
-      isRead: false
-    };
-    this.messages.update(list => [newMsg, ...list]);
+  getArticles(): ArticleItem[] {
+    return this.articles();
   }
 
-  resetToDefaults(): void {
-    this.profile.set(initialDoctorProfile);
-    this.expertise.set(initialExpertiseAreas);
-    this.education.set(initialEducation);
-    this.timeline.set(initialCareerTimeline);
-    this.certificates.set(initialCertificates);
-    this.researchAreas.set(initialResearchAreas);
-    this.researchProjects.set(initialResearchProjects);
-    this.publications.set(initialPublications);
-    this.conferences.set(initialConferences);
-    this.articles.set(initialArticles);
-    this.clinics.set(initialClinics);
-    this.socialLinks.set(initialSocialLinks);
-    this.settings.set(initialSiteSettings);
-    this.appointments.set(initialAppointments);
-    this.messages.set(initialContactMessages);
+  getClinics(): ClinicLocation[] {
+    return this.clinics();
+  }
+
+  updateAppointmentStatus(id: string, status: string): void {
+    this.appointments.update(list =>
+      list.map(a => a.id === id ? { ...a, status: status as any } : a)
+    );
+  }
+
+  deleteAppointment(id: string): void {
+    this.appointments.update(list => list.filter(a => a.id !== id));
+  }
+
+  markMessageRead(id: string): void {
+    this.messages.update(list =>
+      list.map(m => m.id === id ? { ...m, isRead: true } : m)
+    );
+  }
+
+  deleteMessage(id: string): void {
+    this.messages.update(list => list.filter(m => m.id !== id));
   }
 }

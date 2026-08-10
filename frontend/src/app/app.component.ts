@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LanguageService } from './core/services/language.service';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-
-// Feature Components
 import { HomeComponent } from './features/home/home.component';
 import { AboutComponent } from './features/about/about.component';
 import { EducationComponent } from './features/education/education.component';
@@ -41,12 +39,12 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
     AdminDashboardComponent
   ],
   template: `
-    <div [attr.dir]="lang.isRtl() ? 'rtl' : 'ltr'" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <div [dir]="lang.isRtl() ? 'rtl' : 'ltr'" style="min-height: 100vh; display: flex; flex-direction: column;">
       <app-header
         [activeTab]="activeTab"
-        (tabChange)="activeTab = $event"
         [isAdmin]="isAdmin"
-        (adminChange)="isAdmin = $event"
+        (tabChange)="activeTab = $event"
+        (adminToggle)="isAdmin = $event"
       ></app-header>
 
       <main style="flex: 1;">
@@ -58,10 +56,10 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
         <app-publications *ngIf="activeTab === 'publications'"></app-publications>
         <app-conferences *ngIf="activeTab === 'conferences'"></app-conferences>
         <app-articles *ngIf="activeTab === 'articles'"></app-articles>
-        <app-clinics *ngIf="activeTab === 'clinics'" (tabChange)="activeTab = $event"></app-clinics>
-        <app-appointments *ngIf="activeTab === 'appointments'"></app-appointments>
+        <app-clinics *ngIf="activeTab === 'clinics'" (tabChange)="activeTab = $event" (selectClinic)="selectedClinicId = $event"></app-clinics>
+        <app-appointments *ngIf="activeTab === 'appointments'" [initialClinicId]="selectedClinicId"></app-appointments>
         <app-social-media *ngIf="activeTab === 'socialMedia'"></app-social-media>
-        <app-contact *ngIf="activeTab === 'contact'"></app-contact>
+        <app-contact *ngIf="activeTab === 'contact'" (tabChange)="activeTab = $event"></app-contact>
         <app-admin-dashboard *ngIf="activeTab === 'admin'"></app-admin-dashboard>
       </main>
 
@@ -72,6 +70,7 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 export class AppComponent {
   lang = inject(LanguageService);
 
-  activeTab: string = 'home';
-  isAdmin: boolean = false;
+  activeTab = 'home';
+  isAdmin = false;
+  selectedClinicId = '';
 }
