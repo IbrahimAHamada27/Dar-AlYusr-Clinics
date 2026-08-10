@@ -1,0 +1,29 @@
+{
+  "name": "dr-ibrahim-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@angular/common": "^21.2.19",
+    "@angular/compiler": "^21.2.19",
+    "@angular/core": "^21.2.19",
+    "@angular/forms": "^21.2.19",
+    "@angular/platform-browser": "^21.2.19",
+    "@angular/router": "^21.2.19",
+    "rxjs": "^7.8.2",
+    "zone.js": "^0.16.2"
+  },
+  "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^2.6.4",
+    "@angular/build": "^21.2.20",
+    "@angular/compiler-cli": "^21.2.19",
+    "@types/node": "^24.13.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
+}
