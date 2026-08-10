@@ -29,7 +29,7 @@
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
   --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 10px 30px -4px rgba(15, 23, 42, 0.12);
-  --shadow-glow: 0 0 25px rgba(13, 148, 136, 0.15);
+  --shadow-glow: 0 0 25px rgba(13, 148, 136, 0.25);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -66,7 +66,7 @@ body {
 }
 
 /* RTL Typography Adjustment */
-[dir="rtl"] body {
+[dir="rtl"] body, [dir="rtl"] {
   font-family: var(--font-ar);
 }
 
@@ -117,6 +117,11 @@ a {
   cursor: pointer;
   transition: var(--transition-normal);
   white-space: nowrap;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn-primary {
@@ -128,7 +133,7 @@ a {
 .btn-primary:hover {
   background-color: var(--accent-teal-hover);
   box-shadow: var(--shadow-glow);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .btn-navy {
@@ -138,7 +143,8 @@ a {
 
 .btn-navy:hover {
   background-color: var(--primary-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
@@ -151,6 +157,7 @@ a {
   border-color: var(--accent-teal);
   color: var(--accent-teal);
   background-color: var(--accent-teal-light);
+  transform: translateY(-1px);
 }
 
 .btn-sm {
@@ -161,6 +168,25 @@ a {
 .btn-lg {
   padding: 0.9rem 2rem;
   font-size: 1.05rem;
+}
+
+/* Form Fields System */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  font-size: 0.95rem;
+  outline: none;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: #ffffff;
+  transition: var(--transition-fast);
+}
+
+.input-field:focus {
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
 }
 
 /* Badge Utility */
@@ -206,7 +232,7 @@ a {
 .card-hover:hover {
   border-color: rgba(13, 148, 136, 0.4);
   box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .glass-header {
@@ -325,6 +351,16 @@ a {
 }
 
 /* Responsive Utilities */
+@media (max-width: 992px) {
+  .desktop-nav { display: none !important; }
+  .desktop-cta { display: none !important; }
+  .desktop-only-btn { display: none !important; }
+}
+
+@media (min-width: 993px) {
+  .mobile-hamburger { display: none !important; }
+}
+
 @media (max-width: 768px) {
   .section {
     padding-top: 3rem;
