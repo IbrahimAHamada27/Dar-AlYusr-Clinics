@@ -47,7 +47,7 @@ app.use('/api/v1/settings', settingRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Dr. Ibrahim El Sherqawy Express + SQLite API Server is running.',
+    message: 'Dr. Aml Mohamed Abd El-Sattar Hamada Express + SQLite API Server is running.',
     timestamp: new Date().toISOString()
   });
 });

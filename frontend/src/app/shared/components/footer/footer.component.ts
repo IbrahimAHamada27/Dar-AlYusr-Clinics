@@ -8,7 +8,7 @@ import { DataService } from '../../../core/services/data.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <footer style="background-color: var(--primary-dark); color: #ffffff; padding: 4.5rem 0 2rem 0; border-top: 4px solid var(--accent-teal);">
+    <footer style="background-color: var(--primary-dark); color: #ffffff; padding: 4.5rem 0 2rem 0; border-top: 4px solid var(--gold-accent);">
       <div class="container">
         <!-- Emergency Medical Alert Disclaimer Box -->
         <div
@@ -112,7 +112,7 @@ import { DataService } from '../../../core/services/data.service';
               </div>
               <div style="display: flex; align-items: center; gap: 0.65rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>{{ lang.isRtl() ? 'القاهرة والعبور ومصر القديمة، مصر' : 'Cairo, Obour & Moneeb, Egypt' }}</span>
+                <span>{{ lang.isRtl() ? 'طنطا، محافظة الغربية، مصر' : 'Tanta, Gharbia, Egypt' }}</span>
               </div>
 
               <div style="margin-top: 1rem;">

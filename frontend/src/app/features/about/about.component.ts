@@ -14,10 +14,10 @@ import { DataService } from '../../core/services/data.service';
         <div class="container" style="text-align: center; max-width: 800px;">
           <span class="section-subtitle">{{ lang.isRtl() ? 'السيرة المهنية والسريرية' : 'Doctor Profile & Background' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
-            {{ lang.isRtl() ? 'عن د. إبراهيم الشرقاوي' : 'About Dr. Ibrahim El Sherqawy' }}
+            {{ lang.isRtl() ? 'عن د. أمل محمد عبدالستار حماده' : 'About Dr. Aml Mohamed Abd El-Sattar Hamada' }}
           </h1>
           <p style="font-size: 1.2rem; color: var(--accent-teal); font-weight: 600;">
-            {{ lang.isRtl() ? 'الرعاية السريرية والتعلم المستمر والبحث العلمي' : 'Clinical Care, Continuous Learning, and Medical Research.' }}
+            {{ lang.isRtl() ? 'الرعاية السريرية والأكاديمية، البحث العلمي، ورعاية الوافدين وحقوق الإنسان' : 'Clinical & Academic Care, Medical Research, International Student Affairs & Human Rights.' }}
           </p>
         </div>
       </section>
@@ -47,8 +47,8 @@ import { DataService } from '../../core/services/data.service';
               </p>
               <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted);">
                 {{ lang.isRtl()
-                  ? 'يركز د. إبراهيم الشرقاوي في ممارسته اليومية على توفير التشخيص المبكر والدقيق لحالات السكري وارتفاع ضغط الدم والاضطرابات الأيضية، مع وضع خطة علاجية مخصصة تناسب أسلوب حياة كل مريض.'
-                  : 'Dr. Ibrahim El Sherqawy prioritizes patient empowerment through early diagnostic screening, personalized treatment protocols, and preventive lifestyle modifications.' }}
+                  ? 'تركز د. أمل محمد عبدالستار حماده في عملها الأكاديمي والسريري على التميز في أبحاث التشريح وعلم الأجنة ورعاية الطلاب الوافدين وإدارة وحدة حقوق الإنسان بكلية الطب جامعة طنطا، بجانب تقديم أفضل استشارات طب النساء والتوليد.'
+                  : 'Dr. Aml Mohamed Abd El-Sattar Hamada prioritizes academic research excellence in human anatomy and embryology, compassionate clinical care in obstetrics & gynecology, and leadership in international student affairs and human rights advocacy.' }}
               </p>
             </div>
           </div>
@@ -129,12 +129,12 @@ export class AboutComponent {
   profile = this.data.getProfile();
 
   interests = [
-    { en: 'Internal Medicine', ar: 'الأمراض الباطنية العامة' },
-    { en: 'Diabetes Management', ar: 'علاج ورعاية السكري' },
-    { en: 'Hypertension', ar: 'ارتفاع ضغط الدم' },
-    { en: 'Cardiometabolic Risk', ar: 'مخاطر أمراض القلب والأيض' },
-    { en: 'Preventive Healthcare', ar: 'الرعاية الصحية الوقائية' },
-    { en: 'Clinical Research', ar: 'البحث العلمي السريري' }
+    { en: 'Human Anatomy & Embryology', ar: 'التشريح الآدمي وعلم الأجنة' },
+    { en: 'Obstetrics & Gynecology (OB-GYN)', ar: 'استشارات النساء والتوليد' },
+    { en: 'Polycystic Ovarian Syndrome (PCOS)', ar: 'متلازمة تكيس المبايض والرعاية الأيضية' },
+    { en: 'Histology & Cellular Signaling', ar: 'الهستولوجي وإشارات الخلايا ومضادات الأكسدة' },
+    { en: 'Human Rights in Healthcare', ar: 'حقوق الإنسان والرعاية الأخلاقية' },
+    { en: 'International Student Affairs', ar: 'رعاية الطلاب الوافدين بالجامعة' }
   ];
 
   nav(tab: string): void {

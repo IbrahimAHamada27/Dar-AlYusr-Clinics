@@ -16,7 +16,7 @@ export function authenticateToken(req: AuthRequest, res: Response, next: NextFun
     return res.status(401).json({ success: false, message: 'Access token required' });
   }
 
-  const secret = process.env.JWT_SECRET || 'dribrahim_jwt_secret_key_2026_secure';
+  const secret = process.env.JWT_SECRET || 'dramal_jwt_secret_key_2026_secure';
 
   jwt.verify(token, secret, (err, user) => {
     if (err) {

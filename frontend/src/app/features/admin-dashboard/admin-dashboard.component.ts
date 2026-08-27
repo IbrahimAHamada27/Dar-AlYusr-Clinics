@@ -19,7 +19,7 @@ import { DataService } from '../../core/services/data.service';
                 {{ lang.isRtl() ? 'لوحة التحكم والمحتوى' : 'CMS Admin Dashboard' }}
               </span>
               <h1 style="color: #ffffff; font-size: 2rem; margin: 0;">
-                {{ lang.isRtl() ? 'إدارة موقع د. إبراهيم الشرقاوي' : 'Dr. Ibrahim CMS Dashboard' }}
+                {{ lang.isRtl() ? 'إدارة موقع د. أمل محمد عبدالستار حماده' : 'Dr. Aml CMS Dashboard' }}
               </h1>
             </div>
             <div class="badge badge-teal" style="font-size: 0.9rem; padding: 0.5rem 1rem;">

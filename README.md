@@ -1,32 +1,19 @@
-# React + TypeScript + Vite
+# الموقع الرسمي للدكتورة أمل محمد عبدالستار حماده
+## Dr. Aml Mohamed Abd El-Sattar Hamada — Official Web Application & CMS
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+أستاذ مساعد التشريح الآدمي وعلم الأجنة - كلية الطب جامعة طنطا | استشاري النساء والتوليد | مدير وحدة حقوق الإنسان | مدير وحدة رعاية الوافدين
 
-Currently, two official plugins are available:
+### Project Architecture & Stack
+- **Frontend**: Angular 21 (Signals, Standalone Components, i18n RTL/LTR, Glassmorphism UI)
+- **Backend**: Node.js + Express REST API (TypeScript)
+- **Database**: SQLite with Prisma ORM
+- **Authentication**: JWT & Bcrypt
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Running Locally
+```bash
+# Start backend server
+npm run dev:backend
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+# Start frontend application
+npm run dev:frontend
 ```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.

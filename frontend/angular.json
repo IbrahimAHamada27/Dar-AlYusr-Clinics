@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dr-ibrahim-frontend": {
+    "dr-amal-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -54,10 +54,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "dr-ibrahim-frontend:build:production"
+              "buildTarget": "dr-amal-frontend:build:production"
             },
             "development": {
-              "buildTarget": "dr-ibrahim-frontend:build:development"
+              "buildTarget": "dr-amal-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -15,8 +15,8 @@ import { DataService } from '../../core/services/data.service';
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 3.5rem; flex-wrap: wrap;">
             <!-- Hero Left Content -->
             <div style="flex: 1 1 500px; max-width: 640px;">
-              <div class="badge badge-teal" style="margin-bottom: 1.25rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
+              <div class="badge badge-gold" style="margin-bottom: 1.25rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
                 <span>{{ lang.getText(profile.title) }}</span>
               </div>
 
@@ -24,7 +24,7 @@ import { DataService } from '../../core/services/data.service';
                 {{ lang.getText(profile.name) }}
               </h1>
 
-              <div style="font-size: 1.15rem; color: var(--accent-teal); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.4;">
+              <div style="font-size: 1.12rem; color: var(--accent-teal); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.5;">
                 {{ getSubSpecialtiesString() }}
               </div>
 
@@ -39,7 +39,7 @@ import { DataService } from '../../core/services/data.service';
                 </button>
 
                 <button (click)="nav('about')" class="btn btn-outline btn-lg">
-                  <span>{{ lang.isRtl() ? 'استكشف الملف الشخصي' : 'Explore Profile' }}</span>
+                  <span>{{ lang.isRtl() ? 'استكشف السيرة الذاتية' : 'Explore Profile' }}</span>
                   <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                   <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
                 </button>
@@ -50,32 +50,32 @@ import { DataService } from '../../core/services/data.service';
             <div style="flex: 1 1 380px; display: flex; justify-content: center;">
               <div style="position: relative; max-width: 420px; width: 100%;">
                 <div
-                  style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 4px solid #ffffff; background-color: #ffffff;"
+                  style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 3px solid var(--gold-accent); background-color: #ffffff; padding: 4px;"
                 >
                   <img
                     [src]="profile.doctorPortrait"
                     [alt]="lang.getText(profile.name)"
-                    style="width: 100%; height: auto; display: block; object-fit: cover;"
+                    style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: calc(var(--radius-lg) - 4px);"
                   />
                 </div>
 
                 <!-- Floating Badge on Image -->
                 <div
-                  style="position: absolute; bottom: -20px; background-color: #ffffff; padding: 1rem 1.25rem; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1px solid var(--border-light); display: flex; align-items: center; gap: 0.85rem;"
+                  style="position: absolute; bottom: -20px; background-color: #ffffff; padding: 1rem 1.25rem; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1.5px solid var(--border-light); display: flex; align-items: center; gap: 0.85rem;"
                   [style.right]="lang.isRtl() ? '-20px' : 'auto'"
                   [style.left]="lang.isRtl() ? 'auto' : '-20px'"
                 >
                   <div
-                    style="width: 42px; height: 42px; border-radius: 50%; background-color: var(--accent-teal-light); display: flex; align-items: center; justify-content: center;"
+                    style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--gold-light); border: 1px solid rgba(217, 119, 6, 0.3); display: flex; align-items: center; justify-content: center;"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
                   </div>
                   <div>
                     <div style="font-weight: 800; font-size: 1rem; color: var(--primary-dark);">
-                      15+ {{ lang.isRtl() ? 'سنوات خبرة' : 'Years Experience' }}
+                      {{ profile.experienceYears }}+ {{ lang.isRtl() ? 'سنوات خبرة' : 'Years Experience' }}
                     </div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted);">
-                      {{ lang.isRtl() ? 'رعاية طبية تخصصية' : 'Evidence-Based Medicine' }}
+                    <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+                      {{ lang.isRtl() ? 'رعاية تخصصية وبحث علمي' : 'Evidence-Based Medicine' }}
                     </div>
                   </div>
                 </div>
@@ -328,10 +328,10 @@ import { DataService } from '../../core/services/data.service';
       <section style="background-color: var(--primary-light); padding: 4.5rem 0; text-align: center;">
         <div class="container" style="max-width: 800px;">
           <h2 style="margin-bottom: 1rem; color: var(--primary-dark);">
-            {{ lang.isRtl() ? 'احجز موعد كشف واستشارة جراحة الأطفال' : 'Schedule Your Surgical Consultation' }}
+            {{ lang.isRtl() ? 'احجز موعد كشف واستشارة تخصصية' : 'Schedule Your Medical Consultation' }}
           </h2>
           <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7;">
-            {{ lang.isRtl() ? 'اختر الفرع المناسب و الموعد المفضل لطلب استشارة أو متابعة حالة طفلك.' : 'Select your preferred clinic branch and time slot for specialized care.' }}
+            {{ lang.isRtl() ? 'اختر الفرع المناسب والموعد المفضل لطلب استشارة أو متابعة حالة صحية.' : 'Select your preferred location and time slot for specialized consultation.' }}
           </p>
           <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
             <button (click)="nav('appointments')" class="btn btn-primary btn-lg">

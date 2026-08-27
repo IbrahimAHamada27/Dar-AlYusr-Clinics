@@ -16,11 +16,11 @@ import { ApiService } from '../../core/services/api.service';
         <div class="container" style="text-align: center; max-width: 800px;">
           <span class="section-subtitle">{{ lang.isRtl() ? 'تواصل معنا' : 'Get in Touch' }}</span>
           <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
-            {{ lang.isRtl() ? 'التواصل المباشر والاستفسارات' : 'Contact Dr. Ibrahim El Sherqawy' }}
+            {{ lang.isRtl() ? 'التواصل المباشر والاستفسارات' : 'Contact Dr. Aml Mohamed Abd El-Sattar Hamada' }}
           </h1>
           <p style="font-size: 1.1rem; color: var(--text-muted);">
             {{ lang.isRtl()
-              ? 'يسعدنا استقبال استفساراتكم وحجوزاتكم عبر النموذج المباشر أو أرقام العيادة.'
+              ? 'يسعدنا استقبال استفساراتكم الأكاديمية والسريرية وحجوزاتكم عبر النموذج المباشر أو أرقام التواصل.'
               : 'Reach out for consultation inquiries, academic collaborations, or appointment bookings.' }}
           </p>
         </div>
@@ -43,10 +43,10 @@ import { ApiService } from '../../core/services/api.service';
                   </div>
                   <div>
                     <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
-                      {{ lang.isRtl() ? 'هاتف العيادات الموحد' : 'Central Clinic Phone' }}
+                      {{ lang.isRtl() ? 'رقم التليفون / واتساب' : 'Phone / WhatsApp' }}
                     </div>
                     <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary-dark);">
-                      01000577622
+                      01003514770
                     </div>
                   </div>
                 </div>
@@ -60,7 +60,7 @@ import { ApiService } from '../../core/services/api.service';
                       {{ lang.isRtl() ? 'البريد الإلكتروني الرسمي' : 'Official Email' }}
                     </div>
                     <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark);">
-                      info&#64;drelsharkawy.com
+                      amal.hamada&#64;med.tanta.edu.eg
                     </div>
                   </div>
                 </div>

@@ -173,10 +173,10 @@ export class ArticlesComponent {
 
   categories = [
     { en: 'ALL', ar: 'الكل' },
-    { en: 'Pediatric Surgery', ar: 'جراحة الأطفال' },
-    { en: 'Neonatal Surgery', ar: 'حديثو الولادة والمبتسرون' },
-    { en: 'Laparoscopic Surgery', ar: 'المناظير الدقيقة' },
-    { en: 'Congenital Anomalies', ar: 'العيوب الخلقية' }
+    { en: 'Obstetrics & Gynecology', ar: 'النساء والتوليد' },
+    { en: 'Anatomy & Embryology', ar: 'التشريح وعلم الأجنة' },
+    { en: 'Reproductive Health', ar: 'الصحة الإنجابية' },
+    { en: 'Histology & Cellular Science', ar: 'علوم الأنسجة والخلية' }
   ];
 
   getFilteredArticles(): ArticleItem[] {

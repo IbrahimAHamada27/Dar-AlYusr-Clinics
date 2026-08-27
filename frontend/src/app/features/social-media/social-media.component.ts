@@ -19,7 +19,7 @@ import { DataService } from '../../core/services/data.service';
           <p style="font-size: 1.1rem; color: var(--text-muted);">
             {{ lang.isRtl()
               ? 'تواصل وتفاعل عبر الشبكات الاجتماعية الرسمية والمنصات الأكاديمية العالمية.'
-              : 'Connect with Dr. Ibrahim across professional networks and academic research databases.' }}
+              : 'Connect with Dr. Aml Mohamed Abd El-Sattar Hamada across professional networks and academic research databases.' }}
           </p>
         </div>
       </section>

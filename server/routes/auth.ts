@@ -32,7 +32,7 @@ router.post('/login', async (req: Request, res: Response) => {
       return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
 
-    const secret = process.env.JWT_SECRET || 'dribrahim_jwt_secret_key_2026_secure';
+    const secret = process.env.JWT_SECRET || 'dramal_jwt_secret_key_2026_secure';
     const token = jwt.sign({ id: user.id, username: user.username }, secret, { expiresIn: '7d' });
 
     res.json({
