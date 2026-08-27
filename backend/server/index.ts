@@ -55,7 +55,11 @@ app.get('/api/health', (req, res) => {
 // Centralized Error Handler
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`🚀 Express REST API server running on http://localhost:${PORT}`);
-  console.log(`📁 SQLite Database URL: ${process.env.DATABASE_URL || 'file:./dev.db'}`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Express REST API server running on http://localhost:${PORT}`);
+    console.log(`📁 SQLite Database URL: ${process.env.DATABASE_URL || 'file:./dev.db'}`);
+  });
+}
+
+export default app;
