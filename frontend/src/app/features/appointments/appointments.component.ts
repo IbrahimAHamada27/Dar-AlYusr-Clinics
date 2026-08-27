@@ -286,13 +286,14 @@ import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/m
 
               <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a
-                  [href]="'https://wa.me/201000577622?text=Hello%20Doctor,%20I%20have%20booked%20an%20appointment%20ref:%20' + confirmedBooking.bookingRef"
+                  [href]="getWhatsAppUrl()"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="btn btn-primary"
+                  class="btn btn-gold"
+                  style="background: #25D366; border-color: #25D366; color: #ffffff; font-weight: 800;"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  <span>{{ lang.isRtl() ? 'إرسال تأكيد عبر الواتساب' : 'Send WhatsApp Confirmation' }}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  <span>{{ lang.isRtl() ? 'إعادة الإرسال عبر الواتساب' : 'Send via WhatsApp' }}</span>
                 </a>
 
                 <button (click)="printReceipt()" class="btn btn-outline">
@@ -357,10 +358,34 @@ export class AppointmentsComponent implements OnInit {
     if (this.step > 1) this.step--;
   }
 
+  getWhatsAppUrl(refCode?: string): string {
+    const clinicName = this.selectedClinic ? this.lang.getText(this.selectedClinic.name) : '';
+    const serviceName = this.selectedService ? this.lang.getText(this.selectedService.name) : '';
+    const ref = refCode || (this.confirmedBooking?.bookingRef || '');
+
+    const textAr = `السلام عليكم ورحمة الله وبركاته،
+أود تأكيد حجز موعد كشف لدى أ.د. أمل محمد عبدالستار حماده
+
+📋 *تفاصيل طلب الحجز*:
+• *رقم المرجعية*: ${ref}
+• *اسم المريض*: ${this.patientName}
+• *رقم الهاتف*: ${this.patientPhone}
+${this.patientEmail ? `• *البريد*: ${this.patientEmail}\n` : ''}• *العيادة / الفرع*: ${clinicName}
+• *الخدمة الطبية*: ${serviceName} (${this.appointmentType})
+• *التاريخ المطلوب*: ${this.selectedDate}
+• *التوقيت المفضل*: ${this.selectedTimeSlot}
+${this.notes ? `• *ملاحظات المريض*: ${this.notes}\n` : ''}
+أرجو تأكيد الموعد، وشكراً جزيلاً!`;
+
+    return `https://wa.me/201003514770?text=${encodeURIComponent(textAr)}`;
+  }
+
   handleFinalSubmit(): void {
     if (!this.selectedClinic || !this.selectedService || !this.selectedDate || !this.selectedTimeSlot || !this.patientName || !this.patientPhone) {
       return;
     }
+
+    const bookingRef = 'REF-' + Math.floor(100000 + Math.random() * 900000);
 
     const payload = {
       clinicId: this.selectedClinic.id,
@@ -374,49 +399,38 @@ export class AppointmentsComponent implements OnInit {
       notes: this.notes
     };
 
+    this.confirmedBooking = {
+      id: 'APPT-' + Date.now(),
+      bookingRef: bookingRef,
+      clinicId: this.selectedClinic.id,
+      clinicName: this.selectedClinic.name,
+      serviceId: this.selectedService.id,
+      serviceName: this.selectedService.name,
+      patientName: this.patientName,
+      patientPhone: this.patientPhone,
+      patientEmail: this.patientEmail,
+      appointmentType: this.appointmentType,
+      date: this.selectedDate,
+      timeSlot: this.selectedTimeSlot,
+      status: 'Confirmed',
+      notes: this.notes,
+      createdAt: new Date().toISOString()
+    };
+
     this.api.createAppointment(payload).subscribe({
       next: (res) => {
-        this.confirmedBooking = {
-          id: res.appointment?.id || 'APPT-' + Date.now(),
-          bookingRef: res.appointment?.bookingRef || 'REF-' + Math.floor(100000 + Math.random() * 900000),
-          clinicId: this.selectedClinic!.id,
-          clinicName: this.selectedClinic!.name,
-          serviceId: this.selectedService!.id,
-          serviceName: this.selectedService!.name,
-          patientName: this.patientName,
-          patientPhone: this.patientPhone,
-          patientEmail: this.patientEmail,
-          appointmentType: this.appointmentType,
-          date: this.selectedDate,
-          timeSlot: this.selectedTimeSlot,
-          status: 'Confirmed',
-          notes: this.notes,
-          createdAt: new Date().toISOString()
-        };
-        this.step = 6;
+        if (res.appointment?.bookingRef) {
+          this.confirmedBooking!.bookingRef = res.appointment.bookingRef;
+        }
       },
-      error: () => {
-        // Local fallback if backend fails
-        this.confirmedBooking = {
-          id: 'APPT-' + Date.now(),
-          bookingRef: 'REF-' + Math.floor(100000 + Math.random() * 900000),
-          clinicId: this.selectedClinic!.id,
-          clinicName: this.selectedClinic!.name,
-          serviceId: this.selectedService!.id,
-          serviceName: this.selectedService!.name,
-          patientName: this.patientName,
-          patientPhone: this.patientPhone,
-          patientEmail: this.patientEmail,
-          appointmentType: this.appointmentType,
-          date: this.selectedDate,
-          timeSlot: this.selectedTimeSlot,
-          status: 'Confirmed',
-          notes: this.notes,
-          createdAt: new Date().toISOString()
-        };
-        this.step = 6;
-      }
+      error: () => {}
     });
+
+    this.step = 6;
+
+    // Automatically open WhatsApp with formatted message
+    const waUrl = this.getWhatsAppUrl(bookingRef);
+    window.open(waUrl, '_blank');
   }
 
   printReceipt(): void {
