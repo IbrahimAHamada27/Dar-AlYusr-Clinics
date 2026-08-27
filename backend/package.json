@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npx tsx server/index.ts",
     "dev": "npx tsx server/index.ts",
+    "build": "npx prisma generate",
     "seed": "npx tsx prisma/seed.ts",
     "prisma:generate": "npx prisma generate"
   },

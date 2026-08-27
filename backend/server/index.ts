@@ -43,6 +43,19 @@ app.use('/api/v1/social-profiles', socialRoutes);
 app.use('/api/v1/contact', contactRoutes);
 app.use('/api/v1/settings', settingRoutes);
 
+// Root Route Handler
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Dr. Aml Mohamed Abd El-Sattar Hamada REST API Backend',
+    endpoints: {
+      health: '/api/health',
+      doctorProfile: '/api/v1/doctor',
+      clinics: '/api/v1/clinics'
+    }
+  });
+});
+
 // Root Health Check
 app.get('/api/health', (req, res) => {
   res.json({

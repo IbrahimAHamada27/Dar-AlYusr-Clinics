@@ -8,7 +8,9 @@ import { DoctorProfile, ClinicLocation, PublicationItem, ArticleItem, Appointmen
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = 'http://localhost:5000/api/v1';
+  private readonly baseUrl = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:5000/api/v1'
+    : 'https://dr-aml-abd-e-lsattarback.vercel.app/api/v1';
 
   constructor(private http: HttpClient) {}
 
