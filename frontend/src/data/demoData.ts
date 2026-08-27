@@ -496,6 +496,8 @@ export const initialClinics: ClinicLocation[] = [
         durationMinutes: 30
       }
     ],
+    googleMapsEmbedUrl: 'https://maps.google.com/maps?q=Faculty+of+Medicine+Tanta+University&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    mapLocationUrl: 'https://maps.google.com/maps?q=Faculty+of+Medicine+Tanta+University',
     isActive: true
   },
   {
@@ -528,6 +530,8 @@ export const initialClinics: ClinicLocation[] = [
         durationMinutes: 30
       }
     ],
+    googleMapsEmbedUrl: 'https://maps.google.com/maps?q=Tanta+Gharbia+Egypt&t=&z=15&ie=UTF8&iwloc=&output=embed',
+    mapLocationUrl: 'https://maps.google.com/maps?q=Tanta+Gharbia+Egypt',
     isActive: true
   }
 ];

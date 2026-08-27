@@ -99,13 +99,14 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
                 </div>
 
                 <!-- Right Map Embed View -->
-                <div style="flex: 1 1 350px; min-height: 300px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-light);">
+                <div style="flex: 1 1 350px; min-height: 320px; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--border-light); background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%); position: relative; box-shadow: var(--shadow-sm);">
                   <iframe
+                    *ngIf="clinic.googleMapsEmbedUrl"
                     [title]="lang.getText(clinic.name)"
                     [src]="getMapUrl(clinic.googleMapsEmbedUrl)"
                     width="100%"
                     height="100%"
-                    style="border: 0; min-height: 320px;"
+                    style="border: 0; min-height: 320px; width: 100%; height: 100%; display: block;"
                     allowfullscreen
                     loading="lazy"
                   ></iframe>
