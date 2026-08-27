@@ -31,7 +31,7 @@ import { DataService } from '../../core/services/data.service';
                 style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-light);"
               >
                 <img
-                  [src]="profile.doctorPortrait"
+                  [src]="profile.doctorSecondaryPortrait || profile.doctorPortrait"
                   [alt]="lang.getText(profile.name)"
                   style="width: 100%; height: auto; display: block;"
                 />

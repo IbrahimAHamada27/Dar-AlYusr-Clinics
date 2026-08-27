@@ -19,6 +19,7 @@ export interface DoctorProfile {
   conferenceCount: number;
   certificationCount: number;
   doctorPortrait: string;
+  doctorSecondaryPortrait?: string;
   heroImage?: string;
   heroBackground?: string;
 }

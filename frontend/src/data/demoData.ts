@@ -51,8 +51,9 @@ export const initialDoctorProfile: DoctorProfile = {
   publicationCount: 7,
   conferenceCount: 15,
   certificationCount: 8,
-  heroImage: '/doctor.jpg',
-  doctorPortrait: '/doctor.jpg'
+  heroImage: '/doctor-primary.jpg',
+  doctorPortrait: '/doctor-primary.jpg',
+  doctorSecondaryPortrait: '/doctor-secondary.jpg'
 };
 
 export const initialExpertiseAreas: ExpertiseArea[] = [

@@ -10,44 +10,84 @@ import { DataService } from '../../core/services/data.service';
   template: `
     <div>
       <!-- 1. HERO SECTION -->
-      <section style="background-color: var(--primary-light); padding: 5rem 0 4rem 0; position: relative; overflow: hidden;">
+      <section style="background-color: var(--primary-light); padding: 4rem 0 3rem 0; position: relative; overflow: hidden;">
         <div class="container">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 3.5rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap;">
             <!-- Hero Left Content -->
             <div style="flex: 1 1 500px; max-width: 640px;">
-              <div class="badge badge-gold" style="margin-bottom: 1.25rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
+              <!-- Academic Badge -->
+              <div class="badge badge-gold" style="margin-bottom: 0.85rem; font-size: 0.88rem; padding: 0.4rem 0.85rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
                 <span>{{ lang.getText(profile.title) }}</span>
               </div>
 
-              <h1 style="color: var(--primary-dark); margin-bottom: 1rem; letter-spacing: -0.02em;">
+              <!-- Main Doctor Name -->
+              <h1 style="color: var(--primary-dark); margin-bottom: 0.85rem; letter-spacing: -0.02em; line-height: 1.3;">
                 {{ lang.getText(profile.name) }}
               </h1>
 
-              <div style="font-size: 1.12rem; color: var(--accent-teal); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.5;">
-                {{ getSubSpecialtiesString() }}
+              <!-- Mobile Portrait Image (Ensures doctor photo is ALWAYS seen immediately on mobile!) -->
+              <div class="mobile-portrait-box" style="margin-bottom: 1.25rem;">
+                <div style="position: relative; max-width: 280px; margin: 0 auto;">
+                  <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 2.5px solid var(--gold-accent); background-color: #ffffff; padding: 3px;">
+                    <img [src]="profile.doctorPortrait" [alt]="lang.getText(profile.name)" style="width: 100%; height: auto; display: block; border-radius: calc(var(--radius-lg) - 3px);" />
+                  </div>
+                  <div style="background-color: var(--primary-dark); color: var(--gold-accent); font-size: 0.8rem; font-weight: 800; text-align: center; padding: 0.35rem 0.75rem; border-radius: var(--radius-full); margin-top: -14px; position: relative; z-index: 2; width: 85%; margin-left: auto; margin-right: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.18);">
+                    {{ profile.experienceYears }}+ {{ lang.isRtl() ? 'سنوات خبرة جراحية وأكاديمية' : 'Years Experience' }}
+                  </div>
+                </div>
               </div>
 
-              <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.5rem; line-height: 1.7;">
+              <!-- Structured Specialty Cards (Replacing wall of green text) -->
+              <div class="grid-2" style="gap: 0.85rem; margin-bottom: 1.25rem;">
+                <!-- Card 1: Patients Focus -->
+                <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(13, 148, 136, 0.02) 100%); border: 1.5px solid rgba(13, 148, 136, 0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+                  <div style="font-weight: 800; font-size: 0.92rem; color: var(--accent-teal); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    <span>{{ lang.isRtl() ? 'الخدمات الطبية والنساء والتوليد' : 'OB-GYN Clinical Care' }}</span>
+                  </div>
+                  <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; margin: 0;">
+                    {{ lang.isRtl() ? 'استشاري النساء والتوليد ومتابعة الحمل وتكيس المبايض والعيادات التخصصية.' : 'Comprehensive antenatal, gynecological & obstetric medical care.' }}
+                  </p>
+                </div>
+
+                <!-- Card 2: Doctors & Academics Focus -->
+                <div style="background: linear-gradient(135deg, rgba(11, 19, 43, 0.06) 0%, rgba(11, 19, 43, 0.02) 100%); border: 1.5px solid rgba(11, 19, 43, 0.2); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
+                  <div style="font-weight: 800; font-size: 0.92rem; color: var(--primary-navy); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <span>{{ lang.isRtl() ? 'أستاذ مساعد طب طنطا والبحث العلمي' : 'Academic & Research Director' }}</span>
+                  </div>
+                  <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; margin: 0;">
+                    {{ lang.isRtl() ? 'أستاذ مساعد التشريح الآدمي وعلم الأجنة ومسؤولة وحدتي حقوق الإنسان والوافدين.' : 'Associate Professor of Anatomy & Embryology and Institutional Director.' }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Brand Tagline Quote -->
+              <p style="font-size: 0.98rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; font-style: italic; border-right: 3px solid var(--gold-accent); padding-right: 0.85rem;" [style.border-right]="lang.isRtl() ? '3px solid var(--gold-accent)' : 'none'" [style.padding-right]="lang.isRtl() ? '0.85rem' : '0'" [style.border-left]="!lang.isRtl() ? '3px solid var(--gold-accent)' : 'none'" [style.padding-left]="!lang.isRtl() ? '0.85rem' : '0'">
                 "{{ lang.getText(profile.brandTagline) }}"
               </p>
 
-              <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                <button (click)="nav('appointments')" class="btn btn-primary btn-lg">
+              <!-- CTA Buttons -->
+              <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <button (click)="nav('appointments')" class="btn btn-primary btn-lg" style="box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3); font-weight: 800;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
                   <span>{{ lang.ui().bookAppointment }}</span>
                 </button>
 
+                <a href="tel:01003514770" class="btn btn-gold btn-lg" style="font-weight: 800; background: #25D366; border-color: #25D366; color: #fff;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>{{ lang.isRtl() ? 'اتصال مباشر' : 'Call Direct' }}</span>
+                </a>
+
                 <button (click)="nav('about')" class="btn btn-outline btn-lg">
-                  <span>{{ lang.isRtl() ? 'استكشف السيرة الذاتية' : 'Explore Profile' }}</span>
-                  <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                  <span>{{ lang.isRtl() ? 'السيرة الذاتية' : 'CV Profile' }}</span>
                 </button>
               </div>
             </div>
 
-            <!-- Hero Right Image -->
-            <div style="flex: 1 1 380px; display: flex; justify-content: center;">
+            <!-- Desktop Portrait Image Container -->
+            <div class="desktop-portrait-box" style="flex: 1 1 380px; display: flex; justify-content: center;">
               <div style="position: relative; max-width: 420px; width: 100%;">
                 <div
                   style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 3px solid var(--gold-accent); background-color: #ffffff; padding: 4px;"
@@ -75,7 +115,7 @@ import { DataService } from '../../core/services/data.service';
                       {{ profile.experienceYears }}+ {{ lang.isRtl() ? 'سنوات خبرة' : 'Years Experience' }}
                     </div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
-                      {{ lang.isRtl() ? 'رعاية تخصصية وبحث علمي' : 'Evidence-Based Medicine' }}
+                      {{ lang.isRtl() ? 'طبية وأكاديمية متميزة' : 'Medical & Academic' }}
                     </div>
                   </div>
                 </div>
