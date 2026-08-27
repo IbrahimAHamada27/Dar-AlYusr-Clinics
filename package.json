@@ -6,6 +6,6 @@
     "dev:backend": "npm --prefix backend run dev",
     "dev:frontend": "npm --prefix frontend run dev",
     "seed:backend": "npm --prefix backend run seed",
-    "build:frontend": "npm --prefix frontend run build"
+    "build": "npm --prefix frontend run build"
   }
 }
