@@ -21,8 +21,13 @@ import { LanguageService } from '../../../core/services/language.service';
           </span>
         </div>
 
-        <!-- Phone Lines & Language Toggle -->
-        <div style="display: flex; align-items: center; gap: 1.25rem; font-weight: 700; font-size: 0.85rem;">
+        <!-- Phone Lines, Facebook & Language Toggle -->
+        <div style="display: flex; align-items: center; gap: 1rem; font-weight: 700; font-size: 0.85rem;">
+          <a href="https://web.facebook.com/darel.Yosser2014" target="_blank" rel="noopener noreferrer" style="background: #1877f2; color: #ffffff; padding: 0.2rem 0.65rem; border-radius: 6px; font-weight: 800; font-size: 0.78rem; text-decoration: none; display: flex; align-items: center; gap: 0.35rem; box-shadow: 0 2px 6px rgba(24, 119, 242, 0.3);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>فيسبوك (35k+)</span>
+          </a>
+
           <a href="tel:01030252002" style="color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 0.35rem;">
             📞 <span dir="ltr">01030252002</span>
           </a>
@@ -70,6 +75,17 @@ import { LanguageService } from '../../../core/services/language.service';
           <!-- Header Action Buttons & Hamburger Toggle -->
           <div style="display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;">
             
+            <a
+              href="https://web.facebook.com/darel.Yosser2014"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn hide-on-mobile"
+              style="background: #1877f2; color: #ffffff; border: none; font-weight: 800; padding: 0.55rem 1rem; font-size: 0.85rem; border-radius: 10px; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span>فيسبوك</span>
+            </a>
+
             <button
               (click)="nav('appointments')"
               class="btn btn-primary btn-sm hide-on-mobile"
@@ -205,6 +221,11 @@ import { LanguageService } from '../../../core/services/language.service';
           <button (click)="nav('home')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
             🏠 <span>{{ lang.ui().home }}</span>
           </button>
+
+          <a href="https://web.facebook.com/darel.Yosser2014" target="_blank" rel="noopener noreferrer" style="background: #1877f2; color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 900; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem; text-decoration: none; box-shadow: 0 4px 14px rgba(24, 119, 242, 0.4);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>صفحتنا على فيسبوك (35,000+ متابع)</span>
+          </a>
 
           <button (click)="nav('clinics')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
             🏥 <span>{{ lang.ui().departments }}</span>
