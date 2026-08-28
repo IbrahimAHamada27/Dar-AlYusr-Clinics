@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
         <!-- Header -->
         <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
           <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
-            🗓️ {{ lang.isRtl() ? 'جدول مواعيد الأطباء التفاعلي' : 'Interactive Doctor Schedules' }}
+            {{ lang.isRtl() ? 'جدول مواعيد الأطباء التفاعلي' : 'Interactive Doctor Schedules' }}
           </span>
           <h1 style="font-weight: 900; color: #0f172a; font-size: 2.2rem; margin-bottom: 0.75rem;">
             {{ lang.isRtl() ? 'مواعيد عيادات مستشفى دار اليسر التخصصية' : 'Dar El Yosser Clinic Schedules' }}
@@ -28,7 +28,6 @@ import { FormsModule } from '@angular/forms';
 
         <!-- Official Booking Policy Warning Banner -->
         <div style="background: #fffbeb; border: 2px solid #f59e0b; border-radius: 16px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem;">
-          <div style="font-size: 2rem;">🔴</div>
           <div>
             <div style="font-weight: 900; font-size: 1.05rem; color: #b45309; margin-bottom: 0.25rem;">
               {{ lang.isRtl() ? 'قواعد وتعليمات الحجز في دار اليسر' : 'Official Clinic Booking Instructions' }}
@@ -63,7 +62,7 @@ import { FormsModule } from '@angular/forms';
             <div style="flex: 1 1 300px;">
               <input
                 type="text"
-                [placeholder]="lang.isRtl() ? '🔍 ابحث باسم الطبيب أو التخصص (مثلاً: د/ أحمد، عظام، رمد)...' : 'Search doctor or specialty...'"
+                [placeholder]="lang.isRtl() ? 'ابحث باسم الطبيب أو التخصص (مثلاً: د/ أحمد، عظام، رمد)...' : 'Search doctor or specialty...'"
                 [(ngModel)]="searchQuery"
                 (input)="onSearchInput($event)"
                 style="width: 100%; padding: 0.75rem 1.25rem; border-radius: 12px; border: 1.5px solid #cbd5e1; font-size: 0.95rem; font-family: inherit; font-weight: 600; outline: none;"
@@ -108,7 +107,7 @@ import { FormsModule } from '@angular/forms';
                 [style.box-shadow]="viewMode === 'TABLE' ? '0 2px 6px rgba(0,0,0,0.08)' : 'none'"
                 style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
               >
-                📊 {{ lang.isRtl() ? 'جدول منظم' : 'Table View' }}
+                {{ lang.isRtl() ? 'جدول منظم' : 'Table View' }}
               </button>
               <button
                 (click)="viewMode = 'CARDS'"
@@ -118,7 +117,7 @@ import { FormsModule } from '@angular/forms';
                 [style.box-shadow]="viewMode === 'CARDS' ? '0 2px 6px rgba(0,0,0,0.08)' : 'none'"
                 style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
               >
-                🗂️ {{ lang.isRtl() ? 'بطاقات' : 'Cards View' }}
+                {{ lang.isRtl() ? 'بطاقات' : 'Cards View' }}
               </button>
             </div>
 
@@ -168,7 +167,7 @@ import { FormsModule } from '@angular/forms';
                       {{ doc.name }}
                     </td>
                     <td style="padding: 1rem 1.25rem; font-weight: 800; color: #0d9488;">
-                      ⏰ {{ doc.timeSlot }}
+                      {{ doc.timeSlot }}
                     </td>
                     <td style="padding: 1rem 1.25rem;">
                       <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
@@ -180,13 +179,13 @@ import { FormsModule } from '@angular/forms';
                           {{ getStatusText(doc.status) }}
                         </span>
                         <span *ngIf="doc.statusNote" style="font-size: 0.82rem; color: #d97706; font-weight: 700;">
-                          📌 {{ doc.statusNote }}
+                          {{ doc.statusNote }}
                         </span>
                       </div>
                     </td>
                     <td style="padding: 1rem 1.25rem; text-align: center;">
                       <a href="tel:01030252002" class="btn btn-outline btn-sm" style="font-weight: 800; padding: 0.35rem 0.85rem; font-size: 0.82rem;">
-                        📞 استفسار
+                        استفسار
                       </a>
                     </td>
                   </tr>
@@ -223,23 +222,23 @@ import { FormsModule } from '@angular/forms';
                 </h3>
 
                 <div style="background: #f8fafc; border-radius: 12px; padding: 0.85rem; border: 1px solid #f1f5f9; margin-bottom: 0.85rem;">
-                  <div style="display: flex; align-items: center; gap: 0.5rem; color: #334155; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.25rem;">
-                    <span>⏰ موعد العيادة:</span>
+                  <div style="display: flex; align-items: center; justify-content: space-between; color: #334155; font-size: 0.92rem; font-weight: 700;">
+                    <span>موعد العيادة:</span>
                     <span style="color: #0d9488; font-weight: 900;">{{ doc.timeSlot }}</span>
                   </div>
 
                   <div *ngIf="doc.statusNote" style="margin-top: 0.4rem; font-size: 0.82rem; color: #d97706; font-weight: 800;">
-                    📌 ملاحظة: {{ doc.statusNote }}
+                    ملاحظة: {{ doc.statusNote }}
                   </div>
                 </div>
               </div>
 
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; border-top: 1px solid #f1f5f9; padding-top: 0.85rem;">
                 <span style="font-size: 0.78rem; color: #64748b; font-weight: 700;">
-                  🏢 مركز دار اليسر - العبور
+                  مستشفى دار اليسر - العبور
                 </span>
                 <a href="tel:01030252002" style="color: #0d9488; text-decoration: none; font-size: 0.82rem; font-weight: 800;">
-                  📞 استفسار
+                  استفسار
                 </a>
               </div>
             </div>
@@ -247,7 +246,6 @@ import { FormsModule } from '@angular/forms';
 
           <!-- Empty Search State -->
           <div *ngIf="getFilteredDoctors().length === 0" style="text-align: center; padding: 4rem 1rem; background: #ffffff; border-radius: 18px; border: 1.5px solid #e2e8f0;">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
             <h3 style="color: #0f172a; font-weight: 900; margin-bottom: 0.5rem;">
               {{ lang.isRtl() ? 'لم يتم العثور على أطباء بهذا البحث' : 'No Doctors Found' }}
             </h3>

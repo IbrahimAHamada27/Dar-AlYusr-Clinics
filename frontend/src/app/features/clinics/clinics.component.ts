@@ -14,7 +14,7 @@ import { DataService } from '../../core/services/data.service';
         <!-- Header -->
         <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
           <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
-            🏥 {{ lang.isRtl() ? 'الأقسام والخدمات التخصصية' : 'Departments & Services' }}
+            {{ lang.isRtl() ? 'الأقسام والخدمات التخصصية' : 'Departments & Services' }}
           </span>
           <h1 style="font-weight: 900; color: #0f172a; font-size: 2.3rem; margin-bottom: 0.75rem;">
             {{ lang.isRtl() ? 'أقسام وعيادات مستشفى دار اليسر التخصصية' : 'Dar El Yosser Medical Departments' }}
@@ -27,7 +27,6 @@ import { DataService } from '../../core/services/data.service';
         <!-- Emergency Banner Card -->
         <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: 20px; padding: 2rem; margin-bottom: 3rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 1rem;">
-            <div style="font-size: 2.5rem;">🚨</div>
             <div>
               <h3 style="color: #ef4444; font-weight: 900; font-size: 1.25rem; margin-bottom: 0.35rem;">
                 طوارئ 24/7 (نساء - عظام - باطنة - جراحة - أطفال)
@@ -38,7 +37,7 @@ import { DataService } from '../../core/services/data.service';
             </div>
           </div>
           <a href="tel:01030252002" class="btn btn-gold btn-lg" style="background: #ef4444; border: none; color: #fff; font-weight: 900;">
-            📞 <span>طوارئ: 01030252002</span>
+            <span>طوارئ: 01030252002</span>
           </a>
         </div>
 
@@ -46,7 +45,6 @@ import { DataService } from '../../core/services/data.service';
         <div class="grid-3" style="gap: 1.5rem; margin-bottom: 3.5rem;">
           
           <div style="background: #ffffff; border: 2px solid #0d9488; border-radius: 20px; padding: 1.75rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🧠</div>
             <h3 style="font-size: 1.25rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
               مركز رسم المخ ورسم العصب
             </h3>
@@ -59,7 +57,6 @@ import { DataService } from '../../core/services/data.service';
           </div>
 
           <div style="background: #ffffff; border: 2px solid #f59e0b; border-radius: 20px; padding: 1.75rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🦷✨</div>
             <h3 style="font-size: 1.25rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
               اليسر كلينك - عيادة الأسنان والتخدير الكلي
             </h3>
@@ -67,12 +64,11 @@ import { DataService } from '../../core/services/data.service';
               خصم 20% على جميع خدمات الأسنان مع إمكانية التخدير الكلي للأطفال والكبار بدون ألم أو خوف.
             </p>
             <button (click)="nav('dental')" class="btn btn-gold btn-sm" style="background: #f59e0b; border: none; color: #000; font-weight: 900;">
-              🦷 استعرض عروض الأسنان
+              استعرض عروض الأسنان
             </button>
           </div>
 
           <div style="background: #ffffff; border: 2px solid #0284c7; border-radius: 20px; padding: 1.75rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-            <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">📡</div>
             <h3 style="font-size: 1.25rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
               مركز السونار والأشعة التلفزيونية
             </h3>

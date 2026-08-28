@@ -676,5 +676,44 @@ a {
   display: none;
 }
 
+/* Quick Action Horizontal Carousel (Mobile Snap Scroll) */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
 
+@media (max-width: 868px) {
+  .quick-actions-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    padding: 0.5rem 0.25rem 1rem 0.25rem !important;
+    gap: 1rem !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
 
+  .quick-actions-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .quick-action-card {
+    flex: 0 0 215px !important;
+    min-width: 215px !important;
+    max-width: 230px !important;
+    scroll-snap-align: start !important;
+    border-radius: 20px !important;
+    padding: 1.5rem 1rem !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
+  }
+}
+
+.quick-action-card {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08) !important;
+}

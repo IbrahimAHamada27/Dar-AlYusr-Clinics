@@ -36,7 +36,7 @@ export class LanguageService {
       dentalHotline: isArabic ? 'حجز الأسنان:' : 'Dental Direct:',
       workingHours: isArabic ? 'مواعيد العمل:' : 'Working Hours:',
       address: isArabic ? 'العنوان:' : 'Address:',
-      bookingNoticeTitle: isArabic ? '🔴 غير متاح الحجز بالتليفون' : '🔴 On-Site Registration Required',
+      bookingNoticeTitle: isArabic ? 'غير متاح الحجز بالتليفون' : 'On-Site Registration Required',
       bookingNoticeText: isArabic ? 'للحجز يرجى التوجه للمركز مباشرة. الحجز بأسبقية الحضور أو بالسيستم.' : 'Telephone reservation is not available. Please visit the medical center in person for queue ticket registration.'
     };
   });

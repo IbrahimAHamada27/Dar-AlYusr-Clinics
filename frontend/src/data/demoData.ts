@@ -49,7 +49,7 @@ export const initialHospitalProfile: HospitalProfile = {
   },
   bookingPolicyNotice: {
     en: 'Phone reservation is NOT available. Please visit the medical center directly for on-site registration & tickets. Priority is by arrival or clinic system queue.',
-    ar: '🔴 غير متاح الحجز بالتليفون. للحجز يرجى التوجه للمركز مباشرة. الحجز بأسبقية الحضور أو على السيستم بالمبنى.'
+    ar: 'غير متاح الحجز بالتليفون. للحجز يرجى التوجه للمركز مباشرة. الحجز بأسبقية الحضور أو على السيستم بالمبنى.'
   },
   followersCount: '35,000+',
   followingCount: '53'
@@ -60,11 +60,11 @@ export const initialSpecialOffers: SpecialOfferItem[] = [
     id: 'offer-dental-20',
     title: {
       en: '20% Discount on All Dental Services',
-      ar: '🎉 خصم 20% على جميع خدمات الأسنان'
+      ar: 'خصم 20% على جميع خدمات الأسنان'
     },
     tagline: {
       en: 'El Yosr Dental Clinic – At Dar El Yosser',
-      ar: '🤍 اليسر كلينك – في دار اليسر 🤍'
+      ar: 'اليسر كلينك – في دار اليسر'
     },
     discountPercentage: 20,
     clinicName: { en: 'El Yosr Dental Clinic', ar: 'اليسر كلينك للأسنان' },
@@ -85,7 +85,7 @@ export const initialSpecialOffers: SpecialOfferItem[] = [
     id: 'offer-anesthesia-dental',
     title: {
       en: 'Dental Treatment Under General Anesthesia',
-      ar: '🦷✨ علاج أسنان بدون خوف أو قلق تحت التخدير الكلي'
+      ar: 'علاج أسنان بدون خوف أو قلق تحت التخدير الكلي'
     },
     tagline: {
       en: 'Safe & Painless Multiple Procedures in One Session',
@@ -108,7 +108,7 @@ export const initialSpecialOffers: SpecialOfferItem[] = [
     id: 'offer-kids-school',
     title: {
       en: 'Back-to-School Pediatric Dental Screening',
-      ar: '🎒🦷 قبل ما المدارس تبدأ... اطمني على أسنان طفلك!'
+      ar: 'قبل ما المدارس تبدأ... اطمني على أسنان طفلك!'
     },
     tagline: {
       en: 'Early Screening = Simpler Treatment & Confident Smiles',

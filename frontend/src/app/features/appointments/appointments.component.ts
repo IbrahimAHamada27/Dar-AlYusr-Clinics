@@ -16,7 +16,7 @@ import { AppointmentBooking } from '../../core/models';
         <!-- Header -->
         <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
           <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
-            📖 {{ lang.isRtl() ? 'تعليمات ونظام الحجز والزيارة' : 'Visiting & Registration Guide' }}
+            {{ lang.isRtl() ? 'تعليمات ونظام الحجز والزيارة' : 'Visiting & Registration Guide' }}
           </span>
           <h1 style="font-weight: 900; color: #0f172a; font-size: 2.2rem; margin-bottom: 0.75rem;">
             {{ lang.isRtl() ? 'كيفية الحجز والتوجيه بالمركز' : 'Dar El Yosser Booking Guide' }}
@@ -26,7 +26,6 @@ import { AppointmentBooking } from '../../core/models';
         <!-- Warning Policy Box -->
         <div style="background: #fffbeb; border: 2.5px solid #f59e0b; border-radius: 20px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
-            <div style="font-size: 3rem; line-height: 1;">🔴</div>
             <div>
               <h2 style="color: #92400e; font-weight: 900; font-size: 1.35rem; margin-bottom: 0.5rem;">
                 تنبيه حازم بشأن نظام الحجز بالمركز
@@ -35,8 +34,8 @@ import { AppointmentBooking } from '../../core/models';
                 غير متاح الحجز بالتليفون إطلاقاً! للحجز يرجى التوجه لمبنى عيادات دار اليسر بمدينة العبور. الحجز بأسبقية الحضور أو بالسيستم داخل المركز.
               </p>
               <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 12px; font-size: 0.92rem; color: #451a03; font-weight: 700;">
-                📍 <strong>العنوان:</strong> مدينة العبور – الحي الأول – بعد صينية الخامس بـ 200 متر من الطريق البطئ، أمام يوني مول.<br />
-                📞 <strong>أرقام الاستفسار والواتساب:</strong> 01030252002 - 01030252005 | 🦷 <strong>أسنان:</strong> 01092893808
+                <strong>العنوان:</strong> مدينة العبور – الحي الأول – بعد صينية الخامس بـ 200 متر من الطريق البطئ، أمام يوني مول.<br />
+                <strong>أرقام الاستفسار والواتساب:</strong> 01030252002 - 01030252005 | <strong>أسنان:</strong> 01092893808
               </div>
             </div>
           </div>
@@ -47,7 +46,7 @@ import { AppointmentBooking } from '../../core/models';
           
           <div style="margin-bottom: 1.75rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem;">
             <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 0.35rem;">
-              📝 تسجيل استفسار وإشعار توجيه للمركز
+              تسجيل استفسار وإشعار توجيه للمركز
             </h3>
             <p style="color: #64748b; font-size: 0.92rem; margin: 0;">
               يمكنك كتابة بياناتك وإرسال استفسارك ليصل لفريق خدمة العملاء بالمركز مباشرة، وسنقوم بالتواصل معك عبر الواتساب.

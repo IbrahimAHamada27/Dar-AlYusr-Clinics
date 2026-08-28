@@ -94,7 +94,7 @@ import { PublicationItem } from '../../core/models';
               </h3>
 
               <div style="font-size: 0.92rem; color: var(--accent-teal); font-weight: 600;">
-                ✍️ {{ pub.authors }} — <em style="color: var(--primary-dark);">{{ pub.journal }}</em>
+                {{ pub.authors }} — <em style="color: var(--primary-dark);">{{ pub.journal }}</em>
               </div>
 
               <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">

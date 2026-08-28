@@ -14,7 +14,7 @@ import { LanguageService } from '../../../core/services/language.service';
         <!-- Emergency Badge & Details -->
         <div style="display: flex; align-items: center; gap: 0.6rem; font-weight: 700;">
           <span style="background: #ef4444; color: #ffffff; padding: 0.15rem 0.6rem; border-radius: 4px; font-weight: 900; font-size: 0.72rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-            🚨 {{ lang.isRtl() ? 'طوارئ 24/7' : '24/7 EMERGENCY' }}
+            {{ lang.isRtl() ? 'طوارئ 24/7' : '24/7 EMERGENCY' }}
           </span>
           <span style="color: #cbd5e1; font-size: 0.82rem;">
             {{ lang.isRtl() ? 'أخصائيون مقيمون (نساء - عظام - باطنة - جراحة - أطفال) بالعبور' : 'On-duty Specialists 24 Hours in El Obour City' }}
@@ -29,17 +29,18 @@ import { LanguageService } from '../../../core/services/language.service';
           </a>
 
           <a href="tel:01030252002" style="color: #38bdf8; text-decoration: none; display: flex; align-items: center; gap: 0.35rem;">
-            📞 <span dir="ltr">01030252002</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span dir="ltr">01030252002</span>
           </a>
           <a href="tel:01092893808" style="color: #fbbf24; text-decoration: none; display: flex; align-items: center; gap: 0.35rem;">
-            🦷 <span>الأسنان: <span dir="ltr">01092893808</span></span>
+            <span>الأسنان: <span dir="ltr">01092893808</span></span>
           </a>
           
           <button
             (click)="lang.toggleLanguage()"
             style="background: rgba(255,255,255,0.12); color: #ffffff; border: 1px solid rgba(255,255,255,0.25); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 800; cursor: pointer;"
           >
-            🌐 {{ lang.language() === 'en' ? 'عربي' : 'English' }}
+            {{ lang.language() === 'en' ? 'عربي' : 'English' }}
           </button>
         </div>
       </div>
@@ -91,7 +92,7 @@ import { LanguageService } from '../../../core/services/language.service';
               class="btn btn-primary btn-sm hide-on-mobile"
               style="background: #0d9488; border: none; font-weight: 800; padding: 0.55rem 1.15rem; font-size: 0.88rem;"
             >
-              📝 <span>{{ lang.isRtl() ? 'تعليمات وقواعد الحجز' : 'Booking Rules' }}</span>
+              <span>{{ lang.isRtl() ? 'تعليمات وقواعد الحجز' : 'Booking Rules' }}</span>
             </button>
 
             <!-- Mobile Hamburger Toggle -->
@@ -121,7 +122,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'home' ? '#ffffff' : 'transparent'"
               style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              🏠 {{ lang.ui().home }}
+              {{ lang.ui().home }}
             </button>
 
             <button
@@ -131,7 +132,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'clinics' ? '#ffffff' : 'transparent'"
               style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              🏥 {{ lang.ui().departments }}
+              {{ lang.ui().departments }}
             </button>
 
             <button
@@ -141,7 +142,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'doctors' ? '#ffffff' : 'transparent'"
               style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              👨‍⚕️ {{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}
+              {{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}
             </button>
 
             <button
@@ -151,7 +152,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'schedules' ? '#ffffff' : 'transparent'"
               style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              🗓️ {{ lang.ui().schedules }}
+              {{ lang.ui().schedules }}
             </button>
 
             <button
@@ -161,7 +162,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'dental' ? '#fffbeb' : 'transparent'"
               style="padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              🦷 {{ lang.isRtl() ? 'اليسر كلينك أسنان' : 'Dental Clinic' }}
+              {{ lang.isRtl() ? 'اليسر كلينك أسنان' : 'Dental Clinic' }}
               <span style="background: #f59e0b; color: #000000; font-size: 0.68rem; font-weight: 900; padding: 0.05rem 0.35rem; border-radius: 4px; margin-inline-start: 4px;">-20%</span>
             </button>
 
@@ -172,7 +173,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'about' ? '#ffffff' : 'transparent'"
               style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              ℹ️ {{ lang.ui().about }}
+              {{ lang.ui().about }}
             </button>
 
             <button
@@ -182,7 +183,7 @@ import { LanguageService } from '../../../core/services/language.service';
               [style.background]="activeTab === 'contact' ? '#ffffff' : 'transparent'"
               style="border: none; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.88rem; cursor: pointer;"
             >
-              📍 {{ lang.ui().contact }}
+              {{ lang.ui().contact }}
             </button>
 
           </nav>
@@ -219,7 +220,7 @@ import { LanguageService } from '../../../core/services/language.service';
         <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; overflow-y: auto;">
           
           <button (click)="nav('home')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            🏠 <span>{{ lang.ui().home }}</span>
+            <span>{{ lang.ui().home }}</span>
           </button>
 
           <a href="https://web.facebook.com/darel.Yosser2014" target="_blank" rel="noopener noreferrer" style="background: #1877f2; color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 900; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem; text-decoration: none; box-shadow: 0 4px 14px rgba(24, 119, 242, 0.4);">
@@ -228,31 +229,31 @@ import { LanguageService } from '../../../core/services/language.service';
           </a>
 
           <button (click)="nav('clinics')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            🏥 <span>{{ lang.ui().departments }}</span>
+            <span>{{ lang.ui().departments }}</span>
           </button>
 
           <button (click)="nav('doctors')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            👨‍⚕️ <span>{{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}</span>
+            <span>{{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}</span>
           </button>
 
           <button (click)="nav('schedules')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            🗓️ <span>{{ lang.ui().schedules }}</span>
+            <span>{{ lang.ui().schedules }}</span>
           </button>
 
           <button (click)="nav('dental')" style="background: rgba(245, 158, 11, 0.15); border: 1.5px solid #f59e0b; color: #fbbf24; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 900; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            🦷 <span>اليسر كلينك - أسنان (خصم 20%)</span>
+            <span>اليسر كلينك - أسنان (خصم 20%)</span>
           </button>
 
           <button (click)="nav('about')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            ℹ️ <span>{{ lang.ui().about }}</span>
+            <span>{{ lang.ui().about }}</span>
           </button>
 
           <button (click)="nav('contact')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; padding: 0.9rem 1.25rem; border-radius: 14px; font-weight: 800; font-size: 1rem; text-align: start; display: flex; align-items: center; gap: 0.85rem;">
-            📍 <span>{{ lang.ui().contact }}</span>
+            <span>{{ lang.ui().contact }}</span>
           </button>
 
           <button (click)="nav('appointments')" style="background: #0d9488; border: none; color: #ffffff; padding: 1rem 1.25rem; border-radius: 14px; font-weight: 900; font-size: 1.05rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 1rem;">
-            📝 <span>{{ lang.isRtl() ? 'تعليمات وقواعد الحجز' : 'Booking Rules' }}</span>
+            <span>{{ lang.isRtl() ? 'تعليمات وقواعد الحجز' : 'Booking Rules' }}</span>
           </button>
 
         </div>
@@ -260,10 +261,10 @@ import { LanguageService } from '../../../core/services/language.service';
         <!-- Mobile Drawer Bottom Direct Action Buttons -->
         <div style="padding: 1.25rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); background: #0f172a; display: flex; gap: 0.75rem;">
           <a href="tel:01030252002" class="btn" style="flex: 1; background: #ef4444; color: #ffffff; font-weight: 900; padding: 0.8rem; border-radius: 12px; text-decoration: none; text-align: center; font-size: 0.9rem;">
-            📞 طوارئ 01030252002
+            طوارئ 01030252002
           </a>
           <a href="tel:01092893808" class="btn" style="flex: 1; background: #f59e0b; color: #000000; font-weight: 900; padding: 0.8rem; border-radius: 12px; text-decoration: none; text-align: center; font-size: 0.9rem;">
-            🦷 أسنان 01092893808
+            أسنان 01092893808
           </a>
         </div>
 
@@ -273,29 +274,24 @@ import { LanguageService } from '../../../core/services/language.service';
     <!-- Mobile Bottom Navigation Bar -->
     <nav class="mobile-bottom-bar" [dir]="lang.isRtl() ? 'rtl' : 'ltr'">
       <button (click)="nav('home')" [class.active]="activeTab === 'home'" class="mobile-bottom-item">
-        <span style="font-size: 1.2rem;">🏠</span>
-        <span>الرئيسية</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>{{ lang.isRtl() ? 'الرئيسية' : 'Home' }}</span>
       </button>
 
       <button (click)="nav('schedules')" [class.active]="activeTab === 'schedules'" class="mobile-bottom-item">
-        <span style="font-size: 1.2rem;">🗓️</span>
-        <span>المواعيد</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        <span>{{ lang.isRtl() ? 'المواعيد' : 'Roster' }}</span>
       </button>
 
       <button (click)="nav('doctors')" [class.active]="activeTab === 'doctors'" class="mobile-bottom-item">
-        <span style="font-size: 1.2rem;">👨‍⚕️</span>
-        <span>الأطباء</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>{{ lang.isRtl() ? 'الأطباء' : 'Doctors' }}</span>
       </button>
 
       <button (click)="nav('dental')" [class.active]="activeTab === 'dental'" class="mobile-bottom-item">
-        <span style="font-size: 1.2rem;">🦷</span>
-        <span>الأسنان</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.5 2 6 4.5 6 7.5C6 11 7.5 13 8 16.5C8.4 19.3 9.5 22 11 22C11.6 22 12 20.5 12 19C12 20.5 12.4 22 13 22C14.5 22 15.6 19.3 16 16.5C16.5 13 18 11 18 7.5C18 4.5 15.5 2 12 2Z"/></svg>
+        <span>{{ lang.isRtl() ? 'الأسنان' : 'Dental' }}</span>
       </button>
-
-      <a href="tel:01030252002" class="mobile-bottom-item">
-        <span style="font-size: 1.2rem;">📞</span>
-        <span>اتصل</span>
-      </a>
     </nav>
   `
 })

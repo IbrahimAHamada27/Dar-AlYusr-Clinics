@@ -16,7 +16,6 @@ import { DataService } from '../../../core/services/data.service';
           
           <!-- 24/7 Emergency Care Card -->
           <div style="background: rgba(239, 68, 68, 0.12); border: 1.5px solid rgba(239, 68, 68, 0.4); border-radius: 16px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
-            <div style="font-size: 2rem; line-height: 1; flex-shrink: 0;">🚨</div>
             <div>
               <div style="font-weight: 900; font-size: 1.05rem; color: #f87171; margin-bottom: 0.35rem;">
                 {{ lang.isRtl() ? 'طوارئ واستقبال على مدار 24 ساعة' : '24/7 Hospital Emergency Unit' }}
@@ -29,7 +28,6 @@ import { DataService } from '../../../core/services/data.service';
 
           <!-- Official Booking Policy Notice Card -->
           <div style="background: rgba(245, 158, 11, 0.12); border: 1.5px solid rgba(245, 158, 11, 0.4); border-radius: 16px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
-            <div style="font-size: 2rem; line-height: 1; flex-shrink: 0;">🔴</div>
             <div>
               <div style="font-weight: 900; font-size: 1.05rem; color: #fbbf24; margin-bottom: 0.35rem;">
                 {{ lang.isRtl() ? 'تنبيه هام بشأن نظام الحجز بالمركز' : 'Important Booking Policy Notice' }}
@@ -63,7 +61,7 @@ import { DataService } from '../../../core/services/data.service';
             </p>
 
             <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-weight: 800; font-size: 0.85rem; padding: 0.4rem 0.85rem; border-radius: 10px;">
-              <span>👍 35,000+ {{ lang.isRtl() ? 'متابع ويثق بدار اليسر' : 'Facebook Followers' }}</span>
+              <span>35,000+ {{ lang.isRtl() ? 'متابع ويثق بدار اليسر' : 'Facebook Followers' }}</span>
             </div>
           </div>
 
@@ -75,32 +73,32 @@ import { DataService } from '../../../core/services/data.service';
             <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.65rem;">
               <li>
                 <button (click)="nav('home')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>🏠</span> <span>{{ lang.ui().home }}</span>
+                  <span>{{ lang.ui().home }}</span>
                 </button>
               </li>
               <li>
                 <button (click)="nav('clinics')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>🏥</span> <span>{{ lang.ui().departments }}</span>
+                  <span>{{ lang.ui().departments }}</span>
                 </button>
               </li>
               <li>
                 <button (click)="nav('doctors')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>👨‍⚕️</span> <span>{{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}</span>
+                  <span>{{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}</span>
                 </button>
               </li>
               <li>
                 <button (click)="nav('schedules')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>🗓️</span> <span>{{ lang.ui().schedules }}</span>
+                  <span>{{ lang.ui().schedules }}</span>
                 </button>
               </li>
               <li>
                 <button (click)="nav('dental')" class="footer-link-btn" style="background: none; border: none; color: #f59e0b; font-size: 0.92rem; font-weight: 800; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>🦷</span> <span>اليسر كلينك - أسنان (خصم 20%)</span>
+                  <span>اليسر كلينك - أسنان (خصم 20%)</span>
                 </button>
               </li>
               <li>
                 <button (click)="nav('about')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
-                  <span>ℹ️</span> <span>{{ lang.ui().about }}</span>
+                  <span>{{ lang.ui().about }}</span>
                 </button>
               </li>
             </ul>
@@ -113,18 +111,18 @@ import { DataService } from '../../../core/services/data.service';
             </h4>
             <div style="display: flex; flex-direction: column; gap: 0.95rem; font-size: 0.9rem; color: #cbd5e1;">
               <div>
-                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">📞 للاستفسارات وطوارئ العيادات:</strong>
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">للاستفسارات وطوارئ العيادات:</strong>
                 <span dir="ltr" style="display: inline-block;">
                   <a href="tel:01030252002" style="color: #38bdf8; text-decoration: none; font-weight: 800;">01030252002</a> - 
                   <a href="tel:01030252005" style="color: #38bdf8; text-decoration: none; font-weight: 800;">01030252005</a>
                 </span>
               </div>
               <div>
-                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">💬 خدمة الواتساب:</strong>
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">خدمة الواتساب:</strong>
                 <a href="https://wa.me/201030252002" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 800;" dir="ltr">01030252002</a>
               </div>
               <div>
-                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">🦷 مركز اليسر للأسنان:</strong>
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">مركز اليسر للأسنان:</strong>
                 <a href="tel:01092893808" style="color: #f59e0b; text-decoration: none; font-weight: 900;" dir="ltr">01092893808</a>
               </div>
             </div>
@@ -136,7 +134,7 @@ import { DataService } from '../../../core/services/data.service';
               {{ lang.isRtl() ? 'الموقع وصفحة الفيسبوك' : 'Location & Social' }}
             </h4>
             <div style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.25rem;">
-              📍 مدينة العبور، الحي الأول، بعد صينية الخامس بـ 200 - 300 متر على الطريق الرئيسي (الطريق البطئ) أمام يوني مول
+              مدينة العبور، الحي الأول، بعد صينية الخامس بـ 200 - 300 متر على الطريق الرئيسي (الطريق البطئ) أمام يوني مول
             </div>
             
             <a

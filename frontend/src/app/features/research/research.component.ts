@@ -74,7 +74,7 @@ import { DataService } from '../../core/services/data.service';
               </h3>
 
               <div style="font-size: 0.9rem; color: var(--accent-teal); font-weight: 600; margin-bottom: 1rem;">
-                🏛️ {{ lang.getText(project.institution) }}
+                {{ lang.getText(project.institution) }}
               </div>
 
               <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">

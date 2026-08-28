@@ -15,7 +15,7 @@ import { DataService } from '../../core/services/data.service';
         <!-- Header -->
         <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
           <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
-            📍 {{ lang.isRtl() ? 'اتصل بنا والموقع الجغرافي' : 'Contact & Location' }}
+            {{ lang.isRtl() ? 'اتصل بنا والموقع الجغرافي' : 'Contact & Location' }}
           </span>
           <h1 style="font-weight: 900; color: #0f172a; font-size: 2.3rem; margin-bottom: 0.75rem;">
             {{ lang.isRtl() ? 'تواصل مع مستشفى وعيادات دار اليسر' : 'Contact Dar El Yosser Hospital' }}
@@ -32,7 +32,7 @@ import { DataService } from '../../core/services/data.service';
             
             <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 2rem;">
               <h2 style="font-weight: 900; color: #0f172a; font-size: 1.4rem; margin-bottom: 1.25rem;">
-                📞 أرقام الاتصال والواتساب
+                أرقام الاتصال والواتساب
               </h2>
 
               <div style="display: flex; flex-direction: column; gap: 1rem;">
@@ -48,7 +48,7 @@ import { DataService } from '../../core/services/data.service';
 
                 <div style="background: #fffbeb; padding: 1rem 1.25rem; border-radius: 12px; border-inline-start: 4px solid #f59e0b;">
                   <div style="font-weight: 800; font-size: 0.88rem; color: #b45309; margin-bottom: 0.2rem;">
-                    🦷 مركز الأسنان (اليسر كلينك):
+                    مركز الأسنان (اليسر كلينك):
                   </div>
                   <div style="font-size: 1.15rem; font-weight: 900; color: #78350f;">
                     <a href="tel:01092893808" style="color: #d97706; text-decoration: none;">01092893808</a>
@@ -57,7 +57,7 @@ import { DataService } from '../../core/services/data.service';
 
                 <div style="background: #f0fdf4; padding: 1rem 1.25rem; border-radius: 12px; border-inline-start: 4px solid #22c55e;">
                   <div style="font-weight: 800; font-size: 0.88rem; color: #15803d; margin-bottom: 0.2rem;">
-                    💬 المحادثة الفورية عبر الواتساب:
+                    المحادثة الفورية عبر الواتساب:
                   </div>
                   <div style="font-size: 1.1rem; font-weight: 900; color: #166534;">
                     <a href="https://wa.me/201030252002" target="_blank" style="color: #16a34a; text-decoration: none;">01030252002</a>
@@ -85,7 +85,7 @@ import { DataService } from '../../core/services/data.service';
           <div style="flex: 1 1 450px;">
             <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
               <h3 style="font-weight: 900; color: #0f172a; font-size: 1.25rem; margin-bottom: 1rem;">
-                🗺️ خريطة الموقع والوصول للمركز
+                خريطة الموقع والوصول للمركز
               </h3>
               
               <div style="flex: 1; min-height: 380px; border-radius: 14px; overflow: hidden; border: 1px solid #cbd5e1;">
