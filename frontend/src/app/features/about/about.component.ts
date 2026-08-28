@@ -8,115 +8,57 @@ import { DataService } from '../../core/services/data.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div>
-      <!-- Hero Section -->
-      <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div class="container" style="text-align: center; max-width: 800px;">
-          <span class="section-subtitle">{{ lang.isRtl() ? 'السيرة المهنية والسريرية' : 'Doctor Profile & Background' }}</span>
-          <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
-            {{ lang.isRtl() ? 'عن د. أمل محمد عبدالستار حماده' : 'About Dr. Aml Mohamed Abd El-Sattar Hamada' }}
+    <div class="section" style="padding-top: 3rem;">
+      <div class="container">
+        
+        <!-- Header -->
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
+            🏥 {{ lang.isRtl() ? 'نبذة عن المستشفى' : 'About Hospital' }}
+          </span>
+          <h1 style="font-weight: 900; color: #0f172a; font-size: 2.3rem; margin-bottom: 0.75rem;">
+            {{ lang.isRtl() ? 'عن مستشفى وعيادات دار اليسر التخصصية' : 'About Dar El Yosser Hospital' }}
           </h1>
-          <p style="font-size: 1.2rem; color: var(--accent-teal); font-weight: 600;">
-            {{ lang.isRtl() ? 'الرعاية السريرية والأكاديمية، البحث العلمي، ورعاية الوافدين وحقوق الإنسان' : 'Clinical & Academic Care, Medical Research, International Student Affairs & Human Rights.' }}
+          <p style="color: #64748b; font-size: 1.05rem; max-width: 750px; margin: 0 auto;">
+            رعاية صحية شاملة بمدينة العبور تضم أكثر من 20 عيادة تخصصية وطوارئ 24/7.
           </p>
         </div>
-      </section>
 
-      <!-- Main Biography Section -->
-      <section class="section">
-        <div class="container">
-          <div style="display: flex; gap: 3.5rem; flex-wrap: wrap; align-items: center;">
-            <div style="flex: 1 1 350px; max-width: 420px;">
-              <div
-                style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--border-light);"
-              >
-                <img
-                  [src]="profile.doctorSecondaryPortrait || profile.doctorPortrait"
-                  [alt]="lang.getText(profile.name)"
-                  style="width: 100%; height: auto; display: block;"
-                />
-              </div>
-            </div>
-
-            <div style="flex: 1 1 500px;">
-              <h2 style="margin-bottom: 1.25rem; color: var(--primary-dark);">
-                {{ lang.isRtl() ? 'السيرة الذاتية والمهنية' : 'Professional Biography' }}
+        <div style="background: #ffffff; border-radius: 24px; border: 1px solid #e2e8f0; padding: 3rem; box-shadow: 0 4px 25px rgba(0,0,0,0.06); margin-bottom: 3rem;">
+          <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;">
+            
+            <div style="flex: 1 1 450px;">
+              <h2 style="font-size: 1.8rem; font-weight: 900; color: #0f172a; margin-bottom: 1.25rem;">
+                رؤيتنا ورسالتنا لخدمة أهالي العبور والقاهرة
               </h2>
-              <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--text-muted);">
-                {{ lang.getText(profile.fullBio) }}
+              <p style="font-size: 1.05rem; color: #475569; line-height: 1.8; margin-bottom: 1.5rem;">
+                {{ lang.getText(hospital.aboutText) }}
               </p>
-              <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-muted);">
-                {{ lang.isRtl()
-                  ? 'تركز د. أمل محمد عبدالستار حماده في عملها الأكاديمي والسريري على التميز في أبحاث التشريح وعلم الأجنة ورعاية الطلاب الوافدين وإدارة وحدة حقوق الإنسان بكلية الطب جامعة طنطا، بجانب تقديم أفضل استشارات طب النساء والتوليد.'
-                  : 'Dr. Aml Mohamed Abd El-Sattar Hamada prioritizes academic research excellence in human anatomy and embryology, compassionate clinical care in obstetrics & gynecology, and leadership in international student affairs and human rights advocacy.' }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Career Timeline -->
-      <section class="section section-alt">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">{{ lang.isRtl() ? 'المسار الميداني' : 'Career Progression' }}</span>
-            <h2>{{ lang.isRtl() ? 'الخبرات والمسيرة المهنية' : 'Professional Experience' }}</h2>
-          </div>
-
-          <div style="max-width: 850px; margin: 0 auto;">
-            <div
-              *ngFor="let item of data.timeline()"
-              style="display: flex; gap: 1.5rem; margin-bottom: 2rem; position: relative;"
-            >
-              <!-- Timeline Year Pill -->
-              <div style="flex: 0 0 140px;" [style.text-align]="lang.isRtl() ? 'left' : 'right'">
-                <span class="badge badge-navy" style="font-size: 0.85rem;">
-                  {{ item.period }}
-                </span>
-              </div>
-
-              <!-- Timeline Content Card -->
-              <div
-                class="card"
-                style="flex: 1; background-color: #ffffff; border-left: 4px solid var(--accent-teal);"
-              >
-                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem; color: var(--primary-dark);">
-                  {{ lang.getText(item.role) }}
-                </h3>
-                <div style="font-size: 0.92rem; color: var(--accent-teal); font-weight: 600; margin-bottom: 0.5rem;">
-                  {{ lang.getText(item.institution) }}
-                </div>
-                <p *ngIf="item.description" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">
-                  {{ lang.getText(item.description) }}
-                </p>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem; font-weight: 700; color: #0f172a;">
+                <div>✔️ طوارئ واستقبال على مدار 24 ساعة بأخصائيين مقيمين.</div>
+                <div>✔️ مركز اليسر المتخصص لطب الأسنان والتخدير الكلي للأطفال والكبار.</div>
+                <div>✔️ أحدث وحدات رسم المخ ورسم العصب والسونار التخصصي.</div>
+                <div>✔️ أكثر من 20 عيادة تخصصية تحت إشراف نخبة من كبار الأطباء والاستشاريين.</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- Current Professional Interests -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">{{ lang.isRtl() ? 'الاهتمامات التخصصية' : 'Focus Areas' }}</span>
-            <h2>{{ lang.isRtl() ? 'الاهتمامات المهنية والحالية' : 'Current Professional Interests' }}</h2>
-          </div>
-
-          <div class="grid-3">
-            <div
-              *ngFor="let interest of interests"
-              class="card card-hover"
-              style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem;"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              <span style="font-weight: 700; font-size: 1.05rem; color: var(--primary-dark);">
-                {{ lang.getText(interest) }}
-              </span>
+            <div style="flex: 1 1 350px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: 20px; padding: 2.25rem; text-align: center;">
+              <div style="font-size: 3.5rem; margin-bottom: 1rem;">🏥✨</div>
+              <h3 style="color: #ffffff; font-weight: 900; font-size: 1.4rem; margin-bottom: 0.5rem;">
+                مستشفى دار اليسر
+              </h3>
+              <p style="color: #38bdf8; font-weight: 800; font-size: 1rem; margin-bottom: 1.5rem;">
+                العبور – الحي الأول – صينية الخامس
+              </p>
+              <button (click)="nav('schedules')" class="btn btn-gold btn-lg" style="background: #0d9488; border: none; color: #fff; font-weight: 900; width: 100%;">
+                🗓️ استعرض جدول الأطباء
+              </button>
             </div>
+
           </div>
         </div>
-      </section>
+
+      </div>
     </div>
   `
 })
@@ -126,16 +68,7 @@ export class AboutComponent {
 
   @Output() tabChange = new EventEmitter<string>();
 
-  profile = this.data.getProfile();
-
-  interests = [
-    { en: 'Human Anatomy & Embryology', ar: 'التشريح الآدمي وعلم الأجنة' },
-    { en: 'Obstetrics & Gynecology (OB-GYN)', ar: 'استشارات النساء والتوليد' },
-    { en: 'Polycystic Ovarian Syndrome (PCOS)', ar: 'متلازمة تكيس المبايض والرعاية الأيضية' },
-    { en: 'Histology & Cellular Signaling', ar: 'الهستولوجي وإشارات الخلايا ومضادات الأكسدة' },
-    { en: 'Human Rights in Healthcare', ar: 'حقوق الإنسان والرعاية الأخلاقية' },
-    { en: 'International Student Affairs', ar: 'رعاية الطلاب الوافدين بالجامعة' }
-  ];
+  hospital = this.data.getHospital();
 
   nav(tab: string): void {
     this.tabChange.emit(tab);

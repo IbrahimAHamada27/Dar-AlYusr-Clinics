@@ -3,194 +3,118 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../core/services/language.service';
 import { DataService } from '../../core/services/data.service';
-import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div>
-      <!-- Hero Header -->
-      <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div class="container" style="text-align: center; max-width: 800px;">
-          <span class="section-subtitle">{{ lang.isRtl() ? 'تواصل معنا' : 'Get in Touch' }}</span>
-          <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
-            {{ lang.isRtl() ? 'التواصل المباشر والاستفسارات' : 'Contact Dr. Aml Mohamed Abd El-Sattar Hamada' }}
+    <div class="section" style="padding-top: 3rem;">
+      <div class="container">
+        
+        <!-- Header -->
+        <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+          <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
+            📍 {{ lang.isRtl() ? 'اتصل بنا والموقع الجغرافي' : 'Contact & Location' }}
+          </span>
+          <h1 style="font-weight: 900; color: #0f172a; font-size: 2.3rem; margin-bottom: 0.75rem;">
+            {{ lang.isRtl() ? 'تواصل مع مستشفى وعيادات دار اليسر' : 'Contact Dar El Yosser Hospital' }}
           </h1>
-          <p style="font-size: 1.1rem; color: var(--text-muted);">
-            {{ lang.isRtl()
-              ? 'يسعدنا استقبال استفساراتكم الأكاديمية والسريرية وحجوزاتكم عبر النموذج المباشر أو أرقام التواصل.'
-              : 'Reach out for consultation inquiries, academic collaborations, or appointment bookings.' }}
+          <p style="color: #64748b; font-size: 1.05rem; max-width: 750px; margin: 0 auto;">
+            مدينة العبور، الحي الأول، بعد صينية الخامس بـ 200 - 300 متر من الطريق البطئ أمام يوني مول.
           </p>
         </div>
-      </section>
 
-      <!-- Main Contact Section -->
-      <section class="section">
-        <div class="container">
-          <div style="display: flex; gap: 3.5rem; flex-wrap: wrap;">
-            <!-- Left Info Column -->
-            <div style="flex: 1 1 400px;">
-              <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
-                {{ lang.isRtl() ? 'معلومات الاتصال المباشرة' : 'Direct Contact Info' }}
+        <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
+          
+          <!-- Left Direct Contact Details -->
+          <div style="flex: 1 1 420px;">
+            
+            <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 2rem;">
+              <h2 style="font-weight: 900; color: #0f172a; font-size: 1.4rem; margin-bottom: 1.25rem;">
+                📞 أرقام الاتصال والواتساب
               </h2>
 
-              <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem;">
-                <div style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background-color: var(--accent-teal-light); border-radius: var(--radius-md);">
-                  <div style="width: 44px; height: 44px; border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  </div>
-                  <div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
-                      {{ lang.isRtl() ? 'رقم التليفون / واتساب' : 'Phone / WhatsApp' }}
-                    </div>
-                    <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary-dark);">
-                      01003514770
-                    </div>
-                  </div>
-                </div>
-
-                <div style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background-color: var(--primary-light); border-radius: var(--radius-md);">
-                  <div style="width: 44px; height: 44px; border-radius: 50%; background-color: #ffffff; display: flex; align-items: center; justify-content: center;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary-navy)" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                  </div>
-                  <div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">
-                      {{ lang.isRtl() ? 'البريد الإلكتروني الرسمي' : 'Official Email' }}
-                    </div>
-                    <div style="font-size: 1.05rem; font-weight: 800; color: var(--primary-dark);">
-                      amal.hamada&#64;med.tanta.edu.eg
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Clinic Summaries -->
-              <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary-dark);">
-                {{ lang.ui().clinicLocations }}
-              </h3>
               <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div *ngFor="let clinic of data.getClinics()" style="background-color: var(--bg-alt); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-                  <div style="font-weight: 700; color: var(--primary-dark); font-size: 1rem; margin-bottom: 0.25rem;">
-                    {{ lang.getText(clinic.name) }} ({{ lang.getText(clinic.city) }})
+                <div style="background: #f8fafc; padding: 1rem 1.25rem; border-radius: 12px; border-inline-start: 4px solid #0d9488;">
+                  <div style="font-weight: 800; font-size: 0.88rem; color: #64748b; margin-bottom: 0.2rem;">
+                    الاستفسارات العامة وطوارئ العيادات:
                   </div>
-                  <div style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                    {{ lang.getText(clinic.address) }}
+                  <div style="font-size: 1.15rem; font-weight: 900; color: #0f172a;">
+                    <a href="tel:01030252002" style="color: #0d9488; text-decoration: none;">01030252002</a> - 
+                    <a href="tel:01030252005" style="color: #0d9488; text-decoration: none;">01030252005</a>
                   </div>
-                  <button (click)="nav('appointments')" class="btn btn-outline btn-sm" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">
-                    {{ lang.ui().bookAppointment }}
-                  </button>
+                </div>
+
+                <div style="background: #fffbeb; padding: 1rem 1.25rem; border-radius: 12px; border-inline-start: 4px solid #f59e0b;">
+                  <div style="font-weight: 800; font-size: 0.88rem; color: #b45309; margin-bottom: 0.2rem;">
+                    🦷 مركز الأسنان (اليسر كلينك):
+                  </div>
+                  <div style="font-size: 1.15rem; font-weight: 900; color: #78350f;">
+                    <a href="tel:01092893808" style="color: #d97706; text-decoration: none;">01092893808</a>
+                  </div>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 1rem 1.25rem; border-radius: 12px; border-inline-start: 4px solid #22c55e;">
+                  <div style="font-weight: 800; font-size: 0.88rem; color: #15803d; margin-bottom: 0.2rem;">
+                    💬 المحادثة الفورية عبر الواتساب:
+                  </div>
+                  <div style="font-size: 1.1rem; font-weight: 900; color: #166534;">
+                    <a href="https://wa.me/201030252002" target="_blank" style="color: #16a34a; text-decoration: none;">01030252002</a>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Right Contact Form -->
-            <div style="flex: 1 1 450px;">
-              <div class="card" style="background-color: #ffffff; padding: 2.25rem;">
-                <h2 style="font-size: 1.6rem; margin-bottom: 1.5rem; color: var(--primary-dark);">
-                  {{ lang.isRtl() ? 'إرسال رسالة مباشرة' : 'Send a Direct Message' }}
-                </h2>
+            <!-- Facebook Page Card -->
+            <div style="background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%); color: #ffffff; border-radius: 20px; padding: 2rem;">
+              <h3 style="color: #ffffff; font-weight: 900; font-size: 1.25rem; margin-bottom: 0.5rem;">
+                📘 الصفحة الرسمية على الفيسبوك
+              </h3>
+              <p style="color: #93c5fd; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                تابع تحديثات جدول مواعيد الأطباء، والعروض والخصومات اليومية على صفحتنا الرسمية (35,000+ متابع).
+              </p>
+              <a href="https://web.facebook.com/darel.Yosser2014" target="_blank" rel="noopener noreferrer" class="btn btn-gold" style="background: #3b82f6; border: none; color: #fff; font-weight: 800; width: 100%; justify-content: center;">
+                🌐 زيارة صفحة فيسبوك
+              </a>
+            </div>
 
-                <div *ngIf="submitted" style="text-align: center; padding: 2rem 1rem;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2" style="margin-bottom: 1rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  <h3 style="color: var(--primary-dark); margin-bottom: 0.5rem;">
-                    {{ lang.isRtl() ? 'تم إرسال رسالتك بنجاح!' : 'Message Sent Successfully!' }}
-                  </h3>
-                  <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-                    {{ lang.isRtl() ? 'سيقوم فريق العيادة بالرد على استفسارك في أقرب وقت.' : 'Our clinic reception will review your message and reply promptly.' }}
-                  </p>
-                  <button (click)="submitted = false" class="btn btn-outline btn-sm">
-                    {{ lang.isRtl() ? 'إرسال رسالة أخرى' : 'Send Another Message' }}
-                  </button>
-                </div>
+          </div>
 
-                <form *ngIf="!submitted" (ngSubmit)="handleSubmit()" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                      {{ lang.isRtl() ? 'الاسم الكامل *' : 'Full Name *' }}
-                    </label>
-                    <input type="text" required [(ngModel)]="fullName" name="fullName" class="input-field" [placeholder]="lang.isRtl() ? 'أدخل اسمك' : 'Your full name'" />
-                  </div>
-
-                  <div class="grid-2" style="gap: 1rem;">
-                    <div>
-                      <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                        {{ lang.isRtl() ? 'البريد الإلكتروني *' : 'Email *' }}
-                      </label>
-                      <input type="email" required [(ngModel)]="email" name="email" class="input-field" placeholder="email@example.com" />
-                    </div>
-
-                    <div>
-                      <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                        {{ lang.isRtl() ? 'رقم الهاتف' : 'Phone Number' }}
-                      </label>
-                      <input type="tel" [(ngModel)]="phone" name="phone" class="input-field" placeholder="01000000000" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                      {{ lang.isRtl() ? 'الموضوع' : 'Subject' }}
-                    </label>
-                    <input type="text" [(ngModel)]="subject" name="subject" class="input-field" [placeholder]="lang.isRtl() ? 'موضوع الرسالة...' : 'Inquiry subject'" />
-                  </div>
-
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.35rem;">
-                      {{ lang.isRtl() ? 'الرسالة *' : 'Message *' }}
-                    </label>
-                    <textarea rows="4" required [(ngModel)]="message" name="message" class="input-field" [placeholder]="lang.isRtl() ? 'اكتب نص استفسارك هنا...' : 'Write your message details...'"></textarea>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary" style="justify-content: center;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    <span>{{ lang.ui().sendMessage }}</span>
-                  </button>
-                </form>
+          <!-- Right Map Frame -->
+          <div style="flex: 1 1 450px;">
+            <div style="background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
+              <h3 style="font-weight: 900; color: #0f172a; font-size: 1.25rem; margin-bottom: 1rem;">
+                🗺️ خريطة الموقع والوصول للمركز
+              </h3>
+              
+              <div style="flex: 1; min-height: 380px; border-radius: 14px; overflow: hidden; border: 1px solid #cbd5e1;">
+                <iframe
+                  src="https://maps.google.com/maps?q=El+Obour+City+1st+District+Cairo+Egypt&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style="border:0; min-height: 380px;"
+                  allowfullscreen=""
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
           </div>
+
         </div>
-      </section>
+
+      </div>
     </div>
   `
 })
 export class ContactComponent {
   lang = inject(LanguageService);
   data = inject(DataService);
-  api = inject(ApiService);
 
   @Output() tabChange = new EventEmitter<string>();
-
-  fullName = '';
-  email = '';
-  phone = '';
-  subject = '';
-  message = '';
-  submitted = false;
 
   nav(tab: string): void {
     this.tabChange.emit(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  handleSubmit(): void {
-    if (!this.fullName || !this.email || !this.message) return;
-
-    this.api.sendMessage({
-      fullName: this.fullName,
-      email: this.email,
-      phone: this.phone,
-      subject: this.subject,
-      message: this.message
-    }).subscribe({
-      next: () => {
-        this.submitted = true;
-      },
-      error: () => {
-        this.submitted = true;
-      }
-    });
   }
 }

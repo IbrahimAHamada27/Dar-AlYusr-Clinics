@@ -8,143 +8,162 @@ import { DataService } from '../../../core/services/data.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <footer style="background-color: var(--primary-dark); color: #ffffff; padding: 4.5rem 0 2rem 0; border-top: 4px solid var(--gold-accent);">
+    <footer style="background-color: #0f172a; color: #ffffff; padding: 4rem 0 2rem 0; border-top: 4px solid #0d9488;">
       <div class="container">
-        <!-- Emergency Medical Alert Disclaimer Box -->
-        <div
-          style="background-color: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 3.5rem; display: flex; align-items: flex-start; gap: 1rem;"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-          <div>
-            <div style="font-weight: 800; font-size: 1.05rem; color: #F87171; margin-bottom: 0.25rem;">
-              {{ lang.isRtl() ? 'إشعار الحالات الطبية الطارئة' : 'Emergency Medical Disclaimer' }}
-            </div>
-            <div style="font-size: 0.9rem; color: #E2E8F0; line-height: 1.6;">
-              {{ lang.getText(settings.emergencyNotice) }}
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Main Grid -->
-        <div class="grid-4" style="margin-bottom: 3.5rem; gap: 2.5rem;">
-          <!-- Column 1: Brand & Bio -->
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
-              <div
-                style="width: 42px; height: 42px; border-radius: 10px; background-color: var(--accent-teal); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
-              </div>
-              <div style="font-weight: 800; font-size: 1.25rem; color: #ffffff;">
-                {{ lang.getText(profile.name) }}
-              </div>
-            </div>
-            <p style="color: var(--accent-teal); font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem;">
-              {{ lang.getText(profile.title) }}
-            </p>
-            <p style="font-size: 0.88rem; color: #94A3B8; line-height: 1.6;">
-              {{ lang.getText(profile.brandTagline) }}
-            </p>
-          </div>
-
-          <!-- Column 2: Quick Links -->
-          <div>
-            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem; position: relative;">
-              {{ lang.ui().quickLinks }}
-            </h4>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem;">
-              <li *ngFor="let link of quickLinks">
-                <button (click)="nav(link.id)" style="background: none; border: none; color: #94A3B8; font-size: 0.9rem; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 0.4rem;">
-                  <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-                  <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-                  <span>{{ link.label }}</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Column 3: Academic & Research Hub -->
-          <div>
-            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem;">
-              {{ lang.ui().academicLinks }}
-            </h4>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
-              <li>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
-                  <span>LinkedIn Profile</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                  <span>Google Scholar</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://researchgate.net" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
-                  <span>ResearchGate</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://orcid.org" target="_blank" rel="noopener noreferrer" style="color: #94A3B8; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
-                  <span>ORCID Identifier</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Column 4: Contact & Clinics summary -->
-          <div>
-            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem;">
-              {{ lang.isRtl() ? 'التواصل المباشر' : 'Direct Contact' }}
-            </h4>
-            <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem; color: #94A3B8;">
-              <div style="display: flex; align-items: center; gap: 0.65rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span style="color: #ffffff; font-weight: 600;">{{ settings.contactPhone }}</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.65rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <span>{{ settings.contactEmail }}</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.65rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>{{ lang.isRtl() ? 'طنطا، محافظة الغربية، مصر' : 'Tanta, Gharbia, Egypt' }}</span>
-              </div>
-
-              <div style="margin-top: 1rem;">
-                <button
-                  (click)="nav('appointments')"
-                  className="btn btn-primary btn-sm"
-                  style="width: 100%; justify-content: center;"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span>{{ lang.ui().bookAppointment }}</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Bottom Bar & General Disclaimer -->
-        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1.75rem; font-size: 0.85rem; color: #64748B;">
-          <div style="margin-bottom: 1.25rem; line-height: 1.6; text-align: center; max-width: 900px; margin: 0 auto 1.25rem auto;">
-            <strong style="color: #94A3B8;">{{ lang.ui().medicalDisclaimer }}:</strong> {{ lang.getText(settings.disclaimerNotice) }}
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        
+        <!-- Emergency & Booking Policy Notice Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem;">
+          
+          <!-- 24/7 Emergency Care Card -->
+          <div style="background: rgba(239, 68, 68, 0.12); border: 1.5px solid rgba(239, 68, 68, 0.4); border-radius: 16px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="font-size: 2rem; line-height: 1; flex-shrink: 0;">🚨</div>
             <div>
-              © 2026 {{ lang.getText(profile.name) }}. {{ lang.ui().allRightsReserved }}
-            </div>
-            <div style="display: flex; gap: 1.25rem;">
-              <span style="cursor: pointer; color: #94A3B8;">{{ lang.ui().privacyPolicy }}</span>
-              <span>•</span>
-              <span style="cursor: pointer; color: #94A3B8;">{{ lang.ui().termsOfUse }}</span>
+              <div style="font-weight: 900; font-size: 1.05rem; color: #f87171; margin-bottom: 0.35rem;">
+                {{ lang.isRtl() ? 'طوارئ واستقبال على مدار 24 ساعة' : '24/7 Hospital Emergency Unit' }}
+              </div>
+              <div style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;">
+                {{ lang.getText(hospital.emergencyCare) }}
+              </div>
             </div>
           </div>
+
+          <!-- Official Booking Policy Notice Card -->
+          <div style="background: rgba(245, 158, 11, 0.12); border: 1.5px solid rgba(245, 158, 11, 0.4); border-radius: 16px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="font-size: 2rem; line-height: 1; flex-shrink: 0;">🔴</div>
+            <div>
+              <div style="font-weight: 900; font-size: 1.05rem; color: #fbbf24; margin-bottom: 0.35rem;">
+                {{ lang.isRtl() ? 'تنبيه هام بشأن نظام الحجز بالمركز' : 'Important Booking Policy Notice' }}
+              </div>
+              <div style="font-size: 0.88rem; color: #e2e8f0; line-height: 1.6;">
+                {{ lang.getText(hospital.bookingPolicyNotice) }}
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        <!-- Main Footer 4-Column Grid -->
+        <div class="grid-4" style="margin-bottom: 3.5rem; gap: 2.5rem;">
+          
+          <!-- Column 1: Hospital Brand & Mission -->
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
+              <img
+                src="/yosser-logo-icon.jpg"
+                alt="شعار مستشفى دار اليسر"
+                style="width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 2px solid #0d9488;"
+              />
+              <div style="font-weight: 900; font-size: 1.15rem; color: #ffffff; line-height: 1.3;">
+                {{ lang.getText(hospital.name) }}
+              </div>
+            </div>
+
+            <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.7; margin-bottom: 1.25rem;">
+              صرح طبي تخصصي متكامل بمدينة العبور يوفر رعاية طبية شاملة بأعلى مستويات الأمان والاحترافية عبر نخبة من الاستشاريين والأخصائيين وطوارئ 24/7.
+            </p>
+
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; font-weight: 800; font-size: 0.85rem; padding: 0.4rem 0.85rem; border-radius: 10px;">
+              <span>👍 35,000+ {{ lang.isRtl() ? 'متابع ويثق بدار اليسر' : 'Facebook Followers' }}</span>
+            </div>
+          </div>
+
+          <!-- Column 2: Quick Navigation Links -->
+          <div>
+            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 900; border-bottom: 2px solid #0d9488; padding-bottom: 0.4rem; display: inline-block;">
+              {{ lang.isRtl() ? 'روابط سريعة' : 'Quick Links' }}
+            </h4>
+            <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.65rem;">
+              <li>
+                <button (click)="nav('home')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>🏠</span> <span>{{ lang.ui().home }}</span>
+                </button>
+              </li>
+              <li>
+                <button (click)="nav('clinics')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>🏥</span> <span>{{ lang.ui().departments }}</span>
+                </button>
+              </li>
+              <li>
+                <button (click)="nav('doctors')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>👨‍⚕️</span> <span>{{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}</span>
+                </button>
+              </li>
+              <li>
+                <button (click)="nav('schedules')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>🗓️</span> <span>{{ lang.ui().schedules }}</span>
+                </button>
+              </li>
+              <li>
+                <button (click)="nav('dental')" class="footer-link-btn" style="background: none; border: none; color: #f59e0b; font-size: 0.92rem; font-weight: 800; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>🦷</span> <span>اليسر كلينك - أسنان (خصم 20%)</span>
+                </button>
+              </li>
+              <li>
+                <button (click)="nav('about')" class="footer-link-btn" style="background: none; border: none; color: #cbd5e1; font-size: 0.92rem; font-weight: 700; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>ℹ️</span> <span>{{ lang.ui().about }}</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Direct Emergency & Special Clinics -->
+          <div>
+            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 900; border-bottom: 2px solid #0d9488; padding-bottom: 0.4rem; display: inline-block;">
+              {{ lang.isRtl() ? 'أرقام الاستقبال والحجز' : 'Contact Numbers' }}
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: 0.95rem; font-size: 0.9rem; color: #cbd5e1;">
+              <div>
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">📞 للاستفسارات وطوارئ العيادات:</strong>
+                <span dir="ltr" style="display: inline-block;">
+                  <a href="tel:01030252002" style="color: #38bdf8; text-decoration: none; font-weight: 800;">01030252002</a> - 
+                  <a href="tel:01030252005" style="color: #38bdf8; text-decoration: none; font-weight: 800;">01030252005</a>
+                </span>
+              </div>
+              <div>
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">💬 خدمة الواتساب:</strong>
+                <a href="https://wa.me/201030252002" target="_blank" style="color: #4ade80; text-decoration: none; font-weight: 800;" dir="ltr">01030252002</a>
+              </div>
+              <div>
+                <strong style="color: #ffffff; display: block; margin-bottom: 0.25rem; font-size: 0.92rem;">🦷 مركز اليسر للأسنان:</strong>
+                <a href="tel:01092893808" style="color: #f59e0b; text-decoration: none; font-weight: 900;" dir="ltr">01092893808</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 4: Address & Facebook Button -->
+          <div>
+            <h4 style="color: #ffffff; margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 900; border-bottom: 2px solid #0d9488; padding-bottom: 0.4rem; display: inline-block;">
+              {{ lang.isRtl() ? 'الموقع وصفحة الفيسبوك' : 'Location & Social' }}
+            </h4>
+            <div style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.25rem;">
+              📍 مدينة العبور، الحي الأول، بعد صينية الخامس بـ 200 - 300 متر على الطريق الرئيسي (الطريق البطئ) أمام يوني مول
+            </div>
+            
+            <a
+              [href]="hospital.facebookUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="background: #1877f2; color: #ffffff; border: none; border-radius: 12px; font-weight: 800; font-size: 0.92rem; padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; text-decoration: none; width: 100%; box-shadow: 0 4px 14px rgba(24, 119, 242, 0.4); transition: transform 0.2s;"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span>{{ lang.isRtl() ? 'تابع صفحتنا على فيسبوك' : 'Follow Us on Facebook' }}</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Footer Bottom Legal & Copyright Bar -->
+        <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1.75rem; font-size: 0.88rem; color: #64748b; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            © 2026 مستشفى وعيادات دار اليسر التخصصية. {{ lang.ui().allRightsReserved }}
+          </div>
+          <div style="display: flex; gap: 1.25rem; font-weight: 700; color: #94a3b8;">
+            <span (click)="nav('about')" style="cursor: pointer;">سياسة الخصوصية</span>
+            <span>•</span>
+            <span (click)="nav('appointments')" style="cursor: pointer;">الشروط والأحكام</span>
+          </div>
+        </div>
+
       </div>
     </footer>
   `
@@ -155,22 +174,7 @@ export class FooterComponent {
 
   @Output() tabChange = new EventEmitter<string>();
 
-  profile = this.data.getProfile();
-  settings = this.data.settings();
-
-  get quickLinks() {
-    const ui = this.lang.ui();
-    return [
-      { id: 'home', label: ui.home },
-      { id: 'about', label: ui.about },
-      { id: 'education', label: ui.education },
-      { id: 'certificates', label: ui.certificates },
-      { id: 'publications', label: ui.publications },
-      { id: 'articles', label: ui.articles },
-      { id: 'clinics', label: ui.clinics },
-      { id: 'contact', label: ui.contact }
-    ];
-  }
+  hospital = this.data.getHospital();
 
   nav(tab: string): void {
     this.tabChange.emit(tab);

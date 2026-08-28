@@ -10,377 +10,381 @@ import { DataService } from '../../core/services/data.service';
   template: `
     <div>
       <!-- 1. HERO SECTION -->
-      <section style="background-color: var(--primary-light); padding: 4rem 0 3rem 0; position: relative; overflow: hidden;">
-        <div class="container">
+      <section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0d9488 100%); color: #ffffff; padding: 4rem 0 3.5rem 0; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -50px; left: -50px; width: 300px; height: 300px; background: rgba(56, 189, 248, 0.15); filter: blur(80px); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -50px; right: -50px; width: 300px; height: 300px; background: rgba(245, 158, 11, 0.15); filter: blur(80px); border-radius: 50%;"></div>
+
+        <div class="container" style="position: relative; z-index: 2;">
           <div style="display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap;">
+            
             <!-- Hero Left Content -->
-            <div style="flex: 1 1 500px; max-width: 640px;">
-              <!-- Academic Badge -->
-              <div class="badge badge-gold" style="margin-bottom: 0.85rem; font-size: 0.88rem; padding: 0.4rem 0.85rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/></svg>
-                <span>{{ lang.getText(profile.title) }}</span>
+            <div style="flex: 1 1 520px; max-width: 680px;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+                <img
+                  src="/yosser-logo-full.jpg"
+                  alt="لوجو عيادات اليسر"
+                  style="height: 54px; border-radius: 10px; background: #ffffff; padding: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.25); border: 2px solid #38bdf8;"
+                />
+                <img
+                  src="/yosser-logo-icon.jpg"
+                  alt="شعار دار اليسر الدائري"
+                  class="hide-on-mobile"
+                  style="height: 54px; width: 54px; border-radius: 10px; object-fit: cover; background: #ffffff; padding: 2px; box-shadow: 0 4px 15px rgba(0,0,0,0.25); border: 2px solid #f59e0b;"
+                />
+                <span class="badge" style="background: rgba(13, 148, 136, 0.25); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); font-size: 0.82rem; padding: 0.4rem 0.85rem; font-weight: 800;">
+                  🏥 {{ lang.isRtl() ? 'صرح طبي تخصصي متكامل بالعبور' : 'Comprehensive Medical Center' }}
+                </span>
               </div>
 
-              <!-- Main Doctor Name -->
-              <h1 style="color: var(--primary-dark); margin-bottom: 0.85rem; letter-spacing: -0.02em; line-height: 1.3;">
-                {{ lang.getText(profile.name) }}
+              <h1 style="color: #ffffff; margin-bottom: 1rem; font-size: 2.4rem; font-weight: 900; line-height: 1.25;">
+                {{ lang.getText(hospital.name) }}
               </h1>
 
-              <!-- Mobile Portrait Image (Ensures doctor photo is ALWAYS seen immediately on mobile!) -->
-              <div class="mobile-portrait-box" style="margin-bottom: 1.25rem;">
-                <div style="position: relative; max-width: 280px; margin: 0 auto;">
-                  <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 2.5px solid var(--gold-accent); background-color: #ffffff; padding: 3px;">
-                    <img [src]="profile.doctorPortrait" [alt]="lang.getText(profile.name)" style="width: 100%; height: auto; display: block; border-radius: calc(var(--radius-lg) - 3px);" />
-                  </div>
-                  <div style="background-color: var(--primary-dark); color: var(--gold-accent); font-size: 0.8rem; font-weight: 800; text-align: center; padding: 0.35rem 0.75rem; border-radius: var(--radius-full); margin-top: -14px; position: relative; z-index: 2; width: 85%; margin-left: auto; margin-right: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.18);">
-                    {{ profile.experienceYears }}+ {{ lang.isRtl() ? 'سنوات خبرة جراحية وأكاديمية' : 'Years Experience' }}
-                  </div>
-                </div>
-              </div>
-
-              <!-- Structured Specialty Cards (Replacing wall of green text) -->
-              <div class="grid-2" style="gap: 0.85rem; margin-bottom: 1.25rem;">
-                <!-- Card 1: Patients Focus -->
-                <div style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(13, 148, 136, 0.02) 100%); border: 1.5px solid rgba(13, 148, 136, 0.25); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
-                  <div style="font-weight: 800; font-size: 0.92rem; color: var(--accent-teal); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                    <span>{{ lang.isRtl() ? 'الخدمات الطبية والنساء والتوليد' : 'OB-GYN Clinical Care' }}</span>
-                  </div>
-                  <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; margin: 0;">
-                    {{ lang.isRtl() ? 'استشاري النساء والتوليد ومتابعة الحمل وتكيس المبايض والعيادات التخصصية.' : 'Comprehensive antenatal, gynecological & obstetric medical care.' }}
-                  </p>
-                </div>
-
-                <!-- Card 2: Doctors & Academics Focus -->
-                <div style="background: linear-gradient(135deg, rgba(11, 19, 43, 0.06) 0%, rgba(11, 19, 43, 0.02) 100%); border: 1.5px solid rgba(11, 19, 43, 0.2); border-radius: var(--radius-md); padding: 0.85rem 1rem;">
-                  <div style="font-weight: 800; font-size: 0.92rem; color: var(--primary-navy); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                    <span>{{ lang.isRtl() ? 'أستاذ مساعد طب طنطا والبحث العلمي' : 'Academic & Research Director' }}</span>
-                  </div>
-                  <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; margin: 0;">
-                    {{ lang.isRtl() ? 'أستاذ مساعد التشريح الآدمي وعلم الأجنة ومسؤولة وحدتي حقوق الإنسان والوافدين.' : 'Associate Professor of Anatomy & Embryology and Institutional Director.' }}
-                  </p>
-                </div>
-              </div>
-
-              <!-- Brand Tagline Quote -->
-              <p style="font-size: 0.98rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; font-style: italic; border-right: 3px solid var(--gold-accent); padding-right: 0.85rem;" [style.border-right]="lang.isRtl() ? '3px solid var(--gold-accent)' : 'none'" [style.padding-right]="lang.isRtl() ? '0.85rem' : '0'" [style.border-left]="!lang.isRtl() ? '3px solid var(--gold-accent)' : 'none'" [style.padding-left]="!lang.isRtl() ? '0.85rem' : '0'">
-                "{{ lang.getText(profile.brandTagline) }}"
+              <p style="font-size: 1.15rem; color: #38bdf8; font-weight: 800; margin-bottom: 1rem;">
+                ✨ {{ lang.getText(hospital.slogan) }} ✨
               </p>
 
-              <!-- CTA Buttons -->
-              <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                <button (click)="nav('appointments')" class="btn btn-primary btn-lg" style="box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3); font-weight: 800;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span>{{ lang.ui().bookAppointment }}</span>
+              <p style="font-size: 0.98rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.75rem;">
+                {{ lang.getText(hospital.aboutText) }}
+              </p>
+
+              <!-- Quick Highlights Badges -->
+              <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem;">
+                <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.85rem; font-weight: 800; border: 1px solid rgba(239, 68, 68, 0.4);">
+                  🚨 {{ lang.isRtl() ? 'طوارئ 24/7 (نساء - عظام - باطنة - جراحة - أطفال)' : '24/7 Emergency Care' }}
+                </span>
+                <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.85rem; font-weight: 800; border: 1px solid rgba(245, 158, 11, 0.4);">
+                  🦷 {{ lang.isRtl() ? 'اليسر كلينك أسنان (خصم 20%)' : 'Dental 20% OFF' }}
+                </span>
+                <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3);">
+                  🧠 {{ lang.isRtl() ? 'رسم مخ ورسم عصب' : 'EEG & EMG Unit' }}
+                </span>
+              </div>
+
+              <!-- Hero Call-to-Action Buttons -->
+              <div style="display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap;">
+                <button (click)="nav('schedules')" class="btn btn-primary btn-lg" style="background: #0d9488; border: none; font-weight: 900; box-shadow: 0 4px 16px rgba(13, 148, 136, 0.4); color: #ffffff;">
+                  🗓️ <span>{{ lang.isRtl() ? 'عرض جدول المواعيد اليومي' : 'View Doctor Schedules' }}</span>
                 </button>
 
-                <a href="tel:01003514770" class="btn btn-gold btn-lg" style="font-weight: 800; background: #25D366; border-color: #25D366; color: #fff;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  <span>{{ lang.isRtl() ? 'اتصال مباشر' : 'Call Direct' }}</span>
+                <button (click)="nav('dental')" class="btn btn-gold btn-lg" style="background: #f59e0b; border: none; color: #000000; font-weight: 900; box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);">
+                  🦷 <span>{{ lang.isRtl() ? 'مركز الأسنان والتخدير الكلي' : 'Dental & Anesthesia Unit' }}</span>
+                </button>
+
+                <a href="tel:01030252002" class="btn btn-lg" style="background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1.5px solid rgba(255, 255, 255, 0.35); font-weight: 800; backdrop-filter: blur(8px);">
+                  📞 <span dir="ltr">01030252002</span>
                 </a>
-
-                <button (click)="nav('about')" class="btn btn-outline btn-lg">
-                  <span>{{ lang.isRtl() ? 'السيرة الذاتية' : 'CV Profile' }}</span>
-                </button>
               </div>
             </div>
 
-            <!-- Desktop Portrait Image Container -->
-            <div class="desktop-portrait-box" style="flex: 1 1 380px; display: flex; justify-content: center;">
-              <div style="position: relative; max-width: 420px; width: 100%;">
-                <div
-                  style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 3px solid var(--gold-accent); background-color: #ffffff; padding: 4px;"
-                >
-                  <img
-                    [src]="profile.doctorPortrait"
-                    [alt]="lang.getText(profile.name)"
-                    style="width: 100%; height: auto; display: block; object-fit: cover; border-radius: calc(var(--radius-lg) - 4px);"
-                  />
+            <!-- Hero Right: Authentic Hospital Building Exterior Image Card -->
+            <div style="flex: 1 1 380px; max-width: 440px;">
+              <div style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4); border: 3px solid rgba(255,255,255,0.2);">
+                <img
+                  src="/hospital-exterior.jpg"
+                  alt="مبنى مستشفى دار اليسر التخصصية بالعبور"
+                  style="width: 100%; height: 380px; object-fit: cover; display: block;"
+                />
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0) 100%); padding: 1.5rem 1.25rem 1rem 1.25rem; color: #fff;">
+                  <div style="font-weight: 900; font-size: 1.15rem; color: #ffffff; margin-bottom: 0.25rem;">
+                    مبنى مستشفى وعيادات دار اليسر
+                  </div>
+                  <div style="font-size: 0.85rem; color: #38bdf8; font-weight: 700;">
+                    📍 العبور – الحي الأول – صينية الخامس (على الطريق البطئ)
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                <!-- Floating Badge on Image -->
-                <div
-                  style="position: absolute; bottom: -20px; background-color: #ffffff; padding: 1rem 1.25rem; border-radius: var(--radius-md); box-shadow: var(--shadow-md); border: 1.5px solid var(--border-light); display: flex; align-items: center; gap: 0.85rem;"
-                  [style.right]="lang.isRtl() ? '-20px' : 'auto'"
-                  [style.left]="lang.isRtl() ? 'auto' : '-20px'"
-                >
-                  <div
-                    style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--gold-light); border: 1px solid rgba(217, 119, 6, 0.3); display: flex; align-items: center; justify-content: center;"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                  </div>
-                  <div>
-                    <div style="font-weight: 800; font-size: 1rem; color: var(--primary-dark);">
-                      {{ profile.experienceYears }}+ {{ lang.isRtl() ? 'سنوات خبرة' : 'Years Experience' }}
-                    </div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
-                      {{ lang.isRtl() ? 'طبية وأكاديمية متميزة' : 'Medical & Academic' }}
-                    </div>
-                  </div>
-                </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK ACTIONS BAR (FORMAL MEDICAL DESIGN SYSTEM) -->
+      <section style="padding: 2rem 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
+            
+            <!-- Card 1: Doctors -->
+            <button (click)="nav('doctors')" class="card card-hover" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.35rem 1rem; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);">
+              <div style="width: 50px; height: 50px; border-radius: 14px; background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+                👨‍⚕️
+              </div>
+              <span style="font-weight: 900; font-size: 1rem; color: #0f172a; margin-top: 0.2rem;">{{ lang.isRtl() ? 'دليل الأطباء والاستشاريين' : 'Doctors Directory' }}</span>
+              <span style="font-size: 0.8rem; color: #64748b; font-weight: 600;">{{ lang.isRtl() ? 'تصفح قائمة الأطباء' : 'View Specialists' }}</span>
+            </button>
+
+            <!-- Card 2: Schedules -->
+            <button (click)="nav('schedules')" class="card card-hover" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.35rem 1rem; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);">
+              <div style="width: 50px; height: 50px; border-radius: 14px; background: #f0fdfa; color: #0d9488; border: 1px solid #99f6e4; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+                🗓️
+              </div>
+              <span style="font-weight: 900; font-size: 1rem; color: #0f172a; margin-top: 0.2rem;">{{ lang.isRtl() ? 'جدول مواعيد العيادات' : 'Doctor Schedules' }}</span>
+              <span style="font-size: 0.8rem; color: #64748b; font-weight: 600;">{{ lang.isRtl() ? 'مواعيد الأسبوع والشيفتات' : 'Weekly Roster' }}</span>
+            </button>
+
+            <!-- Card 3: Dental Clinic -->
+            <button (click)="nav('dental')" class="card card-hover" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.35rem 1rem; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);">
+              <div style="width: 50px; height: 50px; border-radius: 14px; background: #fffbeb; color: #b45309; border: 1px solid #fde68a; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+                🦷
+              </div>
+              <span style="font-weight: 900; font-size: 1rem; color: #0f172a; margin-top: 0.2rem;">{{ lang.isRtl() ? 'اليسر كلينك - أسنان (-20%)' : 'Dental Clinic' }}</span>
+              <span style="font-size: 0.8rem; color: #64748b; font-weight: 600;">{{ lang.isRtl() ? 'تخدير كلي وتجميل الأسنان' : 'Dental & Anesthesia' }}</span>
+            </button>
+
+            <!-- Card 4: 24/7 Emergency -->
+            <a href="tel:01030252002" class="card card-hover" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.35rem 1rem; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-decoration: none; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);">
+              <div style="width: 50px; height: 50px; border-radius: 14px; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;">
+                🚨
+              </div>
+              <span style="font-weight: 900; font-size: 1rem; color: #0f172a; margin-top: 0.2rem;">{{ lang.isRtl() ? 'طوارئ واستقبال 24/7' : '24/7 Emergency' }}</span>
+              <span style="font-size: 0.8rem; color: #dc2626; font-weight: 700;">{{ lang.isRtl() ? 'اتصال مباشر: 01030252002' : 'Call 01030252002' }}</span>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. HOSPITAL AUTHENTIC BANNER SECTION -->
+      <section style="padding: 2.5rem 0; background: #ffffff;">
+        <div class="container">
+          <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+            <img
+              src="/hospital-banner.jpg"
+              alt="بانر مستشفى دار اليسر - كل التخصصات لصحة كل أسرة"
+              style="width: 100%; height: auto; display: block;"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. QUICK STATS COUNTER -->
+      <section style="background-color: #0f172a; color: #ffffff; padding: 2.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <div class="container">
+          <div class="grid-4" style="text-align: center; gap: 1.5rem;">
+            <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-size: 2.2rem; font-weight: 900; color: #38bdf8; margin-bottom: 0.25rem;">
+                35,000+
+              </div>
+              <div style="font-size: 0.88rem; color: #94a3b8; font-weight: 700;">
+                {{ lang.isRtl() ? 'متابع ويثق بدار اليسر' : 'Trusting Followers' }}
+              </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-size: 2.2rem; font-weight: 900; color: #f59e0b; margin-bottom: 0.25rem;">
+                20+
+              </div>
+              <div style="font-size: 0.88rem; color: #94a3b8; font-weight: 700;">
+                {{ lang.isRtl() ? 'تخصص عيادات وتأهيل' : 'Medical Specialties' }}
+              </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-size: 2.2rem; font-weight: 900; color: #ef4444; margin-bottom: 0.25rem;">
+                24/7
+              </div>
+              <div style="font-size: 0.88rem; color: #94a3b8; font-weight: 700;">
+                {{ lang.isRtl() ? 'أخصائيون طوارئ مقيمون' : '24/7 Emergency Care' }}
+              </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-size: 2.2rem; font-weight: 900; color: #4ade80; margin-bottom: 0.25rem;">
+                100%
+              </div>
+              <div style="font-size: 0.88rem; color: #94a3b8; font-weight: 700;">
+                {{ lang.isRtl() ? 'تجهيزات وأمان طبي' : 'Patient Safety Standards' }}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 2. QUICK STATISTICS COUNTER -->
-      <section style="background-color: var(--primary-dark); color: #ffffff; padding: 3rem 0;">
+      <!-- 4. BOOKING POLICY WARNING CARD -->
+      <section style="padding: 2.5rem 0 0 0;">
         <div class="container">
-          <div class="grid-4" style="text-align: center;">
-            <div style="padding: 1rem;">
-              <div style="font-size: 2.75rem; font-weight: 800; color: var(--gold-accent); margin-bottom: 0.25rem;">
-                {{ profile.experienceYears }}+
-              </div>
-              <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 600;">
-                {{ lang.ui().yearsExperience }}
-              </div>
-            </div>
-
-            <div style="padding: 1rem;">
-              <div style="font-size: 2.75rem; font-weight: 800; color: var(--gold-accent); margin-bottom: 0.25rem;">
-                {{ profile.publicationCount }}+
-              </div>
-              <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 600;">
-                {{ lang.ui().publishedResearch }}
-              </div>
-            </div>
-
-            <div style="padding: 1rem;">
-              <div style="font-size: 2.75rem; font-weight: 800; color: var(--gold-accent); margin-bottom: 0.25rem;">
-                {{ profile.conferenceCount }}+
-              </div>
-              <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 600;">
-                {{ lang.ui().speakingConferences }}
-              </div>
-            </div>
-
-            <div style="padding: 1rem;">
-              <div style="font-size: 2.75rem; font-weight: 800; color: var(--gold-accent); margin-bottom: 0.25rem;">
-                {{ profile.certificationCount }}+
-              </div>
-              <div style="font-size: 0.95rem; color: #E2E8F0; font-weight: 600;">
-                {{ lang.ui().verifiedCertificates }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. ABOUT PREVIEW -->
-      <section class="section">
-        <div class="container">
-          <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
-            <div style="flex: 1 1 450px;">
-              <span class="section-subtitle">{{ lang.isRtl() ? 'نبذة عن الطبيب' : 'About the Physician' }}</span>
-              <h2 style="margin-bottom: 1.5rem;">{{ lang.isRtl() ? 'الالتزام والخبرة الجراحية' : 'Surgical Excellence & Care' }}</h2>
-              <p style="font-size: 1.08rem; line-height: 1.8; margin-bottom: 2rem;">
-                {{ lang.getText(profile.bioIntro) }}
-              </p>
-              <button (click)="nav('about')" class="btn btn-navy">
-                <span>{{ lang.isRtl() ? 'قراءة الملف الكامل' : 'Read Full Profile' }}</span>
-                <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
-              </button>
-            </div>
-            <div style="flex: 1 1 450px;">
-              <div class="card" style="background-color: var(--bg-alt); border-left: 4px solid var(--accent-teal);">
-                <h3 style="margin-bottom: 1rem; color: var(--primary-dark);">
-                  {{ lang.isRtl() ? 'الرؤية والنهج العلاجي' : 'Clinical Philosophy' }}
+          <div style="background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%); border: 2px solid #f59e0b; border-radius: 16px; padding: 1.5rem 1.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="font-size: 2.2rem;">🔴</div>
+              <div>
+                <h3 style="color: #92400e; font-size: 1.15rem; font-weight: 900; margin-bottom: 0.25rem;">
+                  {{ lang.isRtl() ? 'تنبيه هام جداً بشأن الحجز بالتليفون' : 'Important Telephone Booking Notice' }}
                 </h3>
-                <p style="line-height: 1.7; color: var(--text-muted);">
-                  {{ lang.getText(profile.fullBio) }}
+                <p style="color: #b45309; font-size: 0.92rem; margin: 0; font-weight: 700;">
+                  غير متاح الحجز بالتليفون! للحجز يرجى التوجه لمبنى المركز بالعبور مباشرة. الحجز بأسبقية الحضور أو بالسيستم.
                 </p>
               </div>
             </div>
+            <button (click)="nav('appointments')" class="btn btn-gold btn-sm" style="background: #f59e0b; border: none; color: #000; font-weight: 800;">
+              📖 <span>{{ lang.isRtl() ? 'اقرأ تعليمات الحجز' : 'Read Booking Rules' }}</span>
+            </button>
           </div>
         </div>
       </section>
 
-      <!-- 4. AREAS OF EXPERTISE -->
-      <section class="section section-alt">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">{{ lang.isRtl() ? 'المجالات الطبية' : 'Medical Specialties' }}</span>
-            <h2>{{ lang.isRtl() ? 'التخصصات والخدمات المتقدمة' : 'Areas of Expertise' }}</h2>
-          </div>
-
-          <div class="grid-4">
-            <div *ngFor="let exp of data.expertise()" class="card card-hover">
-              <div style="margin-bottom: 1.25rem;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><path d="M4.8 2.3A.3.3 0 0 0 4.5 2.6V5A6 6 0 0 0 16.5 5V2.6a.3.3 0 0 0-.3-.3h-1.4a.3.3 0 0 0-.3.3V5a3.5 3.5 0 0 1-7 0V2.6a.3.3 0 0 0-.3-.3H4.8z"/><path d="M10.5 11v6a3.5 3.5 0 0 0 7 0v-1"/><circle cx="17.5" cy="14.5" r="2.5"/></svg>
-              </div>
-              <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">
-                {{ lang.getText(exp.title) }}
-              </h3>
-              <p style="font-size: 0.92rem; line-height: 1.6;">
-                {{ lang.getText(exp.description) }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. CLINICS PREVIEW -->
+      <!-- 5. DOCTOR SCHEDULE LOOKUP WIDGET -->
       <section class="section">
         <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">{{ lang.isRtl() ? 'المواقع والمواعيد' : 'Locations & Hours' }}</span>
-            <h2>{{ lang.isRtl() ? 'عيادات الفروع المتاحة' : 'Clinic Locations' }}</h2>
-            <p style="margin-top: 0.5rem;">
-              {{ lang.isRtl() ? 'اختر العيادة الأقرب لك واطلع على مواعيد الاستشارات المتاحة.' : 'Choose the location that works best for you and book your appointment.' }}
+          <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
+            <span class="badge badge-teal" style="font-size: 0.85rem; padding: 0.35rem 0.85rem; font-weight: 800; margin-bottom: 0.5rem;">
+              🗓️ {{ lang.isRtl() ? 'مواعيد الأطباء والعيادات' : 'Doctor Rosters' }}
+            </span>
+            <h2 style="font-weight: 900; color: #0f172a;">
+              {{ lang.isRtl() ? 'جدول مواعيد أطباء عيادات دار اليسر' : 'Dar El Yosser Daily Doctor Schedules' }}
+            </h2>
+            <p style="color: #64748b; font-size: 0.98rem; max-width: 700px; margin: 0.5rem auto 0 auto;">
+              تصفح مواعيد استشاريي وأخصائيي دار اليسر بحسب أيام الأسبوع والتخصصات الطبية المختلفة.
             </p>
           </div>
 
-          <div class="grid-3">
-            <div *ngFor="let clinic of data.getClinics()" class="card card-hover" style="display: flex; flex-direction: column; justify-content: space-between;">
-              <div>
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-                  <h3 style="color: var(--primary-dark); font-size: 1.35rem;">
-                    {{ lang.getText(clinic.name) }}
-                  </h3>
-                  <span class="badge badge-navy">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    {{ lang.getText(clinic.city) }}
-                  </span>
-                </div>
+          <!-- Day Selection Tabs -->
+          <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <button
+              *ngFor="let day of availableDays"
+              (click)="selectedDayKey = day.key"
+              [style.background]="selectedDayKey === day.key ? '#0d9488' : '#f1f5f9'"
+              [style.color]="selectedDayKey === day.key ? '#ffffff' : '#334155'"
+              [style.font-weight]="selectedDayKey === day.key ? '800' : '600'"
+              style="padding: 0.65rem 1.25rem; border-radius: 30px; border: none; cursor: pointer; font-size: 0.92rem; transition: all 0.2s;"
+            >
+              {{ lang.isRtl() ? day.ar : day.en }}
+            </button>
+          </div>
 
-                <p style="font-size: 0.95rem; margin-bottom: 1.25rem; color: var(--text-muted);">
-                  {{ lang.getText(clinic.address) }}
-                </p>
+          <!-- Active Day Schedule Roster Grid -->
+          <div class="grid-3" style="gap: 1.25rem;">
+            <div
+              *ngFor="let doc of getActiveDayDoctors()"
+              class="card card-hover"
+              style="border-radius: 14px; border: 1px solid #e2e8f0; background: #ffffff; padding: 1.25rem;"
+            >
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="background: #e0f2fe; color: #0369a1; font-weight: 800; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px;">
+                  {{ lang.getText(doc.specialtyName) }}
+                </span>
 
-                <div style="background-color: var(--bg-alt); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem;">
-                  <div style="font-weight: 700; font-size: 0.85rem; color: var(--primary-navy); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>{{ lang.isRtl() ? 'مواعيد العمل:' : 'Working Hours:' }}</span>
-                  </div>
-                  <div *ngFor="let wh of clinic.workingHours" style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.25rem;">
-                    • {{ lang.getText(wh) }}
-                  </div>
-                </div>
+                <!-- Status Badge -->
+                <span
+                  [style.background]="getStatusBg(doc.status)"
+                  [style.color]="getStatusColor(doc.status)"
+                  style="font-weight: 800; font-size: 0.78rem; padding: 0.2rem 0.6rem; border-radius: 6px;"
+                >
+                  {{ getStatusText(doc.status) }}
+                </span>
               </div>
 
-              <div style="display: flex; gap: 0.75rem;">
-                <button (click)="nav('appointments')" class="btn btn-primary btn-sm" style="flex: 1;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-                  <span>{{ lang.ui().bookAppointment }}</span>
-                </button>
-                <button (click)="nav('clinics')" class="btn btn-outline btn-sm">
-                  <span>{{ lang.isRtl() ? 'التفاصيل' : 'View Details' }}</span>
-                </button>
+              <h4 style="font-size: 1.15rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
+                {{ doc.name }}
+              </h4>
+
+              <div style="display: flex; align-items: center; gap: 0.4rem; color: #475569; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.5rem;">
+                <span>⏰ الموعد:</span>
+                <span style="color: #0d9488; font-weight: 800;">{{ doc.timeSlot }}</span>
+              </div>
+
+              <div *ngIf="doc.statusNote" style="font-size: 0.82rem; color: #d97706; background: #fffbeb; padding: 0.35rem 0.6rem; border-radius: 6px; font-weight: 700;">
+                ℹ️ {{ doc.statusNote }}
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- 6. LATEST PUBLICATIONS -->
-      <section class="section section-alt">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle">{{ lang.isRtl() ? 'الإنتاج العلمي' : 'Research Output' }}</span>
-            <h2>{{ lang.isRtl() ? 'أحدث المنشورات والأبحاث' : 'Latest Publications' }}</h2>
-          </div>
-
-          <div class="grid-3">
-            <div *ngFor="let pub of getLatestPublications()" class="card card-hover" style="display: flex; flex-direction: column; justify-content: space-between;">
-              <div>
-                <div class="badge badge-teal" style="margin-bottom: 0.85rem; font-size: 0.75rem;">
-                  {{ pub.type }} • {{ pub.year }}
-                </div>
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; line-height: 1.4;">
-                  {{ lang.getText(pub.title) }}
-                </h3>
-                <div style="font-size: 0.85rem; color: var(--accent-teal); font-weight: 600; margin-bottom: 0.75rem;">
-                  {{ pub.journal }}
-                </div>
-                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
-                  {{ lang.getText(pub.abstract).slice(0, 140) }}...
-                </p>
-              </div>
-
-              <button (click)="nav('publications')" class="btn btn-outline btn-sm" style="width: 100%; justify-content: center;">
-                <span>{{ lang.isRtl() ? 'عرض البحث' : 'View Publication' }}</span>
-                <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <div style="text-align: center; margin-top: 2.5rem;">
-            <button (click)="nav('publications')" class="btn btn-navy">
-              <span>{{ lang.isRtl() ? 'تصفح كافة المنشورات' : 'Explore All Publications' }}</span>
-              <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          <div style="text-align: center; margin-top: 2rem;">
+            <button (click)="nav('schedules')" class="btn btn-navy btn-lg" style="font-weight: 800;">
+              🗓️ {{ lang.isRtl() ? 'عرض الجدول الكامل لكافة الأيام والتخصصات' : 'View Full Roster' }}
             </button>
           </div>
         </div>
       </section>
 
-      <!-- 7. FEATURED ARTICLE & UPCOMING CONFERENCE -->
+      <!-- 6. MEDICAL DEPARTMENTS showcase -->
+      <section class="section section-alt" style="background-color: #f8fafc;">
+        <div class="container">
+          <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+            <span class="badge badge-teal" style="font-size: 0.85rem; padding: 0.35rem 0.85rem; font-weight: 800; margin-bottom: 0.5rem;">
+              🏥 {{ lang.isRtl() ? 'الخدمات الطبية' : 'Departments' }}
+            </span>
+            <h2 style="font-weight: 900; color: #0f172a;">
+              {{ lang.isRtl() ? 'الأقسام والعيادات التخصصية في دار اليسر' : 'Dar El Yosser Medical Departments' }}
+            </h2>
+          </div>
+
+          <div class="grid-4" style="gap: 1.25rem;">
+            <div *ngFor="let dept of data.getDepartments()" class="card card-hover" style="border-radius: 16px; border: 1px solid #e2e8f0; background: #ffffff;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; background: #ccfbf1; color: #0d9488; display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                  🩺
+                </div>
+                <span *ngIf="dept.isEmergencyAvailable" style="background: #fee2e2; color: #dc2626; font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.5rem; border-radius: 4px;">
+                  طوارئ 24/7
+                </span>
+              </div>
+
+              <h3 style="font-size: 1.15rem; font-weight: 900; color: #0f172a; margin-bottom: 0.5rem;">
+                {{ lang.getText(dept.name) }}
+              </h3>
+
+              <p style="font-size: 0.88rem; color: #64748b; line-height: 1.6; margin-bottom: 1.0rem;">
+                {{ lang.getText(dept.description) }}
+              </p>
+
+              <div style="border-top: 1px solid #f1f5f9; padding-top: 0.75rem;">
+                <div *ngFor="let srv of dept.services" style="font-size: 0.82rem; color: #334155; font-weight: 600; margin-bottom: 0.25rem;">
+                  ✓ {{ lang.getText(srv) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. LOCATION & MAP GUIDE -->
       <section class="section">
         <div class="container">
-          <div class="grid-2">
-            <!-- Featured Article Card -->
-            <div *ngIf="getFeaturedArticle()" class="card" style="border-top: 4px solid var(--accent-teal);">
-              <span class="section-subtitle">{{ lang.isRtl() ? 'مقالة مميزة' : 'Featured Article' }}</span>
-              <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; margin-top: 0.25rem;">
-                {{ lang.getText(getFeaturedArticle()!.title) }}
-              </h3>
-              <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem;">
-                {{ lang.getText(getFeaturedArticle()!.category) }} • {{ getFeaturedArticle()!.readingTime }} read
-              </div>
-              <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
-                {{ lang.getText(getFeaturedArticle()!.summary) }}
-              </p>
-              <button (click)="nav('articles')" class="btn btn-primary btn-sm">
-                <span>{{ lang.isRtl() ? 'قراءة المقال' : 'Read Article' }}</span>
-                <svg *ngIf="!lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                <svg *ngIf="lang.isRtl()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
-              </button>
-            </div>
+          <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; border-radius: 24px; padding: 2.5rem; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15);">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+              <div style="flex: 1 1 450px;">
+                <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-weight: 800; margin-bottom: 0.85rem;">
+                  📍 {{ lang.isRtl() ? 'عنوان وتوجيهات الوصول' : 'Location & Directions' }}
+                </span>
+                
+                <h2 style="color: #ffffff; font-weight: 900; margin-bottom: 1rem;">
+                  {{ lang.isRtl() ? 'كيف تصل لمستشفى دار اليسر بالعبور؟' : 'How to Reach Dar El Yosser Hospital?' }}
+                </h2>
 
-            <!-- Upcoming Conference Banner -->
-            <div *ngIf="getUpcomingConference()" class="card" style="background-color: var(--primary-dark); color: #ffffff;">
-              <span class="badge badge-gold" style="margin-bottom: 0.85rem;">
-                {{ lang.isRtl() ? 'مؤتمر قادم' : 'Upcoming Conference' }}
-              </span>
-              <h3 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 0.75rem;">
-                {{ lang.getText(getUpcomingConference()!.eventName) }}
-              </h3>
-              <div style="font-size: 0.9rem; color: var(--gold-accent); font-weight: 600; margin-bottom: 0.5rem;">
-                📅 {{ getUpcomingConference()!.date }} | 📍 {{ lang.getText(getUpcomingConference()!.location) }}
-              </div>
-              <div style="font-size: 0.9rem; color: #E2E8F0; margin-bottom: 1.25rem;">
-                <strong>{{ lang.isRtl() ? 'الدور:' : 'Role:' }}</strong> {{ lang.getText(getUpcomingConference()!.role) }} <br />
-                <strong>{{ lang.isRtl() ? 'الموضوع:' : 'Topic:' }}</strong> "{{ lang.getText(getUpcomingConference()!.topic) }}"
-              </div>
-              <button (click)="nav('conferences')" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: #475569;">
-                <span>{{ lang.isRtl() ? 'عرض التفاصيل' : 'View Details' }}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+                <p style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.5rem;">
+                  📍 <strong>العنوان التفصيلي:</strong> مدينة العبور، الحي الأول، بعد صينية الخامس بـ 200 - 300 متر على الطريق الرئيسي (الطريق البطئ) أمام يوني مول، القاهرة، مصر.
+                </p>
 
-      <!-- 8. FINAL CTA -->
-      <section style="background-color: var(--primary-light); padding: 4.5rem 0; text-align: center;">
-        <div class="container" style="max-width: 800px;">
-          <h2 style="margin-bottom: 1rem; color: var(--primary-dark);">
-            {{ lang.isRtl() ? 'احجز موعد كشف واستشارة تخصصية' : 'Schedule Your Medical Consultation' }}
-          </h2>
-          <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7;">
-            {{ lang.isRtl() ? 'اختر الفرع المناسب والموعد المفضل لطلب استشارة أو متابعة حالة صحية.' : 'Select your preferred location and time slot for specialized consultation.' }}
-          </p>
-          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <button (click)="nav('appointments')" class="btn btn-primary btn-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-              <span>{{ lang.ui().bookAppointment }}</span>
-            </button>
-            <button (click)="nav('contact')" class="btn btn-outline btn-lg">
-              <span>{{ lang.isRtl() ? 'تواصل مع العيادة' : 'Contact Clinic' }}</span>
-            </button>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; font-size: 0.95rem; color: #e2e8f0;">
+                  <div>📞 <strong>الاستفسارات:</strong> 01030252002 - 01030252005</div>
+                  <div>💬 <strong>واتساب:</strong> 01030252002</div>
+                  <div>🦷 <strong>حجز الأسنان:</strong> 01092893808</div>
+                </div>
+
+                <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
+                  <a href="https://maps.google.com/maps?q=El+Obour+City+1st+District+Cairo+Egypt" target="_blank" class="btn btn-gold btn-lg" style="background: #f59e0b; border: none; color: #000; font-weight: 800;">
+                    🗺️ <span>{{ lang.isRtl() ? 'فتح الخريطة بالتفصيل' : 'Open in Google Maps' }}</span>
+                  </a>
+
+                  <button (click)="nav('contact')" class="btn btn-outline btn-lg" style="color: #ffffff; border-color: rgba(255,255,255,0.3);">
+                    📞 <span>{{ lang.isRtl() ? 'تواصل معنا' : 'Contact Us' }}</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Map Frame Embed -->
+              <div style="flex: 1 1 400px; max-width: 500px; width: 100%; height: 320px; border-radius: 16px; overflow: hidden; border: 2px solid rgba(255,255,255,0.2);">
+                <iframe
+                  src="https://maps.google.com/maps?q=El+Obour+City+1st+District+Cairo+Egypt&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -393,27 +397,52 @@ export class HomeComponent {
 
   @Output() tabChange = new EventEmitter<string>();
 
-  profile = this.data.getProfile();
+  hospital = this.data.getHospital();
+  selectedDayKey: string = 'MONDAY';
+
+  availableDays = [
+    { key: 'MONDAY', ar: 'الإثنين', en: 'Monday' },
+    { key: 'TUESDAY', ar: 'الثلاثاء', en: 'Tuesday' },
+    { key: 'WEDNESDAY', ar: 'الأربعاء', en: 'Wednesday' },
+    { key: 'THURSDAY', ar: 'الخميس', en: 'Thursday' }
+  ];
 
   nav(tab: string): void {
     this.tabChange.emit(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  getSubSpecialtiesString(): string {
-    return this.profile.subSpecialties.map(s => this.lang.getText(s)).join('  •  ');
+  getActiveDayDoctors() {
+    return this.data.getDoctorsByDay(this.selectedDayKey).slice(0, 9);
   }
 
-  getLatestPublications() {
-    return this.data.getPublications().slice(0, 3);
+  getStatusBg(status: string): string {
+    switch (status) {
+      case 'AVAILABLE': return '#dcfce7';
+      case 'PRIOR_RESERVATION': return '#fef3c7';
+      case 'FULL': return '#ffedd5';
+      case 'APOLOGIZED': return '#fee2e2';
+      default: return '#f1f5f9';
+    }
   }
 
-  getFeaturedArticle() {
-    const articles = this.data.getArticles();
-    return articles.find(a => a.isFeatured) || articles[0];
+  getStatusColor(status: string): string {
+    switch (status) {
+      case 'AVAILABLE': return '#166534';
+      case 'PRIOR_RESERVATION': return '#b45309';
+      case 'FULL': return '#c2410c';
+      case 'APOLOGIZED': return '#991b1b';
+      default: return '#334155';
+    }
   }
 
-  getUpcomingConference() {
-    return this.data.conferences().find(c => c.isUpcoming);
+  getStatusText(status: string): string {
+    switch (status) {
+      case 'AVAILABLE': return this.lang.isRtl() ? 'متاح اليوم' : 'Available Today';
+      case 'PRIOR_RESERVATION': return this.lang.isRtl() ? 'حجز مسبق' : 'Prior Reservation';
+      case 'FULL': return this.lang.isRtl() ? 'اكتمل العدد' : 'Capacity Full';
+      case 'APOLOGIZED': return this.lang.isRtl() ? 'اعتذار' : 'Apologized';
+      default: return '';
+    }
   }
 }

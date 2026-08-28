@@ -5,6 +5,73 @@ export interface LocalizedString {
   ar: string;
 }
 
+export interface HospitalProfile {
+  name: LocalizedString;
+  slogan: LocalizedString;
+  subTitle: LocalizedString;
+  aboutText: LocalizedString;
+  city: LocalizedString;
+  address: LocalizedString;
+  district: LocalizedString;
+  landmark: LocalizedString;
+  phoneNumbers: string[];
+  dentalPhone: string;
+  whatsappNumber: string;
+  facebookUrl: string;
+  workingHours: LocalizedString;
+  emergencyCare: LocalizedString;
+  bookingPolicyNotice: LocalizedString;
+  followersCount: string;
+  followingCount: string;
+  heroImage?: string;
+  logoImage?: string;
+}
+
+export type DoctorStatus = 'AVAILABLE' | 'PRIOR_RESERVATION' | 'FULL' | 'APOLOGIZED' | 'BY_APPOINTMENT';
+
+export interface DoctorRosterItem {
+  id: string;
+  name: string; // e.g. "د/ أحمد غريب"
+  specialtyId: string;
+  specialtyName: LocalizedString;
+  timeSlot: string; // e.g. "2:30 و عيادته 9:30"
+  status: DoctorStatus;
+  statusNote?: string; // e.g. "35 حالة فقط", "باطنة وسكر", "خارج التأمين"
+  dayOfWeek: 'SATURDAY' | 'SUNDAY' | 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY';
+  shiftType?: 'MORNING' | 'EVENING' | '24_HOURS';
+  phone?: string;
+}
+
+export interface DailySchedule {
+  dayName: LocalizedString;
+  dayKey: 'SATURDAY' | 'SUNDAY' | 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY';
+  doctors: DoctorRosterItem[];
+  notice?: LocalizedString;
+}
+
+export interface SpecialOfferItem {
+  id: string;
+  title: LocalizedString;
+  tagline: LocalizedString;
+  discountPercentage?: number;
+  clinicName: LocalizedString;
+  description: LocalizedString;
+  features: LocalizedString[];
+  contactPhone: string;
+  validity?: LocalizedString;
+  badgeText?: LocalizedString;
+  imageUrl?: string;
+}
+
+export interface MedicalDepartment {
+  id: string;
+  name: LocalizedString;
+  iconName: string;
+  description: LocalizedString;
+  services: LocalizedString[];
+  isEmergencyAvailable?: boolean;
+}
+
 export interface DoctorProfile {
   id?: string;
   name: LocalizedString;
@@ -187,51 +254,29 @@ export interface ContactMessage {
 export interface UiTranslations {
   home: string;
   about: string;
-  academic: string;
-  education: string;
-  certificates: string;
-  research: string;
-  researchAreas: string;
-  publications: string;
-  conferences: string;
-  articles: string;
-  clinics: string;
-  socialMedia: string;
+  schedules: string;
+  dentalClinic: string;
+  departments: string;
+  eegSonar: string;
+  bookingGuide: string;
   contact: string;
   bookAppointment: string;
   confirmBooking: string;
   getDirections: string;
   clinicLocations: string;
   sendMessage: string;
-  exploreProfile: string;
-  commitmentTitle: string;
-  readFullProfile: string;
   areasOfExpertise: string;
   viewDetails: string;
-  latestPublications: string;
-  viewPublication: string;
-  featuredArticle: string;
-  readArticle: string;
-  finalCtaTitle: string;
-  finalCtaText: string;
-  contactClinic: string;
-  yearsExperience: string;
-  publishedResearch: string;
-  speakingConferences: string;
-  verifiedCertificates: string;
-  scientificPublications: string;
-  scientificConferences: string;
-  certifications: string;
-  demoContentNotice: string;
-  demoNoticeDesc: string;
-  quickLinks: string;
-  academicLinks: string;
   allRightsReserved: string;
   privacyPolicy: string;
   termsOfUse: string;
   medicalDisclaimer: string;
   close: string;
-  filterByYear: string;
-  allTypes: string;
-  clearFilters: string;
+  emergencyHotline: string;
+  dentalHotline: string;
+  workingHours: string;
+  address: string;
+  bookingNoticeTitle: string;
+  bookingNoticeText: string;
 }
+

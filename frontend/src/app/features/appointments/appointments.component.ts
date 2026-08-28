@@ -1,434 +1,219 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../core/services/language.service';
 import { DataService } from '../../core/services/data.service';
-import { ApiService } from '../../core/services/api.service';
-import { ClinicLocation, MedicalService, AppointmentBooking } from '../../core/models';
+import { AppointmentBooking } from '../../core/models';
 
 @Component({
   selector: 'app-appointments',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div>
-      <!-- Hero Header -->
-      <section style="background-color: var(--primary-light); padding: 4rem 0;">
-        <div class="container" style="text-align: center; max-width: 800px;">
-          <span class="section-subtitle">{{ lang.isRtl() ? 'حجز المواعيد والعيادات' : 'Online Scheduling' }}</span>
-          <h1 style="color: var(--primary-dark); margin-bottom: 1rem;">
-            {{ lang.isRtl() ? 'نموذج حجز كشف واستشارة طبية' : 'Book a Consultation Appointment' }}
+    <div class="section" style="padding-top: 3rem;">
+      <div class="container" style="max-width: 900px;">
+        
+        <!-- Header -->
+        <div class="section-header" style="text-align: center; margin-bottom: 2.5rem;">
+          <span class="badge badge-teal" style="font-size: 0.88rem; padding: 0.4rem 0.9rem; font-weight: 800; margin-bottom: 0.5rem;">
+            📖 {{ lang.isRtl() ? 'تعليمات ونظام الحجز والزيارة' : 'Visiting & Registration Guide' }}
+          </span>
+          <h1 style="font-weight: 900; color: #0f172a; font-size: 2.2rem; margin-bottom: 0.75rem;">
+            {{ lang.isRtl() ? 'كيفية الحجز والتوجيه بالمركز' : 'Dar El Yosser Booking Guide' }}
           </h1>
-          <p style="font-size: 1.1rem; color: var(--text-muted);">
-            {{ lang.isRtl()
-              ? 'قم بملء البيانات التالية لتأكيد حجزك الفوري والتواصل المباشر عبر الواتساب.'
-              : 'Fill in your details below to confirm your appointment and connect directly via WhatsApp.' }}
-          </p>
         </div>
-      </section>
 
-      <!-- Main Booking Form Section -->
-      <section class="section">
-        <div class="container" style="max-width: 900px;">
-          <!-- Single All-in-One Form Card -->
-          <div *ngIf="!isSubmitted" class="card" style="padding: 2.5rem; background-color: #ffffff; box-shadow: var(--shadow-md);">
-            <form (ngSubmit)="handleFinalSubmit()" style="display: flex; flex-direction: column; gap: 2rem;">
-              
-              <!-- SECTION 1: Clinic & Medical Service Selection -->
-              <div>
-                <h3 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid var(--accent-teal-light); padding-bottom: 0.6rem;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2.2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>{{ lang.isRtl() ? '1. العيادة والخدمة الطبية المطلوبة' : '1. Clinic Branch & Medical Service' }}</span>
-                </h3>
-
-                <div class="grid-2">
-                  <!-- Select Clinic -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'الفرع / العيادة *' : 'Clinic Branch *' }}
-                    </label>
-                    <select
-                      required
-                      [ngModel]="selectedClinic?.id"
-                      (ngModelChange)="onClinicChange($event)"
-                      name="clinicIdSelect"
-                      class="input-field"
-                      style="font-weight: 600;"
-                    >
-                      <option value="" disabled selected>{{ lang.isRtl() ? '-- اختر العيادة / الفرع --' : '-- Select Clinic --' }}</option>
-                      <option *ngFor="let clinic of clinics" [value]="clinic.id">
-                        {{ lang.getText(clinic.name) }} ({{ lang.getText(clinic.city) }})
-                      </option>
-                    </select>
-                  </div>
-
-                  <!-- Select Medical Service -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'الخدمة الطبية *' : 'Medical Service *' }}
-                    </label>
-                    <select
-                      required
-                      [ngModel]="selectedService?.id"
-                      (ngModelChange)="onServiceChange($event)"
-                      name="serviceIdSelect"
-                      class="input-field"
-                      style="font-weight: 600;"
-                      [disabled]="!selectedClinic"
-                    >
-                      <option value="" disabled selected>{{ lang.isRtl() ? '-- اختر الخدمة الطبية --' : '-- Select Service --' }}</option>
-                      <option *ngFor="let srv of availableServices" [value]="srv.id">
-                        {{ lang.getText(srv.name) }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
+        <!-- Warning Policy Box -->
+        <div style="background: #fffbeb; border: 2.5px solid #f59e0b; border-radius: 20px; padding: 2rem; margin-bottom: 3rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+          <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+            <div style="font-size: 3rem; line-height: 1;">🔴</div>
+            <div>
+              <h2 style="color: #92400e; font-weight: 900; font-size: 1.35rem; margin-bottom: 0.5rem;">
+                تنبيه حازم بشأن نظام الحجز بالمركز
+              </h2>
+              <p style="color: #78350f; font-size: 1rem; font-weight: 800; line-height: 1.7; margin-bottom: 1rem;">
+                غير متاح الحجز بالتليفون إطلاقاً! للحجز يرجى التوجه لمبنى عيادات دار اليسر بمدينة العبور. الحجز بأسبقية الحضور أو بالسيستم داخل المركز.
+              </p>
+              <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 12px; font-size: 0.92rem; color: #451a03; font-weight: 700;">
+                📍 <strong>العنوان:</strong> مدينة العبور – الحي الأول – بعد صينية الخامس بـ 200 متر من الطريق البطئ، أمام يوني مول.<br />
+                📞 <strong>أرقام الاستفسار والواتساب:</strong> 01030252002 - 01030252005 | 🦷 <strong>أسنان:</strong> 01092893808
               </div>
-
-              <!-- SECTION 2: Date & Time Slot Selection -->
-              <div>
-                <h3 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid var(--accent-teal-light); padding-bottom: 0.6rem;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-accent)" stroke-width="2.2"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
-                  <span>{{ lang.isRtl() ? '2. موعد وتوقيت الكشف' : '2. Date & Time Slot' }}</span>
-                </h3>
-
-                <div class="grid-2" style="align-items: flex-start;">
-                  <!-- Select Date -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'تاريخ الكشف المطلوب *' : 'Appointment Date *' }}
-                    </label>
-                    <input
-                      type="date"
-                      required
-                      [(ngModel)]="selectedDate"
-                      [min]="minDate"
-                      name="selectedDate"
-                      class="input-field"
-                      style="font-weight: 600;"
-                    />
-                  </div>
-
-                  <!-- Select Visit Type -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'نوع الزيارة *' : 'Visit Type *' }}
-                    </label>
-                    <select [(ngModel)]="appointmentType" name="appointmentType" class="input-field" style="font-weight: 600;">
-                      <option value="New Consultation">{{ lang.isRtl() ? 'كشف جديد (New Consultation)' : 'New Consultation' }}</option>
-                      <option value="Follow-up">{{ lang.isRtl() ? 'متابعة دورية (Follow-up)' : 'Follow-up' }}</option>
-                      <option value="Online Consultation">{{ lang.isRtl() ? 'استشارة أونلاين (Online Consultation)' : 'Online Consultation' }}</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Select Time Slot -->
-                <div style="margin-top: 1.25rem;">
-                  <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.6rem; color: var(--primary-dark);">
-                    {{ lang.isRtl() ? 'التوقيت المفضل *' : 'Preferred Time Slot *' }}
-                  </label>
-                  <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
-                    <button
-                      type="button"
-                      *ngFor="let slot of availableSlots"
-                      (click)="selectedTimeSlot = slot"
-                      [class]="selectedTimeSlot === slot ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm'"
-                      style="min-width: 100px; font-size: 0.88rem;"
-                    >
-                      {{ slot }}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SECTION 3: Patient Information -->
-              <div>
-                <h3 style="font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid var(--accent-teal-light); padding-bottom: 0.6rem;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2.2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                  <span>{{ lang.isRtl() ? '3. بيانات المريض الشخصية' : '3. Patient Personal Details' }}</span>
-                </h3>
-
-                <div class="grid-2">
-                  <!-- Patient Name -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'اسم المريض بالكامل *' : 'Patient Full Name *' }}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      [(ngModel)]="patientName"
-                      name="patientName"
-                      class="input-field"
-                      [placeholder]="lang.isRtl() ? 'مثال: أسماء أحمد' : 'e.g. Asmaa Ahmed'"
-                    />
-                  </div>
-
-                  <!-- Patient Phone -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'رقم الهاتف / الواتساب *' : 'Phone / WhatsApp *' }}
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      [(ngModel)]="patientPhone"
-                      name="patientPhone"
-                      class="input-field"
-                      placeholder="01003514770"
-                    />
-                  </div>
-                </div>
-
-                <div class="grid-2" style="margin-top: 1.25rem;">
-                  <!-- Email -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'البريد الإلكتروني (اختياري)' : 'Email Address (Optional)' }}
-                    </label>
-                    <input
-                      type="email"
-                      [(ngModel)]="patientEmail"
-                      name="patientEmail"
-                      class="input-field"
-                      placeholder="patient@example.com"
-                    />
-                  </div>
-
-                  <!-- Notes -->
-                  <div>
-                    <label style="display: block; font-weight: 700; font-size: 0.93rem; margin-bottom: 0.4rem; color: var(--primary-dark);">
-                      {{ lang.isRtl() ? 'ملاحظات إضافية (اختياري)' : 'Additional Notes (Optional)' }}
-                    </label>
-                    <input
-                      type="text"
-                      [(ngModel)]="notes"
-                      name="notes"
-                      class="input-field"
-                      [placeholder]="lang.isRtl() ? 'أي تفاصيل عن الحالة الطبية...' : 'Any details about your condition...'"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Submit Form Button -->
-              <div style="margin-top: 1rem; text-align: center;">
-                <button
-                  type="submit"
-                  [disabled]="!selectedClinic || !selectedService || !selectedDate || !selectedTimeSlot || !patientName || !patientPhone"
-                  class="btn btn-gold btn-lg"
-                  style="background: #25D366; border-color: #25D366; color: #ffffff; font-weight: 800; font-size: 1.15rem; width: 100%; max-width: 480px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                  <span>{{ lang.isRtl() ? 'تأكيد الحجز والتوجيه للواتساب 💬' : 'Confirm & Open WhatsApp 💬' }}</span>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- BOOKING CONFIRMED CARD (Shown after submitting) -->
-          <div *ngIf="isSubmitted && confirmedBooking" class="card" style="padding: 2.5rem; background-color: #ffffff; text-align: center; box-shadow: var(--shadow-lg);">
-            <div
-              style="width: 72px; height: 72px; border-radius: 50%; background-color: #DCFCE7; color: #16A34A; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
+          </div>
+        </div>
 
-            <h2 style="color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1.8rem;">
-              {{ lang.isRtl() ? 'تم تأكيد طلب الحجز بنجاح!' : 'Appointment Request Confirmed!' }}
-            </h2>
-
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem;">
-              {{ lang.isRtl() ? 'رقم المرجعية الخاص بحجزك هو:' : 'Your appointment reference code is:' }}
+        <!-- Optional Pre-Registration & Inquiry Form -->
+        <div *ngIf="!isSubmitted" class="card" style="padding: 2.5rem; background: #ffffff; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 25px rgba(0,0,0,0.05);">
+          
+          <div style="margin-bottom: 1.75rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem;">
+            <h3 style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 0.35rem;">
+              📝 تسجيل استفسار وإشعار توجيه للمركز
+            </h3>
+            <p style="color: #64748b; font-size: 0.92rem; margin: 0;">
+              يمكنك كتابة بياناتك وإرسال استفسارك ليصل لفريق خدمة العملاء بالمركز مباشرة، وسنقوم بالتواصل معك عبر الواتساب.
             </p>
-
-            <div
-              style="background: linear-gradient(135deg, #0B132B 0%, #1C2541 100%); color: var(--gold-accent); padding: 1.1rem 2.5rem; border-radius: var(--radius-md); font-size: 2rem; font-weight: 800; letter-spacing: 0.08em; display: inline-block; margin-bottom: 2rem; border: 1.5px solid var(--gold-accent);"
-            >
-              {{ confirmedBooking.bookingRef }}
-            </div>
-
-            <!-- Booking Summary Box -->
-            <div style="background-color: var(--bg-alt); border-radius: var(--radius-md); padding: 1.75rem; margin-bottom: 2rem; font-size: 1rem; border: 1px solid var(--border-light);" [style.text-align]="lang.isRtl() ? 'right' : 'left'">
-              <div style="margin-bottom: 0.6rem;">
-                <strong>{{ lang.isRtl() ? 'اسم المريض:' : 'Patient:' }}</strong> {{ confirmedBooking.patientName }}
-              </div>
-              <div style="margin-bottom: 0.6rem;">
-                <strong>{{ lang.isRtl() ? 'رقم الهاتف:' : 'Phone:' }}</strong> {{ confirmedBooking.patientPhone }}
-              </div>
-              <div style="margin-bottom: 0.6rem;">
-                <strong>{{ lang.isRtl() ? 'العيادة / الفرع:' : 'Clinic:' }}</strong> {{ lang.getText(confirmedBooking.clinicName) }}
-              </div>
-              <div style="margin-bottom: 0.6rem;">
-                <strong>{{ lang.isRtl() ? 'الخدمة الطبية:' : 'Service:' }}</strong> {{ lang.getText(confirmedBooking.serviceName) }} ({{ confirmedBooking.appointmentType }})
-              </div>
-              <div>
-                <strong>{{ lang.isRtl() ? 'التاريخ والوقت:' : 'Date & Time:' }}</strong> {{ confirmedBooking.date }} - {{ confirmedBooking.timeSlot }}
-              </div>
-            </div>
-
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-              <a
-                [href]="getWhatsAppUrl()"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-gold"
-                style="background: #25D366; border-color: #25D366; color: #ffffff; font-weight: 800;"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                <span>{{ lang.isRtl() ? 'تكرار الإرسال عبر الواتساب' : 'Resend via WhatsApp' }}</span>
-              </a>
-
-              <button (click)="isSubmitted = false" class="btn btn-outline">
-                <span>{{ lang.isRtl() ? 'حجز موعد جديد' : 'Book Another Appointment' }}</span>
-              </button>
-
-              <button (click)="printReceipt()" class="btn btn-outline">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-                <span>{{ lang.isRtl() ? 'طباعة تذكرة الحجز' : 'Print Receipt' }}</span>
-              </button>
-            </div>
           </div>
 
+          <form (ngSubmit)="handleSubmit()" style="display: flex; flex-direction: column; gap: 1.5rem;">
+            
+            <div class="grid-2" style="gap: 1.25rem;">
+              <div>
+                <label style="display: block; font-weight: 800; font-size: 0.92rem; margin-bottom: 0.4rem; color: #0f172a;">
+                  اسم المريض / المراجع *
+                </label>
+                <input
+                  type="text"
+                  required
+                  [(ngModel)]="patientName"
+                  name="patientName"
+                  class="input-field"
+                  placeholder="مثال: أحمد محمود"
+                />
+              </div>
+
+              <div>
+                <label style="display: block; font-weight: 800; font-size: 0.92rem; margin-bottom: 0.4rem; color: #0f172a;">
+                  رقم الهاتف والواتساب *
+                </label>
+                <input
+                  type="tel"
+                  required
+                  [(ngModel)]="patientPhone"
+                  name="patientPhone"
+                  class="input-field"
+                  placeholder="01030252002"
+                />
+              </div>
+            </div>
+
+            <div class="grid-2" style="gap: 1.25rem;">
+              <div>
+                <label style="display: block; font-weight: 800; font-size: 0.92rem; margin-bottom: 0.4rem; color: #0f172a;">
+                  القسم أو الخدمة المطلوبة *
+                </label>
+                <select [(ngModel)]="serviceType" name="serviceType" class="input-field" style="font-weight: 700;">
+                  <option value="الأسنان (اليسر كلينك - خصم 20%)">الأسنان (اليسر كلينك - خصم 20%)</option>
+                  <option value="تخدير كلي للأسنان">علاج أسنان تحت التخدير الكلي</option>
+                  <option value="طوارئ ونسا وتوليد">نساء وتوليد 24/7</option>
+                  <option value="الأطفال">طب الأطفال حديثي الولادة</option>
+                  <option value="العظام">جراحة العظام والمفاصل</option>
+                  <option value="الباطنة العامة والسكر">الباطنة والسكر</option>
+                  <option value="أنف وأذن وحنجرة">أنف وأذن وحنجرة</option>
+                  <option value="الرمد">عيادة الرمد والعيون</option>
+                  <option value="رسم مخ ورسم عصب">مركز رسم المخ ورسم العصب</option>
+                  <option value="السونار">الأشعة التلفزيونية والسونار</option>
+                </select>
+              </div>
+
+              <div>
+                <label style="display: block; font-weight: 800; font-size: 0.92rem; margin-bottom: 0.4rem; color: #0f172a;">
+                  اليوم المفضل للزيارة
+                </label>
+                <input
+                  type="date"
+                  [(ngModel)]="selectedDate"
+                  name="selectedDate"
+                  class="input-field"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label style="display: block; font-weight: 800; font-size: 0.92rem; margin-bottom: 0.4rem; color: #0f172a;">
+                تفاصيل الاستفسار أو الملاحظات
+              </label>
+              <textarea
+                rows="3"
+                [(ngModel)]="notes"
+                name="notes"
+                class="input-field"
+                placeholder="اكتب استفسارك هنا..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              [disabled]="!patientName || !patientPhone"
+              class="btn btn-primary btn-lg"
+              style="width: 100%; justify-content: center; background: linear-gradient(135deg, #0d9488 0%, #0f172a 100%); border: none; font-weight: 900; font-size: 1.1rem;"
+            >
+              💬 إرسال التوجيه والتواصل عبر الواتساب
+            </button>
+          </form>
+
         </div>
-      </section>
+
+        <!-- Confirmed Submission Box -->
+        <div *ngIf="isSubmitted && confirmedBooking" class="card" style="padding: 2.5rem; background: #ffffff; border-radius: 20px; text-align: center; box-shadow: 0 4px 25px rgba(0,0,0,0.08);">
+          <div style="font-size: 3.5rem; margin-bottom: 1rem;">✅</div>
+          <h2 style="color: #0f172a; font-weight: 900; margin-bottom: 0.5rem;">
+            تم تسجيل استفسارك بنجاح!
+          </h2>
+          <p style="color: #64748b; font-size: 1rem; margin-bottom: 1.5rem;">
+            رمز المرجعية الخاص بك هو: <strong style="color: #0d9488;">{{ confirmedBooking.bookingRef }}</strong>
+          </p>
+
+          <div style="background: #f8fafc; border-radius: 14px; padding: 1.25rem; margin-bottom: 2rem; border: 1px solid #e2e8f0; text-align: right;">
+            <div>• <strong>المراجع:</strong> {{ confirmedBooking.patientName }}</div>
+            <div>• <strong>رقم الهاتف:</strong> {{ confirmedBooking.patientPhone }}</div>
+            <div>• <strong>الخدمة:</strong> {{ confirmedBooking.notes }}</div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a [href]="getWhatsAppUrl()" target="_blank" class="btn btn-gold" style="background: #25D366; color: #fff; border: none; font-weight: 900;">
+              💬 فتح الواتساب للتأكيد
+            </a>
+            <button (click)="isSubmitted = false" class="btn btn-outline">
+              تسجيل استفسار آخر
+            </button>
+          </div>
+        </div>
+
+      </div>
     </div>
   `
 })
 export class AppointmentsComponent implements OnInit {
   lang = inject(LanguageService);
   data = inject(DataService);
-  api = inject(ApiService);
 
-  @Input() initialClinicId?: string;
-
-  clinics: ClinicLocation[] = [];
-  availableServices: MedicalService[] = [];
-
-  selectedClinic: ClinicLocation | null = null;
-  selectedService: MedicalService | null = null;
-  selectedDate = new Date().toISOString().split('T')[0];
-  selectedTimeSlot = '05:00 PM';
   patientName = '';
   patientPhone = '';
-  patientEmail = '';
-  appointmentType: 'New Consultation' | 'Follow-up' | 'Online Consultation' = 'New Consultation';
+  serviceType = 'الأسنان (اليسر كلينك - خصم 20%)';
+  selectedDate = new Date().toISOString().split('T')[0];
   notes = '';
 
   isSubmitted = false;
   confirmedBooking: AppointmentBooking | null = null;
 
-  availableSlots = [
-    '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM',
-    '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM'
-  ];
+  ngOnInit(): void {}
 
-  minDate = new Date().toISOString().split('T')[0];
-
-  ngOnInit(): void {
-    this.clinics = this.data.getClinics();
-    if (this.clinics.length > 0) {
-      const match = this.initialClinicId ? this.clinics.find(c => c.id === this.initialClinicId) : null;
-      this.selectedClinic = match || this.clinics[0];
-      this.availableServices = this.selectedClinic.services || [];
-      if (this.availableServices.length > 0) {
-        this.selectedService = this.availableServices[0];
-      }
-    }
-  }
-
-  onClinicChange(clinicId: string): void {
-    const found = this.clinics.find(c => c.id === clinicId);
-    if (found) {
-      this.selectedClinic = found;
-      this.availableServices = found.services || [];
-      this.selectedService = this.availableServices.length > 0 ? this.availableServices[0] : null;
-    }
-  }
-
-  onServiceChange(serviceId: string): void {
-    const found = this.availableServices.find(s => s.id === serviceId);
-    if (found) {
-      this.selectedService = found;
-    }
-  }
-
-  getWhatsAppUrl(refCode?: string): string {
-    const clinicName = this.selectedClinic ? this.lang.getText(this.selectedClinic.name) : '';
-    const serviceName = this.selectedService ? this.lang.getText(this.selectedService.name) : '';
-    const ref = refCode || (this.confirmedBooking?.bookingRef || '');
-
-    const textAr = `السلام عليكم ورحمة الله وبركاته،
-أود تأكيد حجز موعد كشف لدى أ.د. أمل محمد عبدالستار حماده
-
-📋 *تفاصيل طلب الحجز*:
-• *رقم المرجعية*: ${ref}
-• *اسم المريض*: ${this.patientName}
+  getWhatsAppUrl(): string {
+    const text = `السلام عليكم ورحمة الله وبركاته،
+أود الاستفسار والتنسيق للتوجه لمركز دار اليسر بالعبور:
+• *الاسم*: ${this.patientName}
 • *رقم الهاتف*: ${this.patientPhone}
-${this.patientEmail ? `• *البريد*: ${this.patientEmail}\n` : ''}• *العيادة / الفرع*: ${clinicName}
-• *الخدمة الطبية*: ${serviceName} (${this.appointmentType})
-• *التاريخ المطلوب*: ${this.selectedDate}
-• *التوقيت المفضل*: ${this.selectedTimeSlot}
-${this.notes ? `• *ملاحظات المريض*: ${this.notes}\n` : ''}
-أرجو تأكيد الموعد، وشكراً جزيلاً!`;
+• *القسم / الخدمة*: ${this.serviceType}
+• *التاريخ*: ${this.selectedDate}
+${this.notes ? `• *ملاحظات*: ${this.notes}` : ''}`;
 
-    return `https://wa.me/201003514770?text=${encodeURIComponent(textAr)}`;
+    const num = this.serviceType.includes('أسنان') ? '201092893808' : '201030252002';
+    return `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
   }
 
-  handleFinalSubmit(): void {
-    if (!this.selectedClinic || !this.selectedService || !this.selectedDate || !this.selectedTimeSlot || !this.patientName || !this.patientPhone) {
-      return;
-    }
+  handleSubmit(): void {
+    if (!this.patientName || !this.patientPhone) return;
 
-    const bookingRef = 'REF-' + Math.floor(100000 + Math.random() * 900000);
-
-    const payload = {
-      clinicId: this.selectedClinic.id,
-      serviceId: this.selectedService.id,
+    this.confirmedBooking = this.data.addAppointmentInquiry({
       patientName: this.patientName,
       patientPhone: this.patientPhone,
-      patientEmail: this.patientEmail,
-      appointmentType: this.appointmentType,
+      appointmentType: 'On-site Registration Inquiry',
       date: this.selectedDate,
-      timeSlot: this.selectedTimeSlot,
-      notes: this.notes
-    };
-
-    this.confirmedBooking = {
-      id: 'APPT-' + Date.now(),
-      bookingRef: bookingRef,
-      clinicId: this.selectedClinic.id,
-      clinicName: this.selectedClinic.name,
-      serviceId: this.selectedService.id,
-      serviceName: this.selectedService.name,
-      patientName: this.patientName,
-      patientPhone: this.patientPhone,
-      patientEmail: this.patientEmail,
-      appointmentType: this.appointmentType,
-      date: this.selectedDate,
-      timeSlot: this.selectedTimeSlot,
-      status: 'Confirmed',
-      notes: this.notes,
-      createdAt: new Date().toISOString()
-    };
-
-    this.api.createAppointment(payload).subscribe({
-      next: (res) => {
-        if (res.appointment?.bookingRef) {
-          this.confirmedBooking!.bookingRef = res.appointment.bookingRef;
-        }
-      },
-      error: () => {}
+      timeSlot: 'الفترة المسائية',
+      notes: `${this.serviceType} - ${this.notes}`
     });
 
     this.isSubmitted = true;
-
-    // Automatically open WhatsApp with formatted message
-    const waUrl = this.getWhatsAppUrl(bookingRef);
-    window.open(waUrl, '_blank');
-  }
-
-  printReceipt(): void {
-    window.print();
+    window.open(this.getWhatsAppUrl(), '_blank');
   }
 }
