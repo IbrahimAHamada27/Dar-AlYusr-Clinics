@@ -49,9 +49,9 @@ import { DataService } from '../../../core/services/data.service';
           <div>
             <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem;">
               <img
-                src="/yosser-logo-icon.jpg"
+                src="/yosser-logo-full.jpg"
                 alt="شعار مستشفى دار اليسر"
-                style="width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 2px solid #0d9488;"
+                style="height: 50px; border-radius: 12px; object-fit: contain; background: #ffffff; padding: 4px; border: 2px solid #0d9488;"
               />
               <div style="font-weight: 900; font-size: 1.15rem; color: #ffffff; line-height: 1.3;">
                 {{ lang.getText(hospital.name) }}

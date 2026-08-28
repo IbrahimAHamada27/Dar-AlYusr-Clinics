@@ -58,9 +58,9 @@ import { LanguageService } from '../../../core/services/language.service';
             style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer; flex: 1; min-width: 0;"
           >
             <img
-              src="/yosser-logo-icon.jpg"
+              src="/yosser-logo-full.jpg"
               alt="لوجو مستشفى دار اليسر التخصصية"
-              style="width: 44px; height: 44px; border-radius: 10px; object-fit: cover; border: 2px solid #0d9488; flex-shrink: 0;"
+              style="height: 52px; border-radius: 12px; object-fit: contain; background: #ffffff; padding: 4px; border: 2px solid #0d9488; box-shadow: 0 4px 15px rgba(13, 148, 136, 0.2); flex-shrink: 0;"
             />
             <div style="min-width: 0; flex: 1;">
               <div style="font-weight: 900; font-size: clamp(0.92rem, 3.8vw, 1.35rem); color: #0f172a; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -199,9 +199,9 @@ import { LanguageService } from '../../../core/services/language.service';
         <div style="padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); background: #0f172a;">
           <div style="display: flex; align-items: center; gap: 0.85rem;">
             <img
-              src="/yosser-logo-icon.jpg"
+              src="/yosser-logo-full.jpg"
               alt="لوجو دار اليسر"
-              style="width: 44px; height: 44px; border-radius: 12px; object-fit: cover; border: 2px solid #0d9488;"
+              style="height: 50px; border-radius: 12px; object-fit: contain; background: #ffffff; padding: 4px; border: 2px solid #0d9488;"
             />
             <div>
               <div style="font-weight: 900; font-size: 1.05rem; color: #ffffff;">
