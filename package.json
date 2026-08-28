@@ -1,17 +1,8 @@
 {
-  "name": "dr-amal-workspace",
-  "private": true,
+  "name": "dar-alyusr-clinics",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "dev:backend": "npm --prefix backend run dev",
-    "dev:frontend": "npm --prefix frontend run dev",
-    "seed:backend": "npm --prefix backend run seed",
-    "build": "npm --prefix frontend run build"
-  },
-  "devDependencies": {
-    "typescript": "~5.9.3"
-  },
-  "overrides": {
-    "typescript": "~5.9.3"
+    "build": "cd frontend && npm install && npm run build"
   }
 }

@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import { errorHandler } from './middleware/errorHandler';
 
 // Import Routes
@@ -28,6 +29,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve static uploads
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
+
 // API v1 Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/doctor', doctorRoutes);
@@ -47,7 +51,7 @@ app.use('/api/v1/settings', settingRoutes);
 app.get('/', (req, res) => {
   res.json({
     success: true,
-    message: 'Dr. Aml Mohamed Abd El-Sattar Hamada REST API Backend',
+    message: 'Dar El Yosser Specialized Hospital REST API Backend',
     endpoints: {
       health: '/api/health',
       doctorProfile: '/api/v1/doctor',
@@ -60,7 +64,7 @@ app.get('/', (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({
     success: true,
-    message: 'Dr. Aml Mohamed Abd El-Sattar Hamada Express + SQLite API Server is running.',
+    message: 'Dar El Yosser Express API Server is running.',
     timestamp: new Date().toISOString()
   });
 });
